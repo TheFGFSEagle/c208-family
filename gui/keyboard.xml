@@ -5,7 +5,6 @@
      ############################################################ -->
 
 <PropertyList>
-
   <key n="96">
     <name>backtick</name>
     <desc>Marker Dialog</desc>
@@ -52,7 +51,7 @@
 
   <key n="102">
     <name>f</name>
-    <desc>Float/Wheels Toggle</desc>
+    <desc>Float / Wheels Toggle</desc>
     <binding>
       <command>property-toggle</command>
       <property>sim/model/float-command</property>
@@ -84,15 +83,14 @@
     </binding>
  </key>
 
-  <key n="74">
-    <!-- Shift-J -->
+  <!--<key n="74">
     <name>J</name>
     <desc>Jump!</desc>
     <binding>
       <command>nasal</command>
-      <script>movies.jump()</script>
+      <script>parajumper.jump()</script>
     </binding>
-  </key>
+  </key>-->
 
   <!-- seat vertical adjust -->
   <key n="21">
@@ -225,13 +223,6 @@
       <command>nasal</command>
       <script>doors.movedoor("/controls/doors/RudderLever",2.5);</script>
     </binding>
-    <mod-alt>
-      <desc>Movie Rotate</desc>
-      <binding>
-        <command>nasal</command>
-        <script>movies.movierotateclockwise()</script>
-      </binding>
-    </mod-alt>
   </key>
 
   <key n="115"> <!-- s -->
@@ -300,41 +291,12 @@
     </binding>
   </key>
 
-
-  <key n="82"> <!-- Shift-R -->
-    <desc>Movie Rotate Counter</desc>
-    <binding>
-      <command>nasal</command>
-      <script>movies.movierotatecounter()</script>
-    </binding>
-  </key>
-
   <key n="105"> <!-- i -->
     <desc>Toggle Steam/Glass Instrumentation</desc>
     <binding>
       <command>property-toggle</command>
       <property>sim/model/steamguages</property>
     </binding>
-  </key>
-
-  <key n="108"> <!-- Alt-L -->
-    <mod-alt>
-      <desc>Lights On</desc>
-      <binding>
-        <command>nasal</command>
-        <script>movies.lightson()</script>
-      </binding>
-    </mod-alt>
-  </key>
-
-  <key n="98"> <!-- Alt-B -->
-    <mod-alt>
-      <desc>battery On</desc>
-      <binding>
-        <command>nasal</command>
-        <script>movies.batton()</script>
-      </binding>
-    </mod-alt>
   </key>
 
   <key n="121"> <!-- y -->
@@ -355,13 +317,4 @@
       <property>controls/gear/gear-down</property>
     </binding>
   </key>
-
-  <key n="71"> <!-- G -->
-    <desc>Wrong Key Shift G</desc>
-    <binding>
-      <command>nasal</command>
-      <script>setprop ("/sim/messages/copilot", " ");</script>
-    </binding>
-  </key>
-
 </PropertyList>
