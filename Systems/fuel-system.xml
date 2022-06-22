@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+
+<system name="Fuel">
+<!-- tank[0] and tank[1] feed tank[2] through valves. -->
+<!-- 12.132 lbs unusable in each tank -->
+
+<!--   <property value="0">propulsion/tank[0]/collector-valve</property>
+   <property value="0">propulsion/tank[1]/collector-valve</property> -->
+
+  <channel name="Fuel pump">
+
+    <switch name="Fuel/From-Left-Tank">
+      <default value="0"/>
+      <test logic="AND" value="-0.25">
+<!--        propulsion/engine[0]/set-running EQ 1 -->
+        propulsion/tank[0]/collector-valve EQ 1
+        propulsion/tank[0]/contents-lbs GE 12.132
+        propulsion/tank[2]/contents-lbs LT 0.25
+      </test>
+      <output>propulsion/tank[0]/external-flow-rate-pps</output>
+    </switch>
+
+    <switch name="Fuel/From-Right-Tank">
+      <default value="0"/>
+      <test logic="AND" value="-0.25">
+<!--        propulsion/engine[0]/set-running EQ 1 -->
+        propulsion/tank[1]/collector-valve EQ 1
+        propulsion/tank[1]/contents-lbs GE 12.132
+        propulsion/tank[2]/contents-lbs LT 0.25
+      </test>
+      <output>propulsion/tank[1]/external-flow-rate-pps</output>
+    </switch>
+
+    <summer>
+      <input>-propulsion/tank[0]/external-flow-rate-pps</input>
+      <input>-propulsion/tank[1]/external-flow-rate-pps</input>
+      <output>propulsion/tank[2]/external-flow-rate-pps</output>
+    </summer>
+
+  </channel>
+
+</system>

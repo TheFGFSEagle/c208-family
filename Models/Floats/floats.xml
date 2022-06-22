@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      floats.xml - ePilot                                 ####
+      ####                                                          ####
+      ####    Float models and animations                           ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>floats.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+    <type>material</type>
+    <object-name>float-mainwheel-right</object-name>
+    <object-name>float-mainwheel-left</object-name>
+    <object-name>float-rudder-left</object-name>
+    <object-name>float-rudder-mount-left</object-name>
+    <object-name>float-rudder-mount-right</object-name>
+    <object-name>float-rudder-right</object-name>
+    <object-name>floats</object-name>
+    <object-name>nosewheel-fork-left</object-name>
+    <object-name>nosewheel-fork-right</object-name>
+    <object-name>nosewheel-left</object-name>
+    <object-name>nosewheel-right</object-name>
+    <object-name>nosewheel-shaft-left</object-name>
+    <object-name>nosewheel-shaft-right</object-name>
+    <object-name>BackPlate</object-name>
+    <object-name>rudder-left</object-name>
+    <object-name>rudder-right</object-name>
+    <object-name>rudder-link-right</object-name>
+    <object-name>rudder-link-left</object-name>
+    <emission>
+      <red>   0.015 </red>
+      <green> 0.015 </green>
+      <blue>  0.015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+        <property>/sim/time/sun-angle-rad</property>
+        <value>1.55</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+<!-- Instrument Lights On -->
+
+<!-- End of Emission Animations -->
+
+  <animation>
+    <type>material</type>
+    <object-name>float-mainwheel-right</object-name>
+    <object-name>float-mainwheel-left</object-name>
+    <object-name>float-rudder-left</object-name>
+    <object-name>float-rudder-mount-left</object-name>
+    <object-name>float-rudder-mount-right</object-name>
+    <object-name>float-rudder-right</object-name>
+    <object-name>floats</object-name>
+    <object-name>nosewheel-fork-left</object-name>
+    <object-name>nosewheel-fork-right</object-name>
+    <object-name>nosewheel-left</object-name>
+    <object-name>nosewheel-right</object-name>
+    <object-name>nosewheel-shaft-left</object-name>
+    <object-name>nosewheel-shaft-right</object-name>
+    <object-name>nosewheel-shaft-right</object-name>
+    <object-name>BackPlate</object-name>
+    <object-name>rudder-left</object-name>
+    <object-name>rudder-right</object-name>
+    <object-name>rudder-link-right</object-name>
+    <object-name>rudder-link-left</object-name>
+
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>floats-texture</texture-prop>
+    <texture>Default-Floats.png</texture>
+  </animation>
+
+  <!-- Float Nose Gear Retract -->
+  <animation>
+    <type>translate</type>
+    <object-name>nosewheel-fork-left</object-name>
+    <object-name>nosewheel-fork-right</object-name>
+    <object-name>nosewheel-left</object-name>
+    <object-name>nosewheel-right</object-name>
+    <object-name>nosewheel-shaft-left</object-name>
+    <object-name>nosewheel-shaft-right</object-name>
+    <property>gear/gear[3]/position-norm</property>
+    <interpolation>
+      <entry><ind> 1.0</ind><dep> 0.0</dep></entry>
+      <entry><ind> 0.5</ind><dep> 0.0</dep></entry>
+      <entry><ind> 0.0</ind><dep> 0.68</dep></entry>
+    </interpolation>
+  <axis>
+   <x>1</x>
+  </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>nosewheel-fork-left</object-name>
+    <object-name>nosewheel-fork-right</object-name>
+    <object-name>nosewheel-left</object-name>
+    <object-name>nosewheel-right</object-name>
+    <object-name>nosewheel-shaft-left</object-name>
+    <object-name>nosewheel-shaft-right</object-name>
+    <property>gear/gear[3]/position-norm</property>
+    <interpolation>
+      <entry><ind> 1.0</ind><dep> 0.0</dep></entry>
+      <entry><ind> 0.5</ind><dep> 60.0</dep></entry>
+      <entry><ind> 0.0</ind><dep> 60.0</dep></entry>
+    </interpolation>
+    <center>
+      <x-m>1.07984</x-m>
+      <y-m>-1.5693</y-m>
+      <z-m>-2.08362</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <!-- Float Main Gear Retract -->
+  <animation>
+    <type>translate</type>
+    <object-name>float-mainwheel-right</object-name>
+    <object-name>float-mainwheel-left</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry><ind> 1.0</ind><dep> 0.0</dep></entry>
+      <entry><ind> 0.6</ind><dep> -0.3</dep></entry>
+      <entry><ind> 0.0</ind><dep> -0.3</dep></entry>
+    </interpolation>
+    <axis>
+      <z>-1</z>
+    </axis>
+  </animation>
+
+  <!-- Wheel rotation / compression -->
+
+  <animation>
+    <type>translate</type>
+    <object-name>float-mainwheel-left</object-name>
+    <property>gear/gear[5]/compression-ft</property>
+    <factor> 0.2 </factor>
+    <center>
+      <x-m> 5.43958 </x-m>
+      <y-m>-1.56456 </y-m>
+      <z-m>-2.97179  </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>float-mainwheel-left</object-name>
+    <property>gear/gear[5]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 5.43958 </x-m>
+      <y-m>-1.56456 </y-m>
+      <z-m>-2.97179  </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>float-mainwheel-right</object-name>
+    <property>gear/gear[6]/compression-ft</property>
+    <factor> 0.2 </factor>
+    <center>
+      <x-m> 5.43958 </x-m>
+      <y-m> 1.56456 </y-m>
+      <z-m>-2.97179  </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+ <animation>
+    <type>spin</type>
+    <object-name>float-mainwheel-right</object-name>
+    <property>gear/gear[6]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 5.43958 </x-m>
+      <y-m> 1.56456 </y-m>
+      <z-m>-2.97179  </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<!-- LEFT Nose Gear Compression-->
+
+  <animation>
+  <type>rotate</type>
+    <object-name>nosewheel-fork-left</object-name>
+    <object-name>nosewheel-shaft-left</object-name>
+    <object-name>nosewheel-left</object-name>
+  <property>gear/gear[3]/compression-ft</property>
+  <factor> 30 </factor>
+  <offset-deg>5</offset-deg>
+  <center>
+    <x-m>1.05939</x-m>
+    <y-m>-1.56931</y-m>
+    <z-m>-2.07413</z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+ </animation>
+
+<!-- LEFT Nose Gear Steering-->
+
+  <animation>
+  <type>rotate</type>
+    <object-name>nosewheel-fork-left</object-name>
+    <object-name>nosewheel-left</object-name>
+    <property>gear/gear[3]/castor-angle</property>
+    <factor>-1</factor>
+  <center>
+    <x-m>0.76667</x-m>
+    <y-m>-1.56715</y-m>
+    <z-m>-2.70746</z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+ </animation>
+
+<!-- LEFT nosewheel Rotation -->
+
+  <animation>
+    <type>spin</type>
+    <object-name>nosewheel-left</object-name>
+    <property>gear/gear[3]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 0.84325 </x-m>
+      <y-m>-1.56742 </y-m>
+      <z-m>-3.06367 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<!-- RIGHT Nose Gear Compression-->
+
+  <animation>
+  <type>rotate</type>
+    <object-name>nosewheel-fork-right</object-name>
+    <object-name>nosewheel-shaft-right</object-name>
+    <object-name>nosewheel-right</object-name>
+  <property>gear/gear[4]/compression-ft</property>
+  <factor> 30 </factor>
+  <offset-deg>5</offset-deg>
+  <center>
+    <x-m>1.05939</x-m>
+    <y-m> 1.56931</y-m>
+    <z-m>-2.07413</z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+ </animation>
+
+<!-- RIGHT Nose Gear Steering-->
+
+  <animation>
+  <type>rotate</type>
+    <object-name>nosewheel-fork-right</object-name>
+    <object-name>nosewheel-right</object-name>
+    <property>gear/gear[4]/castor-angle</property>
+    <factor>-1</factor>
+  <center>
+    <x-m>0.76667</x-m>
+    <y-m>1.56715</y-m>
+    <z-m>-2.70746</z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+ </animation>
+
+
+<!-- RIGHT nosewheel Rotation -->
+
+  <animation>
+    <type>spin</type>
+    <object-name>nosewheel-right</object-name>
+    <property>gear/gear[4]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 0.84325 </x-m>
+      <y-m> 1.56742 </y-m>
+      <z-m>-3.06367 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<!-- Left Rudder Turn -->
+  <animation>
+  <type>rotate</type>
+    <object-name>rudder-left</object-name>
+    <object-name>rudder-link-left</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>35</factor>
+  <center>
+    <x-m>9.72283</x-m>
+    <y-m>-1.56812</y-m>
+    <z-m>-2.03027</z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+ </animation>
+
+<!-- Right Rudder Turn -->
+  <animation>
+  <type>rotate</type>
+    <object-name>rudder-right</object-name>
+    <object-name>rudder-link-right</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>35</factor>
+  <center>
+    <x-m>9.72281</x-m>
+    <y-m>1.56116</y-m>
+    <z-m>-2.03026</z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+ </animation>
+
+<!-- Rudder Raise / Lower -->
+
+  <animation>
+  <type>rotate</type>
+    <object-name>rudder-left</object-name>
+    <object-name>rudder-right</object-name>
+        <property>sim/multiplay/generic/float[9]</property>
+<!--    <property>controls/doors/RudderLever</property> -->
+    <factor>-120</factor>
+  <center>
+    <x-m>9.78105</x-m>
+    <y-m>-0.00351</y-m>
+    <z-m>-2.09624</z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+ </animation>
+
+</PropertyList>
+

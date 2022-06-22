@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      seat.xml - ePilot                                   ####
+      ####                                                          ####
+      ####    Passenger Seat model and animations                   ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>208seat.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>Seat</object-name>
+    <emission>
+      <red>   .018 </red>
+      <green> .018 </green>
+      <blue>  .018 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+<!-- Instrument Lights On -->
+
+<!-- End of Emission Animations -->
+
+  <animation>
+    <type>select</type>
+    <object-name>Seat</object-name>
+    <condition>
+      <not>
+        <or>
+          <property>sim/model/cargo</property>
+          <property>sim/model/jumpship</property>
+        </or>
+      </not>
+    </condition>
+  </animation>
+
+</PropertyList>
+

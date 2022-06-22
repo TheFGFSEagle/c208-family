@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ################################################################################
+      ####                                                                        ####
+      ####   The Cessna 208B Grand Caravan for FlightGear                         ####
+      ####                                                                        ####
+      ####   Original and Modified work Copyright (c) 2016-2020 ePilot            ####
+      ####   Original and Modified work Copyright (c) 2020 D-ECHO                 ####
+      ####   Original and Modified work Copyright (c) 2015 Emmanuel Barranger     ####
+      ####                                                                        ####
+      ####   This file and all files included with the Cessna 208B Grand Caravan  ####
+      ####   for FlightGear by ePilot is part of FlightGear.                      ####
+      ####                                                                        ####
+      ####   FlightGear is free software: you can redistribute it and/or modify   ####
+      ####   it under the terms of the GNU General Public License as published by ####
+      ####   the Free Software Foundation, either version 2 of the License, or    ####
+      ####   any later version.                                                   ####
+      ####                                                                        ####
+      ####   This aircraft is distributed in the hope that it will be useful,     ####
+      ####   but WITHOUT ANY WARRANTY; without even the implied warranty of       ####
+      ####   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        ####
+      ####   GNU General Public License for more details.                         ####
+      ####                                                                        ####
+      ####   You should have received a copy of the GNU General Public License    ####
+      ####   along with FlightGear.  If not, see <https://www.gnu.org/licenses/ . ####
+      ####                                                                        ####
+      ####   Some original source materials by Marc Kraus, Fernando Espinosa,     ####
+      ####   Pavel Cueto, Emmanuel Barranger                                      ####
+      ####                                                                        ####
+      ####   Thanks to:                                                           ####
+      ####   D-ECHO for GPL compliance testing and assurance and textures         ####
+      ####   nl256 for turboprop engine tuning advice                             ####
+      ################################################################################ -->
+
+<PropertyList>
+
+  <sim>
+    <description type="string">Cessna 208B Grand Caravan</description>
+    <minimum-fg-version>0.0</minimum-fg-version>
+
+    <tags>
+      <tag>ga</tag>
+      <tag>cessna</tag>
+      <tag>turboprop</tag>
+      <tag>single-engine</tag>
+      <tag>floats</tag>
+      <tag>seaplane</tag>
+      <tag>amphibian</tag>
+    </tags>
+
+    <maintainers>
+      <maintainer n="0">
+          <name>ePilot</name>
+        </maintainer>
+    </maintainers>
+
+    <authors>
+      <author n="0">
+        <name>ePilot</name>
+        <description>FDM, Systems, Cockpit, Model</description>
+      </author>
+    </authors>
+
+    <long-description type="string">The Cessna 208B Grand Caravan is an amphibous turbo-prop aircraft that will automatically configure itself for your chosen load location. Choose airport or seabase and the aircraft will load with the proper configuration. Manual configuration changes are also available (without reloading aircraft). 2 instrument panel configurations are available and swappable in-flight. Multiple fuselage configurations are available and configurable in-flight. The active livery system will reconfigure fuselage options automatically. Fully compatible with Standard, ALS and Rembrandt rendering including lights and shadows. Please see the Checklists menu item for detailed engine startup instructions and also the Aircraft Help pages included in this aircraft</long-description>
+
+    <rating>
+      <FDM type="int">4</FDM>
+      <systems type="int">4</systems>
+      <cockpit type="int">4</cockpit>
+      <model type="int">4</model>
+    </rating>
+
+    <status type="string">production</status>
+    <flight-model>jsb</flight-model>
+    <aero>Systems/c208b-fdm</aero>
+
+    <dimensions>
+      <radius-m type="double">16</radius-m>
+    </dimensions>
+
+    <previews>
+      <preview>
+        <type>exterior</type>
+        <path>splash.png</path>
+        <splash type="bool">true</splash>
+      </preview>
+      <preview>
+        <type>exterior</type>
+        <path>splash-floats.png</path>
+        <splash type="bool">true</splash>
+      </preview>
+    </previews>
+
+    <menubar include="gui/menu.xml"/>
+
+    <multiplay>
+      <generic>
+        <int n="0" alias="/systems/electrical/on"></int>                           <!-- 0 electrical power -->
+        <int n="1" alias="/controls/electric/bcn-switch"></int>                    <!-- 1 beacon switch -->
+        <int n="2" alias="/sim/model/lights/beacon/state"></int>                   <!-- 2 beacon state -->
+        <int n="3" alias="/controls/electric/nav-switch"></int>                    <!-- 3 Nav lights -->
+        <int n="4" alias="/controls/electric/strobe-switch"></int>                 <!-- 4 strobe switch -->
+        <int n="5" alias="/sim/model/lights/strobe/state"></int>                   <!-- 5 strobe state -->
+        <int n="6" alias="/controls/electric/leftldg-switch"></int>                <!-- 6 left landing light switch -->
+        <int n="7" alias="/controls/electric/rightldg-switch"></int>               <!-- 7 right landing light switch -->
+        <int n="8" alias="/engines/engine[0]/starter"></int>                       <!-- 8 starter engaged -->
+        <int n="9" alias="/sim/model/floats"></int>                                <!-- 9 Floats / Wheels -->
+        <int n="10" alias="/sim/model/cargo"></int>                                <!-- 10 Cargomaster Config -->
+        <int n="11" alias="/sim/model/cargo-pod"></int>                            <!-- 11 Cargo Pod -->
+        <int n="12" alias="/sim/model/jumpship"></int>                             <!-- 12 Skydiving Config -->
+        <int n="13" alias="/controls/electric/taxi-switch"></int>                  <!-- 13 Taxi Lights -->
+
+        <float n="0" alias="/controls/doors/Pilot"></float>
+        <float n="1" alias="/controls/doors/CabinDoorUpper"></float>
+        <float n="2" alias="/position/altitude-agl-m"></float>                       <!-- 2 altitude for MP shadow -->
+        <float n="3" alias="/engines/engine[0]/thrust_lb"></float>                   <!-- 3 engine thrust -->
+        <float n="4" alias="/sim/model/BladeAngle"></float>                          <!-- 4 prop pitch -->
+        <float n="5" alias="/engines/engine[0]/oil-pressure-psi"></float>            <!-- 5 oil pressure -->
+        <float n="6" alias="/controls/doors/CoPilot"></float>
+        <float n="7" alias="/controls/doors/CabinDoorLower"></float>
+        <float n="8" alias="/controls/doors/Vent"></float>
+        <float n="9" alias="/controls/doors/RudderLever"></float>
+        <float n="10" alias="/engines/engine[0]/thruster/rpm"></float>                <!-- 10 prop rpm -->
+      </generic>
+      <chat type="string">Communications Established</chat>
+      <chat_display>1</chat_display>
+    </multiplay>
+
+    <panel>
+      <visibility type="bool">false</visibility>
+    </panel>
+
+    <!-- View Defs  -->
+    <view n="0">
+      <internal>true</internal>
+      <config>
+        <x-offset-m>-0.39</x-offset-m>  <!-- Right -->
+        <y-offset-m>0.65</y-offset-m>  <!-- Up    -->
+        <z-offset-m>4.01</z-offset-m>  <!-- Back  -->
+        <pitch-offset-deg>-8.6</pitch-offset-deg>
+        <heading-offset-deg>-1.0</heading-offset-deg>
+        <default-field-of-view-deg>70</default-field-of-view-deg>
+        <limits>
+          <enabled type="bool">true</enabled>
+          <left>
+            <heading-max-deg type="double">360</heading-max-deg>
+          </left>
+          <right>
+            <heading-max-deg type="double">360</heading-max-deg>
+          </right>
+        </limits>
+      </config>
+    </view>
+
+    <view n="1">
+      <config>
+        <target-z-offset-m type="double">6.68134</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="2">
+      <config>
+        <target-z-offset-m type="double">6.68134</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="3">
+      <config>
+        <target-z-offset-m type="double">6.68134</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="4">
+      <config>
+        <target-z-offset-m type="double">6.68134</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="5">
+      <config>
+        <target-z-offset-m type="double">6.68134</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="6">
+      <config>
+        <target-z-offset-m type="double">6.68134</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="100">
+      <name>Tail Camera View</name>
+      <type>lookfrom</type>
+      <internal>true</internal>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+        <x-offset-m>0.000</x-offset-m> <!--Right-->
+        <y-offset-m>3.04357</y-offset-m> <!--Up-->
+        <z-offset-m>12.77734</z-offset-m> <!--Back-->
+        <pitch-offset-deg>-5</pitch-offset-deg>
+        <default-field-of-view-deg type="double">100</default-field-of-view-deg>
+      </config>
+    </view>
+
+    <view n="101">
+      <name>Wing Camera</name>
+      <internal>true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m>7.429</x-offset-m> <!-- Right -->
+        <y-offset-m>0.48157</y-offset-m> <!-- Up    -->
+        <z-offset-m>4.88034</z-offset-m>  <!-- Back  -->
+        <pitch-offset-deg>-5</pitch-offset-deg>
+        <heading-offset-deg>90</heading-offset-deg>
+
+        <default-field-of-view-deg type="double">80</default-field-of-view-deg>
+        <dynamic-view type="bool">true</dynamic-view>
+      </config>
+    </view>
+
+    <view n="102">
+      <name>Cabin Seat View</name>
+      <internal>true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m>0.429</x-offset-m> <!-- Right -->
+        <y-offset-m>0.48157</y-offset-m> <!-- Up    -->
+        <z-offset-m>5.88034</z-offset-m>  <!-- Back  -->
+        <pitch-offset-deg>-5</pitch-offset-deg>
+        <default-field-of-view-deg type="double">60</default-field-of-view-deg>
+        <dynamic-view type="bool">true</dynamic-view>
+      </config>
+    </view>
+
+    <view n="103">
+      <name>CoPilot Seat View</name>
+      <internal>true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m>0.389</x-offset-m>  <!-- Right -->
+        <y-offset-m>0.59057</y-offset-m>  <!-- Up    -->
+        <z-offset-m>4.001234</z-offset-m>  <!-- Back  -->
+        <pitch-offset-deg>-8.0</pitch-offset-deg>
+        <heading-offset-deg>1.0</heading-offset-deg>
+        <default-field-of-view-deg>68</default-field-of-view-deg>
+        <dynamic-view type="bool">true</dynamic-view>
+      </config>
+    </view>
+
+    <view n="104">
+      <name>Center Cockpit View</name>
+      <internal>true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m>-0.0</x-offset-m>  <!-- Right -->
+        <y-offset-m>0.56657</y-offset-m> <!-- Up    -->
+        <z-offset-m>4.11234</z-offset-m>  <!-- Back  -->
+        <pitch-offset-deg>0</pitch-offset-deg>
+        <heading-offset-deg>0</heading-offset-deg>
+        <default-field-of-view-deg type="double">68</default-field-of-view-deg>
+        <dynamic-view type="bool">true</dynamic-view>
+      </config>
+    </view>
+
+<!-- Views 105 & 106 used for making video - not needed in production aircraft
+    <view n="105">
+      <name>Nosegear</name>
+      <internal>true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m>-1.8</x-offset-m>
+        <y-offset-m>-0.8</y-offset-m>
+        <z-offset-m>0.8</z-offset-m>
+        <pitch-offset-deg>0</pitch-offset-deg>
+        <heading-offset-deg>220</heading-offset-deg>
+        <default-field-of-view-deg type="double">68</default-field-of-view-deg>
+        <dynamic-view type="bool">true</dynamic-view>
+      </config>
+    </view>
+
+    <view n="106">
+      <name>Jumper View</name>
+      <internal>true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m>0.5</x-offset-m>
+        <y-offset-m>0.1</y-offset-m>
+        <z-offset-m>7.1</z-offset-m>
+        <pitch-offset-deg>-5</pitch-offset-deg>
+        <heading-offset-deg>95</heading-offset-deg>
+        <default-field-of-view-deg type="double">60</default-field-of-view-deg>
+        <dynamic-view type="bool">true</dynamic-view>
+      </config>
+    </view> -->
+
+    <fuel-fraction>1.0</fuel-fraction>
+
+    <co-pilot type="bool">true</co-pilot>
+
+    <flaps>
+      <setting>0.00</setting> <!-- Cruise -->
+      <setting>.333333</setting> <!-- 10 -->
+      <setting>.666666</setting> <!-- 20 -->
+      <setting>1.0</setting> <!-- 30 -->
+    </flaps>
+
+    <hud>
+      <enable3d n="1">false</enable3d>
+      <path n="1" type="string">Aircraft/Cessna-208B/Models/Hud/Cessna-208B.xml</path>
+    </hud>
+
+<!-- DO NOT REFORMAT HELP TEXT - Changes to indentation / line spacing WILL AFFECT text layout on the dialog pages -->
+    <help>
+      <page type="string">intro</page>
+
+      <startupref type="string">ENGINE STARTUP
+
+1. Battery switch to ON. The battery switch is a simple 2 position toggle. Click with the Left Mouse Button (LMB) to toggle ON/OFF
+
+2. Fuel Boost Pump to ON. The Fuel Boost Pump switch is a three position switch – OFF, NORM and ON. Click with the LMB to move the switch forward. Click with the Middle Mouse Button (MMB) to move the switch aft.
+
+3. Starter Switch to ON. The Starter switch is a three position switch – MOTOR, OFF, and ON. Click with the LMB or press S on the keyboard to move the switch forward. Click with the Middle Mouse Button (MMB) or press s S on the keyboard to move the switch aft. In the ON position the starter motor is engaged AND the engine ignitors are energized allowing the engine to start when fuel is introduced at the correct N1 speed. In the MOTOR position, the starter motor is engaged but the ignitors are NOT energized. The engine will turn over but it will not start.
+
+4. Add Fuel at N1 > 15%. When the engine N1 exceeds 15% move the Fuel Condition lever to the Low Idle position to introduce fuel into the engine. N1 will immediately begin increasing rapidly.
+
+5. Starter Switch to OFF at N1 > 20%. When the engine N1 exceeds 20% (which should happen almost immediately after the introduction of fuel) move the Starter Switch to OFF with either the MMB or Shift-S on the keyboard.
+
+6. Fuel Boost Pump Switch to NORM. Use the MMB to bring the Fuel Boost Pump switch back to the NORM position.</startupref>
+
+
+      <apref type="string">Although the instrumentation and control units installed in this Cessna 208 look suspiciously like a Bendix/King kfc200 flight control system, this is NOT a kfc200.This aircraft is equipped with the latest in FlightGear autopilot technology, the EP-C2H60.
+
+The A/P operates only above 300 agl. Automatic disengagement occurs descending through 300 agl.
+
+Flight control deflection AP disengagement: Deflecting any flight control more than 6 degrees will cause all AP modes (except APPR Mode) to disengage and the AP will revert to Full CWS Mode. In APPR Mode Full CWS Mode will remain active until NAV1 is in range and CWS Pitch mode will remain active until GlideSlope is captured.
+
+Full CWS mode: AP annunciator and no other modes active. This is the default AP mode When AP is activated and no vertical or lateral modes are active. Set aircraft pitch/bank with flight controls. Release flight controls and AP will maintain last observed pitch/bank. If bank angle is less that 6 degrees when flight controls are released ap will fly wings level and last observed pitch.
+
+        HDG Mode: Follow HSI Heading Bug
+
+        NAV Mode: Follow NAV1 Radial or ILS
+
+        ALT Mode: Achieve and maintain altitude displayed in the altitude selector
+
+        FD Mode: Follow Route Manager laterally (vertically if altitudes are specified in the Route Manager) If Route Manager does not specify altitudes then achieve and maintain altitude in the altitude selector.
+
+        APPR Mode: Maintain Full CWS Mode until NAV1 in range, then follow NAV1 ILS. CWS Pitch mode is maintained until GlideSlope is captured.
+
+        Pitch Up/Down:
+        In ALT Mode: Increase/decrease selected altitude in 100 ft steps.
+        In all other modes including APPR Mode before GS capture: Increase/decrease last observed pitch by 0.5 degrees.  In APPR After GS Capture: No effect</apref>
+
+      <floatopsref type="string">The aircraft will determine where it is being loaded and will configure itself appropriately.
+
+        Loading at a Seaplane Base (in the water) will result in the following configuration:
+        Landing Gear Up / Parking Brake Off
+
+        Loading at a land based Airport will result in the following configuration:
+        Landing Gear Down / Parking Brake Set.
+
+        Seaplane bases can be locates by searching for [S] in the launcher.</floatopsref>
+
+      <liveryref type="string">The active livery system will reconfigure your aircraft as appropriate for the livery you choose. It will NOT make any unsafe changes, (i.e. removing floats if you are currently floating on them). There are currently 4 fuselage configuration options available and can be used in any combination.
+
+Passenger / Cargomaster configuration: The passenger fuselage includes windows and seating, the cargomaster does not. Toggle the Cargomaster configuration with the C key.
+
+Tricycle gear / Floats: Toggle this fuselage configuration option with F key. The system will not allow you to remove the floats if you are currently being supported by them on water. Doing so would, of course, have unpleasant consequences.
+
+Sky-Diving Configuration: This configuration removes the passenger seating and cabin doors and replaces the cabin doors with a quick release cargo net to allow skydivers easy exit from the aircraft. This configuration can be toggled with the J key.
+
+Cargo Tank: The cargo tank can be installed or removed. There is currently no hotkey for this operation but it is accessible from the Cessna-208B Menu.
+
+The active livery system uses 4 properties (found near the top of each livery .xml file) to function which you can add to any livery you create or you can modify existing liveries to your liking...
+
+float-command: set to 1 or true to add floats, 0 or false to remove floats
+cargo: set to 1 or true to use Cargomaster fuselage, 0 or false to use Passenger configuration
+cargo-pod: set to 1 or true to attach the cargo tank, 0 or false to remove the Cargo Tank
+jumpship: set to 1 or true to enable the Skydiving fuselage configuration, 0 or false to disable
+      </liveryref>
+
+      <operationsref type="string">
+Checklists and tutorials have been combined into one easy to use menu from which you can select a checklist section and follow the steps to accomplish that phase of flight preparation &amp; execution. The text on the checklist menus informs you of the task completion/condition status (indicated by color). The buttons do not perform the required task for you, but rather position your view at the item that needs attention, places a highlight around the item and allows you to perform the needed action, thus allowing you to learn the procedures quickly. When a checklist is closed your view is automatically returned to the default pilot view.
+
+              ....----===== #####  Ultra-quick-start  #####=====----....
+
+Autostart is provided from the Cessna-208B Menu.
+
+Set takeoff flaps (one click)
+
+Set uptrim - about 5 seconds joystick control, cockpit trimwheel activation or keyboard (1/End Key on NumPad)
+
+Set Full Throttle. Copilot will announce V-Speeds and Rotation.
+
+After positive climb rate established raise gear (if taking off from land with floats attached), raise flaps and trim for desired climb rate as needed.
+
+Enjoy your flight!
+      </operationsref>
+    </help>
+
+    <model>
+      <path>Aircraft/c208-family/Models/c208b.xml</path>
+
+      <livery>
+        <file userarchive="y" type="string">Default</file>
+        <texture userarchive="y" type="string">Liveries/Default.png</texture>
+        <cargo-texture userarchive="y" type="string">Liveries/Default-Cargo.png</cargo-texture>
+        <gear-texture userarchive="y" type="string">Liveries/Default-Gear.png</gear-texture>
+        <floats-texture userarchive="y" type="string">Liveries/Default-Floats.png</floats-texture>
+      </livery>
+
+      <cargo type="bool">0</cargo>
+      <cargo-pod type="bool">1</cargo-pod>
+      <cargo-net type="bool">1</cargo-net>
+      <yokes type="bool">1</yokes>
+      <shadow type="bool">1</shadow>
+      <steamguages type="bool">1</steamguages>
+      <floats type="bool">0</floats>
+      <float-command type="bool">0</float-command>
+      <jumpship type="bool">0</jumpship>
+      <BladeAngle type="double">105</BladeAngle>
+    </model>
+
+    <sound>
+      <path type="string">Sounds/c208b-sound.xml</path>
+      <on type="bool">false</on>
+      <click type="bool">false</click>
+      <fuelvalve type="bool">false</fuelvalve>
+      <Starter_Up type="bool">false</Starter_Up>
+      <Starter_Down type="bool">false</Starter_Down>
+    </sound>
+
+    <instrumentation>
+      <path type="string">Systems/instrumentation.xml</path>
+    </instrumentation>
+
+    <rendering>
+      <als-secondary-lights>
+        <use-landing-light-left type="bool">0</use-landing-light-left>
+        <use-landing-light-right type="bool">0</use-landing-light-right>
+        <use-taxi-light-left type="bool">0</use-taxi-light-left>
+        <use-taxi-light-right type="bool">0</use-taxi-light-right>
+      </als-secondary-lights>
+    </rendering>
+
+    <systems>
+      <path type="string">Systems/systems.xml</path>
+      <autopilot>
+        <path>Systems/autopilot.xml</path>
+      </autopilot>
+    </systems>
+
+    <!--    <checklists include="Dialogs/Cessna-208-checklists.xml" /> (Replaced with Checklists menu item) -->
+
+    <!-- aircraft-data specifies paths of properties for which values of should be saved between runs -->
+    <aircraft-data>
+      <path>sim/model/steamguages</path>
+    </aircraft-data>
+
+    <messages>
+      <copilot type="string" />
+    </messages>
+  </sim>
+
+  <aircraft>
+    <icao>
+      <wake-turbulence-category>L</wake-turbulence-category>
+      <type type="string">C208</type>
+      <equipment type="string">SV/C</equipment>
+      <surveillance type="string">C</surveillance>
+    </icao>
+    <performance>
+      <minimum>
+        <takeoff-length-ft type="int">1365</takeoff-length-ft>
+        <landing-length-ft type="int">1795</landing-length-ft>
+      </minimum>
+      <cruise>
+        <airspeed-knots type="int">175</airspeed-knots>
+        <altitude-ft type="int">10000</altitude-ft>
+      </cruise>
+      <approach>
+        <airspeed-knots type="int">105</airspeed-knots>
+      </approach>
+      <maximum>
+        <altitude-ft type="int">25000</altitude-ft>
+        <airspeed-knots type="int">186</airspeed-knots>
+      </maximum>
+    </performance>
+  </aircraft>
+
+  <autopilot>
+    <settings>
+      <vertical-speed-fpm type="double">1000</vertical-speed-fpm>
+      <target-altitude-ft type="double">5000</target-altitude-ft>
+      <target-speed-kt type="double">170</target-speed-kt>
+      <heading-bug-deg type="double">0</heading-bug-deg>
+      <true-heading-deg type="double">0</true-heading-deg>
+    </settings>
+    <internal>
+      <XDIA type="bool">false</XDIA>
+      <CMD type="bool">false</CMD>
+      <FMS type="bool">false></FMS>
+      <APPR type="bool">false</APPR>
+      <LNAV-NAV1 type="bool">false</LNAV-NAV1>
+      <LNAV-HDG type="bool">false</LNAV-HDG>
+      <LNAV-BC type="bool">false></LNAV-BC>
+      <VNAV-ALT type="bool">false</VNAV-ALT>
+      <SPD type="bool">false</SPD>
+      <apdis-warn type="bool">false</apdis-warn>
+      <disengaged type="bool">false</disengaged>
+      <last-pitch type="double">0.0</last-pitch>
+      <last-roll type="double">0.0</last-roll>
+    </internal>
+  </autopilot>
+
+  <instrumentation>
+    <annun>
+      <enginefire type="bool">false</enginefire>
+      <voltagelow type="bool">false</voltagelow>
+      <doorwarning type="bool">false</doorwarning>
+      <oilpreslow type="bool">false</oilpreslow>
+      <vacuumlow type="bool">false</vacuumlow>
+      <generatoroff type="bool">false</generatoroff>
+      <resfuellow type="bool">false</resfuellow>
+      <epowerlvr type="bool">false</epowerlvr>
+      <leftfuellow type="bool">false</leftfuellow>
+      <auxfuelpump type="bool">false</auxfuelpump>
+      <rightfuellow type="bool">false</rightfuellow>
+      <chipdetect type="bool">false</chipdetect>
+      <fuelpreslow type="bool">false</fuelpreslow>
+      <stbyelecpwr type="bool">false</stbyelecpwr>
+      <stbyelecinop type="bool">false</stbyelecinop>
+      <starter type="bool">false</starter>
+      <inverterinop type="bool">false</inverterinop>
+      <windshieldantiice type="bool">false</windshieldantiice>
+      <ignition type="bool">false</ignition>
+      <fuelselectoff type="bool">false</fuelselectoff>
+      <deicepres type="bool">false</deicepres>
+    </annun>
+    <adf>
+      <volume-norm type="double">0.05</volume-norm>
+    </adf>
+    <comm>
+      <volume type="double">0.95</volume>
+      <frequencies>
+        <selected-mhz type="double">121.50</selected-mhz>
+      </frequencies>
+    </comm>
+    <comm n="1">
+      <volume type="double">0.95</volume>
+      <frequencies>
+        <standby-mhz type="double">133.70</standby-mhz>
+      </frequencies>
+    </comm>
+    <nav>
+      <volume type="double">0.05</volume>
+      <radials>
+        <selected-deg>0</selected-deg>
+      </radials>
+    </nav>
+    <nav n="1">
+      <volume type="double">0.05</volume>
+      <radials>
+        <selected-deg>0</selected-deg>
+      </radials>
+    </nav>
+    <dme>
+      <frequencies>
+        <source type="string">/instrumentation/nav[0]/frequencies/selected-mhz</source>
+      </frequencies>
+      <serviceable type="bool">true</serviceable>
+    </dme>
+    <transponder>
+      <inputs>
+        <mode type="int">0</mode>
+        <knob-mode type="int">0</knob-mode> <!-- Backard compatibility -->
+        <digit type="int" n="0">0</digit>
+        <digit type="int" n="1">0</digit>
+        <digit type="int" n="2">2</digit>
+        <digit type="int" n="3">1</digit>
+      </inputs>
+    </transponder>
+    <airspeed-indicator>
+      <pressure-alt-offset-deg type="int">21</pressure-alt-offset-deg>
+    </airspeed-indicator>
+  </instrumentation>
+
+  <payload>
+    <weight>
+      <name type="string">Pilot</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+      <min-lb type="double">0.0</min-lb>
+      <max-lb type="double">300.0</max-lb>
+    </weight>
+    <weight>
+      <name type="string">Co-Pilot</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+      <min-lb type="double">0.0</min-lb>
+      <max-lb type="double">300.0</max-lb>
+    </weight>
+    <weight>
+      <name type="string">Cargo 1</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+      <min-lb type="double">0.0</min-lb>
+      <max-lb type="double">200.0</max-lb>
+    </weight>
+    <weight>
+      <name type="string">Cargo 2</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+      <min-lb type="double">0.0</min-lb>
+      <max-lb type="double">100.0</max-lb>
+    </weight>
+    <weight>
+      <name type="string">Forward Passengers</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+      <min-lb type="double">0.0</min-lb>
+      <max-lb type="double">800</max-lb>
+    </weight>
+    <weight>
+      <name type="string">Rear Passengers</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
+      <min-lb type="double">0.0</min-lb>
+      <max-lb type="double">600</max-lb>
+    </weight>
+  </payload>
+
+  <consumables>
+    <fuel>
+      <tank n="0">
+        <level-gal_us>83.9</level-gal_us>
+      </tank>
+      <tank n="1">
+        <level-gal_us>83.9</level-gal_us>
+      </tank>
+      <tank n="2">
+        <level-gal_us>0.037</level-gal_us>
+      </tank>
+    </fuel>
+  </consumables>
+
+  <engines>
+    <engine n="0">
+      <running>0</running>
+      <reverser-pos-norm type="double">0</reverser-pos-norm>
+      <fire-detect type="bool">false</fire-detect>
+    </engine>
+  </engines>
+
+  <controls>
+    <electric>
+      <avionics-bus-tie-switch type="bool">false</avionics-bus-tie-switch>
+      <avionics-pwr-switch1 type="bool">false</avionics-pwr-switch1>
+      <avionics-pwr-switch2 type="bool">false</avionics-pwr-switch2>
+      <avionics-stby-pwr-switch type="bool">false</avionics-stby-pwr-switch>
+      <battery-switch type="bool">false</battery-switch>
+      <bcn-switch type="bool">false</bcn-switch>
+      <bootpress-switch type="bool">false</bootpress-switch>
+      <bustieswitchcover type="bool">false</bustieswitchcover>
+      <cabin-switch type="bool">false></cabin-switch>
+      <ext-pwr-switch type="int">0</ext-pwr-switch>
+      <extpwrswitchcover type="bool">false</extpwrswitchcover>
+      <starter-switch type="int">0</starter-switch>
+      <leftldg-switch type="bool">false</leftldg-switch>
+      <nav-switch type="bool">false</nav-switch>
+      <nosmoke-switch type="bool">false</nosmoke-switch>
+      <pitotheat-switch type="bool">false</pitotheat-switch>
+      <prop-switch type="bool">false</prop-switch>
+      <rightldg-switch type="bool">false</rightldg-switch>
+      <seatbelt-switch type="bool">false</seatbelt-switch>
+      <stallheat-switch type="bool">false</stallheat-switch>
+      <stbypwrswitchcover type="bool">false</stbypwrswitchcover>
+      <strobe-switch type="bool">false</strobe-switch>
+      <taxi-switch type="bool">false</taxi-switch>
+      <winglight-switch type="bool">false</winglight-switch>
+      <ws1-switch type="bool">false</ws1-switch>
+      <ws2-switch type="bool">false</ws2-switch>
+      <engine n="0">
+        <generator type="bool">true</generator>
+      </engine>
+    </electric>
+    <fuel>
+      <boostpump type="int">0</boostpump>
+    </fuel>
+    <gear>
+      <brake-parking type="bool">1</brake-parking>
+      <wrudders type="bool">0</wrudders>
+    </gear>
+    <lighting>
+      <inst-lights-dim type="double">0.7</inst-lights-dim>
+      <inst-lights-eng-dim type="double">0.7</inst-lights-eng-dim>
+      <inst-lights-bright type="double">0.0</inst-lights-bright>
+      <inst-lights-eng-bright type="double">0.0</inst-lights-eng-bright>
+      <beacon type="bool">0</beacon>
+      <strobe type="bool">0</strobe>
+      <landing-lights-left type="bool">0</landing-lights-left>
+      <landing-lights-right type="bool">0</landing-lights-right>
+      <nav-lights type="bool">0</nav-lights>
+      <cabin-lights type="bool">0</cabin-lights>
+      <logo-lights type="bool">0</logo-lights>
+      <taxi-light type="bool">0</taxi-light>
+      <flashlight type="bool">0</flashlight>
+    </lighting>
+    <engines>
+      <engine n="0">
+        <throttle type="double">0</throttle>
+        <mixture type="double">0</mixture>
+        <propeller-pitch type="double">0</propeller-pitch>
+        <ignition type="bool">false</ignition>
+        <ePower type="bool">0</ePower>
+        <motor-rpm type="double">0</motor-rpm>
+      </engine>
+    </engines>
+    <switches>
+      <annunlamptest type="bool">false</annunlamptest>
+      <firetest type="bool">false</firetest>
+      <day-night type="bool">false</day-night>
+    </switches>
+  </controls>
+
+  <fdm>
+    <jsbsim>
+      <propulsion>
+        <engine n="0">
+          <reverser-angle-rad type="double">0</reverser-angle-rad>
+        </engine>
+        <tank n="0">
+          <priority>0</priority>
+          <collector-valve>0</collector-valve>
+        </tank>
+        <tank n="1">
+          <priority>0</priority>
+          <collector-valve>0</collector-valve>
+        </tank>
+        <tank n="2">
+          <priority>1</priority>
+        </tank>
+      </propulsion>
+      <fcs>
+        <yaw-hydro type="double">1.0</yaw-hydro>
+      </fcs>
+    </jsbsim>
+  </fdm>
+
+
+  <systems>
+    <electrical>
+      <on type="bool">false</on>
+      <outputs>
+        <adf type="double">0.0</adf>
+        <audio-panel type="double">0.0</audio-panel>
+        <avionics-fan type="double">0.0</avionics-fan>
+        <comm type="double">0.0</comm>
+        <comm type="double" n="1">0.0</comm>
+        <dme  type="double">0.0</dme>
+        <gps-mfd type="double">0.0</gps-mfd>
+        <gps type="double">0.0</gps>
+        <hsi type="double">0.0</hsi>
+        <inst-lights type="double">0.0</inst-lights>
+        <mk-viii type="double">0.0</mk-viii>
+        <nav type="double">0.0</nav>
+        <nav type="double" n="1">0.0</nav>
+        <nav-lights type="double">0.0</nav-lights>
+        <transponder type="double">0.0</transponder>
+        <turn-coordinator type="double">0.0</turn-coordinator>
+      </outputs>
+    </electrical>
+  </systems>
+
+  <input>
+    <keyboard include="gui/keyboard.xml"/>
+  </input>
+
+  <nasal>
+    <Cessna208>
+      <file>Nasal/autostart.nas</file>
+      <file>Nasal/popway.nas</file>
+      <file>Nasal/fuelcondition.nas</file>
+      <file>Nasal/throttle-limit.nas</file>
+      <file>Nasal/sounds.nas</file>
+      <file>Nasal/bogeycontrol.nas</file>
+      <file>Nasal/viewset.nas</file>
+      <file>Nasal/shadow_elev.nas</file>
+      <file>Nasal/als-landing-lights.nas</file>
+      <file>Nasal/bpos-light-manager-poc.nas</file>
+      <file>Nasal/starter-switch.nas</file>
+    </Cessna208>
+
+    <controls>
+      <file>Nasal/flaplimit.nas</file>
+    </controls>
+
+    <propeller>
+      <file>Nasal/propeller.nas</file>
+    </propeller>
+
+    <dialogs>
+      <file>Nasal/dialogs.nas</file>
+      <file>Nasal/dctc.nas</file>
+      <file>Nasal/diac.nas</file>
+    </dialogs>
+
+    <electrical>
+      <file>Nasal/electrical.nas</file>
+      <file>Nasal/elec_loop.nas</file>
+    </electrical>
+
+    <copilot>
+      <file>Nasal/copilot.nas</file>
+    </copilot>
+
+    <doors>
+      <file>Nasal/doors.nas</file>
+    </doors>
+
+    <caravan>
+      <file>Nasal/liveries.nas</file>
+      <file>Nasal/light.nas</file>
+    </caravan>
+
+    <!--    <ki266>
+      <file>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/ki266/ki266.nas</file>
+    </ki266> -->
+
+    <kln90b>
+      <file>Models/FlightDeck/Instruments/kln90b/kln90b.nas</file>
+    </kln90b>
+
+    <reversethrust>
+      <file>Nasal/reverse-thrust.nas</file>
+    </reversethrust>
+
+    <saitek>
+      <file>Nasal/saitek-mod.nas</file>
+    </saitek>
+
+    <annunciators>
+      <file>Nasal/annun.nas</file>
+    </annunciators>
+
+    <kr87>
+      <file>Nasal/kr87.nas</file>
+    </kr87>
+
+    <apautodisengage>
+      <file>Nasal/apdis.nas</file>
+    </apautodisengage>
+
+    <auto-apdis>
+      <file>Nasal/auto-apdis.nas</file>
+    </auto-apdis>
+
+    <efis>
+      <file>Models/FlightDeck/Instruments/primus-1000/P1000.nas</file>
+    </efis>
+
+    <radar>
+      <file>Models/FlightDeck/Instruments/rdr-160/rdr-160.nas</file>
+    </radar>
+  </nasal>
+
+</PropertyList>

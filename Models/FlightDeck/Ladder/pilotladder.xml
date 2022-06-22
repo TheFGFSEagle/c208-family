@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--  ##################################################################
+      ####        pilotladder.xml - ePilot                          ####
+      ####                                                          ####
+      ####    Pilot Ladder model and animations                     ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>pilotladder.ac</path>
+
+  <animation>
+    <name>Show Ladder</name>
+    <type>select</type>
+    <object-name>pilotladdermounts</object-name>
+    <object-name>pilotladdertop</object-name>
+    <object-name>pilotladderbottom</object-name>
+    <condition>
+      <not>
+`        <property>sim/multiplay/generic/int[9]</property>
+          <!--    <property>sim/model/floats</property> -->
+        </not>
+      </condition>
+    </animation>
+
+    <animation>
+      <type>rotate</type>
+      <object-name>pilotladderbottom</object-name>
+      <property>sim/multiplay/generic/float[0]</property>
+      <interpolation>
+        <entry><ind>0</ind><dep>0</dep></entry>
+        <entry><ind>0.3</ind><dep>0</dep></entry>
+        <entry><ind>0.7</ind><dep>0</dep></entry>
+        <entry><ind>1</ind><dep>180</dep></entry>
+      </interpolation>
+      <factor>-180</factor>
+      <axis>
+        <x>1.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </axis>
+      <center>
+        <x-m>0.00104</x-m>
+        <y-m>-0.146201</y-m>
+        <z-m>-0.268747</z-m>
+      </center>
+    </animation>
+
+    <animation>
+      <type>rotate</type>
+      <object-name>pilotladdertop</object-name>
+      <object-name>pilotladderbottom</object-name>
+      <property>sim/multiplay/generic/float[0]</property>
+      <interpolation>
+        <entry><ind>0</ind><dep>0</dep></entry>
+        <entry><ind>0.3</ind><dep>0</dep></entry>
+        <entry><ind>0.7</ind><dep>167</dep></entry>
+        <entry><ind>1</ind><dep>167</dep></entry>
+      </interpolation>
+      <factor>180</factor>
+      <axis>
+        <x>1.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </axis>
+      <center>
+        <x-m>0.001098</x-m>
+        <y-m>-0.031549</y-m>
+        <z-m>0.120392</z-m>
+      </center>
+    </animation>
+
+  </PropertyList>

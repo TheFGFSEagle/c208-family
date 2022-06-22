@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      allseats.xml - ePilot                               ####
+      ####                                                          ####
+      ####    Passenger/Pilot Seat model placements                 ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <!-- Pilot -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat-pilots.xml</path>
+    <offsets>
+      <x-m> -2.928 </x-m>
+      <y-m> -0.438 </y-m>
+      <z-m>  0.03  </z-m>
+      <pitch-deg>1.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- Co Pilot -->
+  <model>
+    <condition>
+      <not>
+        <property>sim/model/jumpship</property>
+      </not>
+    </condition>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat-pilots.xml</path>
+    <offsets>
+      <x-m> -2.928 </x-m>
+      <y-m>  0.434 </y-m>
+      <z-m>  0.03 </z-m>
+      <pitch-deg>1.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- Row 1 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <offsets>
+      <x-m> -1.878 </x-m>
+      <y-m> -0.436 </y-m>
+      <z-m> -0.015  </z-m>
+      <pitch-deg>2</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <offsets>
+      <x-m> -1.878 </x-m>
+      <y-m>  0.432 </y-m>
+      <z-m> -0.015  </z-m>
+      <pitch-deg>2</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- Row 2 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <offsets>
+      <x-m> -0.808 </x-m>
+      <y-m> -0.436 </y-m>
+      <z-m> -0.075  </z-m>
+      <pitch-deg>0.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <offsets>
+      <x-m> -0.808 </x-m>
+      <y-m>  0.432 </y-m>
+      <z-m> -0.075  </z-m>
+      <pitch-deg>0.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- Row 3 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <offsets>
+      <x-m> 0.312 </x-m>
+      <y-m> 0.432 </y-m>
+      <z-m> -0.09 </z-m>
+      <pitch-deg>0.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- Row 4 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <offsets>
+      <x-m>  1.412 </x-m>
+      <y-m> -0.436 </y-m>
+      <z-m> -0.1  </z-m>
+      <pitch-deg>0.5</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <offsets>
+      <x-m> 1.412 </x-m>
+      <y-m> 0.432 </y-m>
+      <z-m> -0.1 </z-m>
+      <pitch-deg>0.5</pitch-deg>
+    </offsets>
+  </model>
+
+</PropertyList>
+

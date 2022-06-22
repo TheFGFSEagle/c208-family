@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <path>annunpanel.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+ <animation>
+  <type>material</type>
+  <object-name>annunpanel</object-name>
+  
+    <emission>
+      <red>   .011 </red>
+      <green> .011 </green>
+      <blue>  .011 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+	    <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>controls/lighting/flashlight</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Flashlight -->
+
+ <animation>
+  <type>material</type>
+  <object-name>annunpanel</object-name>
+  
+    <emission>
+      <red>   .1 </red>
+      <green> .1 </green>
+      <blue>  .1 </blue>
+      <factor-prop>/controls/lighting/flashlight</factor-prop>
+    </emission>
+     <condition>
+     <and>
+      <property>/controls/lighting/flashlight</property>
+   	    <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+      </and>
+    </condition>
+  </animation>
+
+
+<!-- Cold and Dark Lighted -->
+
+<!-- Instrument Lights On -->
+
+<!-- End of Emission Animations -->
+
+<!-- Instrument Lights -->
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/firetest.xml</path>
+    <offsets>
+      <x-m>0.004</x-m>
+      <y-m>-0.075</y-m>
+      <z-m>-0.012</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/lamptest.xml</path>
+    <offsets>
+      <x-m>0.004</x-m>
+      <y-m>-0.05</y-m>
+      <z-m>-0.012</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/day-night.xml</path>
+    <offsets>
+      <x-m>0.004</x-m>
+      <y-m>-0.025</y-m>
+      <z-m>-0.012</z-m>
+    </offsets>
+  </model>
+
+<!-- Column 1 -->
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/enginefire.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/voltagelow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.00</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/doorwarning.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.00</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+
+<!-- Column 2 -->
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/oilpreslow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.022</y-m>
+      <z-m>-0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/vacuumlow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.022</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/red.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.022</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+
+<!-- Column 3 -->
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/generatoroff.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.044</y-m>
+      <z-m>-0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/resfuellow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.044</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/red.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.044</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+
+
+<!-- Column 4 -->
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/epowerlvr.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.066</y-m>
+      <z-m>-0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/leftfuellow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.066</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/yellow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.066</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+
+<!-- Column 5 -->
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/auxfuelpump.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.088</y-m>
+      <z-m>-0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/rightfuellow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.088</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/chipdetect.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.088</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+
+
+<!-- Column 6 -->
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/fuelpreslow.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.110</y-m>
+      <z-m>-0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/stbyelecpwr.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.110</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+  
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/stbyelecinop.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.110</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+  
+<!-- Column 7 -->
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/starter.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.132</y-m>
+      <z-m>-0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/inverterinop.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.132</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/windshieldantiice.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.132</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+
+<!-- Column 8 -->
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/ignition.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.154</y-m>
+      <z-m>-0.00</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/fuelselectoff.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.154</y-m>
+      <z-m>-0.011</z-m>
+    </offsets>
+  </model>
+
+   <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/deicepres.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>0.154</y-m>
+      <z-m>-0.022</z-m>
+    </offsets>
+  </model>
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">Annunciator Panel</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.027</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.2</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.035 </y-m>
+    <z-m> 0.025 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>    
+
+</PropertyList>

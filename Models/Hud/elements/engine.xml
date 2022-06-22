@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      engine.xml - ePilot                                 ####
+      ####                                                          ####
+      ####    Component for Custom Cessna-208B Hud display          ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <!-- Torque Label -->
+  <label>
+    <width>40</width>
+    <height>10</height>
+    <box>true</box>
+    <format>TORQ</format>
+    <halign>center</halign>
+  </label>
+
+  <!-- Torque -->
+  <label>
+    <x>40</x>
+    <width>40</width>
+    <height>10</height>
+    <box>true</box>
+    <format>%04d</format>
+    <halign>center</halign>
+    <input>
+      <property>/engines/engine[0]/thruster/torque</property>
+    </input>
+  </label>
+
+  <!-- Prop RPM Label-->
+  <label>
+    <x>0</x>
+    <y>-10</y>
+    <width>40</width>
+    <height>10</height>
+    <box>true</box>
+    <format>PROP</format>
+    <halign>center</halign>
+  </label>
+
+  <!-- Prop RPM -->
+  <label>
+    <x>40</x>
+    <y>-10</y>
+    <width>40</width>
+    <height>10</height>
+    <box>true</box>
+    <format>%04d</format>
+    <halign>center</halign>
+    <input>
+      <property>/engines/engine[0]/thruster/rpm</property>
+    </input>
+  </label>
+
+  <!-- ITT Label-->
+  <label>
+    <x>0</x>
+    <y>-20</y>
+    <width>40</width>
+    <height>10</height>
+    <box>true</box>
+    <format>ITT</format>
+    <halign>center</halign>
+  </label>
+
+  <!-- ITT -->
+  <label>
+    <x>40</x>
+    <y>-20</y>
+    <width>40</width>
+    <height>10</height>
+    <box>true</box>
+    <format>%04.1f</format>
+    <halign>center</halign>
+    <input>
+      <property>/fdm/jsbsim/propulsion/engine/itt-c</property>
+    </input>
+  </label>
+
+  <!-- Turbine Label-->
+  <label>
+    <x>0</x>
+    <y>-30</y>
+    <width>40</width>
+    <height>10</height>
+    <format>N1</format>
+    <halign>center</halign>
+    <box>true</box>
+  </label>
+
+  <!-- turbine -->
+  <label>
+    <x>40</x>
+    <y>-30</y>
+    <width>40</width>
+    <height>10</height>
+    <format>%3.2f</format>
+    <halign>center</halign>
+    <box>true</box>
+    <input>
+      <property>/engines/engine[0]/n1</property>
+    </input>
+  </label>
+
+
+  <!-- Fuel Label-->
+  <label>
+    <x>0</x>
+    <y>-40</y>
+    <width>40</width>
+    <height>10</height>
+    <format>PPH</format>
+    <halign>center</halign>
+    <box>true</box>
+  </label>
+
+  <!-- Fuel PPH -->
+  <label>
+    <x>40</x>
+    <y>-40</y>
+    <width>40</width>
+    <height>10</height>
+    <format>%4.2f</format>
+    <halign>center</halign>
+    <box>true</box>
+    <input>
+      <property>/engines/engine[0]/fuel-flow_pph</property>
+    </input>
+  </label>
+
+  <!-- PITCH Label-->
+  <label>
+    <x>0</x>
+    <y>-50</y>
+    <width>40</width>
+    <height>10</height>
+    <format>Pitch</format>
+    <halign>center</halign>
+    <box>true</box>
+  </label>
+
+  <!-- Pitch Deg -->
+  <label>
+    <x>40</x>
+    <y>-50</y>
+    <width>40</width>
+    <height>10</height>
+    <format>%2.2f</format>
+    <halign>center</halign>
+    <box>true</box>
+    <input>
+      <property>/engines/engine[0]/thruster/pitch</property>
+    </input>
+  </label>
+
+  <!-- Thrust Label-->
+  <label>
+    <x>0</x>
+    <y>-60</y>
+    <width>40</width>
+    <height>10</height>
+    <format>Thrust</format>
+    <halign>center</halign>
+    <box>true</box>
+  </label>
+
+  <!-- Thrust lbs -->
+  <label>
+    <x>40</x>
+    <y>-60</y>
+    <width>40</width>
+    <height>10</height>
+    <format>%2.1f</format>
+    <halign>center</halign>
+    <box>true</box>
+    <input>
+      <property>/engines/engine[0]/thrust_lb</property>
+    </input>
+  </label>
+
+
+
+</PropertyList>

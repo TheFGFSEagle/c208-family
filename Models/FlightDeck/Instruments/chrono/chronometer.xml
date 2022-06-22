@@ -1,0 +1,344 @@
+<!--
+Cessna-208B Clock and ETA to next Waypoint Chronometer
+-->
+
+<PropertyList>
+ <path>clock.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+  <object-name>Chrono.knob</object-name>
+  <object-name>Chrono.needle</object-name>
+  <object-name>Chronobezel.001</object-name>
+  <object-name>Plane.027</object-name>
+  <object-name>ET.switch</object-name>
+  <object-name>SET.switch</object-name>
+  <object-name>UTC.switch.003</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>Chrono.needle</object-name>
+    <object-name>Chronoface.001</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>Chrono.needle</object-name>
+    <object-name>Chronoface.001</object-name>
+    <emission>
+      <red>   0.028 </red>
+      <green> 0.014 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+<!-- End of Emission Animations -->
+
+  <animation>
+    <type>select</type>
+    <object-name>ET.01</object-name>
+    <object-name>ET.10</object-name>
+    <object-name>ET.01</object-name>
+    <object-name>ET.10</object-name>
+    <object-name>Hr.01</object-name>
+    <object-name>Hr.10</object-name>
+    <object-name>Mn.01</object-name>
+    <object-name>Mn.10</object-name>
+    <object-name>colon</object-name>
+    <object-name>colon.002</object-name>
+  <condition>
+    <property>systems/electrical/on</property>
+  </condition>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>ET.01</object-name>
+    <object-name>ET.10</object-name>
+    <object-name>ET01</object-name>
+    <object-name>ET10</object-name>
+    <object-name>Hr.01</object-name>
+    <object-name>Hr.10</object-name>
+    <object-name>Mn.01</object-name>
+    <object-name>Mn.10</object-name>
+    <object-name>colon</object-name>
+    <object-name>colon.002</object-name>
+    <emission>
+      <red>   0.028 </red>
+      <green> 0.014 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+<!--  <animation>
+    <type>material</type>
+    <object-name>Chronoface.001</object-name>
+    <emission>
+      <red>   .7 </red>
+      <green> .7 </green>
+      <blue>  .7 </blue>
+    </emission>
+  <condition>
+    <property>systems/electrical/on</property>
+  </condition>
+  </animation> -->
+
+<animation>
+<type>rotate</type>
+<object-name>Chrono.needle</object-name>
+<property>autopilot/internal/eta-wp-sec</property>
+<factor>6</factor>
+<center>
+<x-m>0</x-m>
+<y-m>0</y-m>
+<z-m>0</z-m>
+</center>
+<axis>
+<x>-1</x>
+<y>0</y>
+<z>0</z>
+</axis>
+</animation>
+
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Hr.10</object-name>
+   <property>/instrumentation/clock/indicated-hour</property>
+   <factor>0.01</factor>
+   <step>10</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Hr.01</object-name>
+   <property>/instrumentation/clock/indicated-hour</property>
+   <factor>0.1</factor>
+   <step>1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+  <animation>
+   <type>textranslate</type>
+   <object-name>Mn.10</object-name>
+   <property>/instrumentation/clock/indicated-min</property>
+   <factor>0.01</factor>
+   <step>10</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>Mn.01</object-name>
+   <property>/instrumentation/clock/indicated-min</property>
+   <factor>0.1</factor>
+   <step>1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>ET10</object-name>
+   <value>0</value>
+   <factor>0.01</factor>
+   <step>10</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>ET01</object-name>
+   <property>/autopilot/internal/eta-wp-hr</property>
+   <factor>0.1</factor>
+   <step>1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>ET.10</object-name>
+     <property>/autopilot/internal/eta-wp-min</property>
+   <factor>0.01</factor>
+   <step>10</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>textranslate</type>
+   <object-name>ET.01</object-name>
+    <property>/autopilot/internal/eta-wp-min</property>
+    <factor>0.1</factor>
+   <step>1</step>
+   <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Chrono.needle</object-name>
+  <object-name>ET10</object-name>
+  <object-name>ET01</object-name>
+  <object-name>ET.10</object-name>
+  <object-name>ET.01</object-name>
+  <object-name>colon</object-name>
+   <condition>
+    <greater-than>
+     <property>/position/altitude-agl-ft</property>
+     <value>300</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+<!-- Clock UTC Tooltip -->
+  <animation>
+    <type>pick</type>
+    <object-name>face.utc</object-name>
+    <action></action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>utcclock</tooltip-id>
+        <label>Time UTC: %s</label>
+        <property>/sim/time/gmt-string</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Clock ETA Tooltip -->
+  <animation>
+    <type>pick</type>
+    <object-name>face.eta</object-name>
+    <action></action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>etaclock</tooltip-id>
+        <label>ETA: %s</label>
+        <property>/autopilot/internal/eta-wp-hr</property>
+        <mapping>nasal</mapping>
+        <script>
+            return (sprintf("%2d",arg[0]) ~ ":" ~ sprintf("%02d", getprop("/autopilot/internal/eta-wp-min")));
+
+        </script>
+      </binding>
+
+
+    </hovered>
+  </animation>
+
+
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">Chronometer</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.1</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.0 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>

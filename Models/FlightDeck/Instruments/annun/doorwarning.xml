@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <path>doorwarning.ac</path>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>status</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+	    <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>status</object-name>
+    <emission>
+      <red>   0.007 </red>
+      <green> 0.007 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+    <condition>
+      <not>
+        <or>
+          <property>/instrumentation/annun/doorwarning</property>
+          <property>/controls/switches/annunlamptest</property>
+        </or>
+      </not>
+    </condition>
+  </animation>
+
+<!-- Warning Light On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>status</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+    <condition>
+      <or>
+        <property>/instrumentation/annun/doorwarning</property>
+        <property>/controls/switches/annunlamptest</property>
+      </or>
+    </condition>
+  </animation>
+
+<!-- End of Emission Animations -->
+
+ <animation>
+   <type>pick</type>
+   <visible>true</visible>
+   <object-name>status</object-name>
+   <action>
+     <name>Red Annun Light Test</name>
+     <button>0</button>
+     <repeatable>false</repeatable>
+       <binding>
+        <command>property-assign</command>
+          <property>/instrumentation/annun/doorwarning</property>
+ 	      <value>true</value>
+		<condition>
+		  <property>/systems/electrical/on</property>
+		</condition>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/annun/doorwarning</property>
+        <value>false</value>
+      </binding>
+      </mod-up>
+   </action>
+ </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>status</object-name>
+      <property>/instrumentation/annun/doorwarning</property>
+   <factor>-90</factor>
+   <center>
+     <x-m>0</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </center>
+   <axis>
+     <y>1</y>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>rotate</type>
+   <object-name>status</object-name>
+     <property>/controls/switches/annunlamptest</property>
+   <factor>-90</factor>
+   <center>
+     <x-m>0</x-m>
+     <y-m>0</y-m>
+     <z-m>0</z-m>
+   </center>
+   <axis>
+     <y>1</y>
+   </axis>
+   <condition>
+     <not>
+       <property>/instrumentation/annun/doorwarning</property>
+     </not>
+   </condition>
+ </animation>
+
+
+
+
+</PropertyList>

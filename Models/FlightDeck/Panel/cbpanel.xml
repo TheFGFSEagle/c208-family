@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--  ##################################################################
+      ####      cbpanel.xml - ePilot                                ####
+      ####                                                          ####
+      ####    Circuit breaker panel and top mounted switches        ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>cbpanel.ac</path>
+
+<!-- Cold and Dark -->
+
+  <animation>
+    <type>material</type>
+    <object-name>Cover-avionics-bus-tie</object-name>
+    <object-name>Cover-avionics-stby-pwr</object-name>
+    <object-name>Cover-external-power</object-name>
+    <object-name>cb-box</object-name>
+    <object-name>switch-avionics-bus-tie</object-name>
+    <object-name>switch-avionics-stby-pwr</object-name>
+    <object-name>switch-avionics1</object-name>
+    <object-name>switch-avionics2</object-name>
+    <object-name>switch-battery</object-name>
+    <object-name>switch-external-power</object-name>
+    <object-name>switch-fuel-boost</object-name>
+    <object-name>switch-generator</object-name>
+    <object-name>switch-ignition</object-name>
+    <object-name>switch-starter</object-name>
+    <object-name>switch-white</object-name>
+    <object-name>base</object-name>
+    <object-name>base.001</object-name>
+    <object-name>base.002</object-name>
+    <object-name>base.003</object-name>
+    <object-name>base.004</object-name>
+    <object-name>base.005</object-name>
+    <object-name>base.006</object-name>
+    <object-name>base.007</object-name>
+    <object-name>base.008</object-name>
+    <object-name>base.009</object-name>
+    <object-name>base.010</object-name>
+    <emission>
+      <red>   .011 </red>
+      <green> .011 </green>
+      <blue>  .011 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>controls/lighting/flashlight</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Flashlight -->
+
+  <animation>
+    <type>material</type>
+    <object-name>Cover-avionics-bus-tie</object-name>
+    <object-name>Cover-avionics-stby-pwr</object-name>
+    <object-name>Cover-external-power</object-name>
+    <object-name>cb-box</object-name>
+    <object-name>switch-avionics-bus-tie</object-name>
+    <object-name>switch-avionics-stby-pwr</object-name>
+    <object-name>switch-avionics1</object-name>
+    <object-name>switch-avionics2</object-name>
+    <object-name>switch-battery</object-name>
+    <object-name>switch-external-power</object-name>
+    <object-name>switch-fuel-boost</object-name>
+    <object-name>switch-generator</object-name>
+    <object-name>switch-ignition</object-name>
+    <object-name>switch-starter</object-name>
+    <object-name>switch-white</object-name>
+    <object-name>base</object-name>
+    <object-name>base.001</object-name>
+    <object-name>base.002</object-name>
+    <object-name>base.003</object-name>
+    <object-name>base.004</object-name>
+    <object-name>base.005</object-name>
+    <object-name>base.006</object-name>
+    <object-name>base.007</object-name>
+    <object-name>base.008</object-name>
+    <object-name>base.009</object-name>
+    <object-name>base.010</object-name>
+    <emission>
+      <red>   .15 </red>
+      <green> .15 </green>
+      <blue>  .15 </blue>
+      <factor-prop>/controls/lighting/flashlight</factor-prop>
+    </emission>
+     <condition>
+     <and>
+      <property>/controls/lighting/flashlight</property>
+        <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+      </and>
+    </condition>
+  </animation>
+
+  <!-- Batt Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-battery</object-name>
+    <property>/controls/electric/battery-switch</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.13865</x-m>
+      <y-m> 0.01960</y-m>
+      <z-m> 0.22250</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-battery</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/battery-switch</property>
+      </binding>
+    </action>
+<!-- switch-battery Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>batt-switch</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Battery: %s</label>
+        <property>/controls/electric/battery-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- External Power Switch Cover -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Cover-external-power</object-name>
+    <property>/controls/electric/extpwrswitchcover</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.12021</x-m>
+      <y-m>-0.00844</y-m>
+      <z-m> 0.22969</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Cover-external-power</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/extpwrswitchcover</property>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- External Power Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-external-power</object-name>
+    <property>/controls/electric/ext-pwr-switch</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.13948</x-m>
+      <y-m>-0.01483</y-m>
+      <z-m> 0.23315</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-external-power</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/electric/ext-pwr-switch</property>
+        <step>1</step>
+        <min>0</min>
+        <max>2</max>
+        <wrap>false></wrap>
+        <condition>
+          <property>/controls/electric/extpwrswitchcover</property>
+        </condition>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/electric/ext-pwr-switch</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>2</max>
+        <wrap>false></wrap>
+        <condition>
+          <property>/controls/electric/extpwrswitchcover</property>
+        </condition>
+      </binding>
+    </action>
+<!-- Ext-Power Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>ext-power</tooltip-id>
+        <label>Ext Pwr: %s</label>
+        <property>/controls/electric/ext-pwr-switch</property>
+        <mapping>nasal</mapping>
+        <script>
+          var modes = ['OFF', 'START', 'BUS'];
+          return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Generator Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-generator</object-name>
+    <property>/controls/electric/engine[0]/generator</property>
+    <factor>-20</factor>
+    <offset-deg>20</offset-deg>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.18214</x-m>
+      <y-m> -0.01335</y-m>
+      <z-m> 0.23123</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-generator</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/electric/engine[0]/generator</property>
+        <value>0</value>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/electric/engine[0]/generator</property>
+        <value>1</value>
+      </binding>
+      </mod-up>
+    </action>
+<!-- Generator Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>generator</tooltip-id>
+        <label>Generator: %s</label>
+        <property>/controls/electric/engine[0]/generator</property>
+        <mapping>nasal</mapping>
+        <script>
+          var modes = ['TRIP', 'ON'];
+          return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Fuel Pump / Boost Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-fuel-boost</object-name>
+    <property>/controls/fuel/boostpump</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.18023</x-m>
+      <y-m> 0.01978</y-m>
+      <z-m> 0.22291</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-fuel-boost</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/fuel/boostpump</property>
+        <step>1</step>
+        <min>0</min>
+        <max>2</max>
+        <wrap>false></wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/fuel/boostpump</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>2</max>
+        <wrap>false></wrap>
+      </binding>
+    </action>
+<!-- Fuel Boost Pump Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>fuel-boost</tooltip-id>
+        <label>Boost Pump: %s</label>
+        <property>/controls/fuel/boostpump</property>
+        <mapping>nasal</mapping>
+        <script>
+          var modes = ['OFF', 'NORM', 'ON'];
+          return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Ignition Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-ignition</object-name>
+    <property>/controls/engines/engine[0]/ignition</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.21359</x-m>
+      <y-m>-0.00348</y-m>
+      <z-m> 0.22946</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-ignition</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/engines/engine[0]/ignition</property>
+      </binding>
+    </action>
+<!-- Ignition Switch Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>ignition</tooltip-id>
+        <label>Ignition: %s</label>
+        <property>/controls/engines/engine[0]/ignition</property>
+        <mapping>nasal</mapping>
+        <script>
+          var modes = ['NORM', 'ON'];
+          return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Starter Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-starter</object-name>
+    <property>/controls/electric/starter-switch</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.21366</x-m>
+      <y-m> 0.01953</y-m>
+      <z-m> 0.22213</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-starter</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <interval-sec>1</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/electric/starter-switch</property>
+        <step>1</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>false</repeatable>
+      <interval-sec>1</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/electric/starter-switch</property>
+        <step>-1</step>
+        <min>-1</min>
+        <max>0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+<!-- Starter Switch Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>starter</tooltip-id>
+        <label>Starter: %s</label>
+        <property>/controls/electric/starter-switch</property>
+        <mapping>nasal</mapping>
+        <script>
+          var modes = ['OFF', 'START', 'MOTOR'];
+          return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Avonics Bus Tie Switch Cover -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Cover-avionics-bus-tie</object-name>
+    <property>/controls/electric/bustieswitchcover</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.24668</x-m>
+      <y-m> 0.00271</y-m>
+      <z-m> 0.22874</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Cover-avionics-bus-tie</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/bustieswitchcover</property>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Avionics Bus Tie Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-avionics-bus-tie</object-name>
+    <property>/controls/electric/avionics-bus-tie-switch</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.26552</x-m>
+      <y-m>-0.00899</y-m>
+      <z-m> 0.23225</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-avionics-bus-tie</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/avionics-bus-tie-switch</property>
+        <condition>
+          <property>/controls/electric/bustieswitchcover</property>
+        </condition>
+      </binding>
+    </action>
+<!-- Avionics Bus Tie Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>avionics-bus-tie</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Avionics Bus Tie: %s</label>
+        <property>/controls/electric/avionics-bus-tie-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Avonics Stby Pwr Switch Cover -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Cover-avionics-stby-pwr</object-name>
+    <property>/controls/electric/stbypwrswitchcover</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.24823</x-m>
+      <y-m> 0.02121</y-m>
+      <z-m> 0.23411</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Cover-avionics-stby-pwr</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/stbypwrswitchcover</property>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Avionics Stby Pwr Switch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-avionics-stby-pwr</object-name>
+    <property>/controls/electric/avionics-stby-pwr-switch</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.26712</x-m>
+      <y-m>-0.02749</y-m>
+      <z-m> 0.23757</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-avionics-stby-pwr</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/avionics-stby-pwr-switch</property>
+        <condition>
+          <property>/controls/electric/stbypwrswitchcover</property>
+        </condition>
+      </binding>
+    </action>
+<!-- Avionics Stby Power Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>avionics-stby-pwr</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Avionics Stby Pwr: %s</label>
+        <property>/controls/electric/avionics-stby-pwr-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Avionics Pwr 1 -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-avionics1</object-name>
+    <property>/controls/electric/avionics-pwr-switch1</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.26561</x-m>
+      <y-m> 0.00698</y-m>
+      <z-m> 0.22707</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-avionics1</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/avionics-pwr-switch1</property>
+      </binding>
+    </action>
+<!-- Avionics Power 1 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>avionics-pwr1</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Avionics Pwr 1: %s</label>
+        <property>/controls/electric/avionics-pwr-switch1</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Avionics Pwr 2 -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-avionics2</object-name>
+    <property>/controls/electric/avionics-pwr-switch2</property>
+    <factor>-20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.26609</x-m>
+      <y-m> 0.02075</y-m>
+      <z-m> 0.22308</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-avionics2</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/avionics-pwr-switch2</property>
+      </binding>
+    </action>
+<!-- Avionics Power 2 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>avionics-pwr2</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Avionics Pwr 2: %s</label>
+        <property>/controls/electric/avionics-pwr-switch2</property>
+      </binding>
+    </hovered>
+  </animation>
+
+</PropertyList>

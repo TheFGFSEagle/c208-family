@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+     Honeywell Bendix/King KLN-90B GPS
+-->
+
+<PropertyList>
+
+  <name>KLN-90B</name>
+  <background>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kln90b/transparent-bg.png</background>
+  <w>400</w>
+  <h>142</h>
+
+  <instruments>
+    <instrument include="display.xml">
+      <condition>
+        <and>
+          <equals>
+            <property>/sim/current-view/view-number</property>
+            <value>0</value>
+          </equals>
+          <property>systems/electrical/on</property>
+        </and>
+      </condition>
+      <name>Display</name>
+      <x>200</x>
+      <y>71</y>
+      <w>400</w>
+      <h>142</h>
+    </instrument>
+
+    <instrument include="supernav1.xml">
+      <condition>
+		    <and>
+          <equals>
+            <property>/sim/current-view/view-number</property>
+            <value>0</value>
+          </equals>
+          <property>instrumentation/gps-annunciator/super-nav</property>
+          <property>systems/electrical/on</property>
+        </and>
+      </condition>
+      <name>supernav</name>
+      <x>150</x>
+      <y>71</y>
+      <w>300</w>
+      <h>142</h>
+    </instrument>
+
+    <instrument include="lhtext.xml">
+      <condition>
+		  <and>
+        <equals>
+          <property>/sim/current-view/view-number</property>
+          <value>0</value>
+        </equals>
+        <property>systems/electrical/on</property>
+        <not>
+          <property>instrumentation/gps-annunciator/super-nav</property>
+        </not>
+      </and>
+      </condition>
+      <name>lh text</name>
+      <x>100</x>
+      <y>71</y>
+      <w>200</w>
+      <h>142</h>
+    </instrument>
+
+    <instrument include="rhtext.xml">
+      <condition>
+        <and>
+          <equals>
+            <property>/sim/current-view/view-number</property>
+            <value>0</value>
+          </equals>
+            <property>systems/electrical/on</property>
+          <not>
+            <property>instrumentation/gps-annunciator/super-nav</property>
+          </not>
+        </and>
+      </condition>
+      <name>rh text</name>
+      <x>300</x>
+      <y>71</y>
+      <w>200</w>
+      <h>142</h>
+    </instrument>
+  </instruments>
+
+</PropertyList>
+

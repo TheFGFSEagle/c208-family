@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      instrumentation.xml - ePilot                        ####
+      ####                                                          ####
+      ####    Instrumentation modules for the Cessna-208B           ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <adf>
+    <name>adf</name>
+    <number>0</number>>
+  </adf>
+
+  <airspeed-indicator>
+    <name>airspeed-indicator</name>
+    <number>0</number>
+    <total-pressure>/systems/pitot/total-pressure-inhg</total-pressure>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+  </airspeed-indicator>
+
+  <altimeter>
+    <name>altimeter</name>
+    <number>0</number>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+    <quantum>1</quantum>
+    <tau>0.1</tau>
+    <encode-mode-c type="bool">true</encode-mode-c>
+    <encode-mode-s type="bool">true</encode-mode-s>
+  </altimeter>
+
+  <attitude-indicator>
+    <name>attitude-indicator</name>
+    <number>0</number>
+    <suction>/systems/vacuum/suction-inhg</suction>
+  </attitude-indicator>
+
+  <clock>
+    <name>clock</name>
+    <number>0</number>
+  </clock>
+
+  <dme>
+    <name>dme</name>
+    <number>0</number>
+  </dme>
+
+  <gps>
+    <name>gps</name>
+    <number>0</number>
+  </gps>
+
+  <heading-indicator>
+    <name>heading-indicator</name>
+    <number>0</number>
+    <suction>/systems/vacuum/suction-inhg</suction>
+  </heading-indicator>
+
+  <heading-indicator-dg>
+    <name>heading-indicator-dg</name>
+    <number>0</number>
+  </heading-indicator-dg>
+
+  <magnetic-compass>
+    <name>magnetic-compass</name>
+    <number>0</number>
+  </magnetic-compass>
+
+  <marker-beacon>
+    <name>marker-beacon</name>
+    <number>0</number>
+  </marker-beacon>
+
+  <mk-viii>
+    <name>mk-viii</name>
+    <number>0</number>
+  </mk-viii>
+
+  <nav-radio>
+    <name>nav</name>
+    <number>0</number>
+  </nav-radio>
+
+  <nav-radio>
+    <name>nav</name>
+    <number>1</number>
+  </nav-radio>
+
+  <slip-skid-ball>
+    <name>slip-skid-ball</name>
+    <number>0</number>
+  </slip-skid-ball>
+
+  <transponder>
+    <name>transponder</name>
+    <number type="int">0</number>
+    <mode type="int">1</mode>
+    <mode-c-altitude>/instrumentation/altimeter/mode-c-alt-ft</mode-c-altitude>
+  </transponder>
+
+  <turn-indicator>
+    <name>turn-indicator</name>
+    <number>0</number>
+  </turn-indicator>
+
+  <vertical-speed-indicator>
+    <name>vertical-speed-indicator</name>
+    <number>0</number>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+  </vertical-speed-indicator>
+
+    <comm-radio>
+    <name>comm</name>
+    <number>0</number>>
+  </comm-radio>
+
+  <comm-radio>
+    <name>comm</name>
+    <number>1</number>
+  </comm-radio>  
+
+</PropertyList>

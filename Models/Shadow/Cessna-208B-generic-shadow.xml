@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-generic-shadow.xml - ePilot             ####
+      ####                                                          ####
+      ####    Shadow under default rendering                        ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>Cessna-208B-generic-shadow.ac</path>
+
+  <offsets>
+    <pitch-deg>0</pitch-deg>
+    <z-m>-0.04</z-m>
+  </offsets>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>shadow</object-name>
+  </animation>
+
+  <!-- pitch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>shadow</object-name>
+    <factor> -1 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- roll -->
+  <animation>
+    <type>rotate</type>
+    <object-name>shadow</object-name>
+    <factor> 1 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- Translate to ground level -->
+  <animation>
+    <type>translate</type>
+    <object-name>shadow</object-name>
+    <property>/position/altitude-agl-ft</property>
+    <factor>-0.3048</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

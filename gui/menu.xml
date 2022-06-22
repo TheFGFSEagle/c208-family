@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-menu.xml - ePilot                       ####
+      ####                                                          ####
+      ####    Provides Aircraft specific menu items                 ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <default>
+    <menu n="10">
+      <label>Cessna 208B</label>
+      <enabled type="bool">true</enabled>
+
+
+      <item>
+        <label>Aircraft Help ____________ &lt;?&gt;</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.aircrafthelp.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>AutoStart</label>
+        <binding>
+          <command>nasal</command>
+          <script>Cessna208.autostart()</script>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>electrical.set_elec()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>AutoShutdown</label>
+        <binding>
+          <command>nasal</command>
+          <script>Cessna208.autoshutdown()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Select Livery</label>
+        <binding>
+          <command>nasal</command>
+          <script>aircraft.livery.dialog.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Door Status _____________ &lt;D&gt;</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.doors.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Lights Control ___________ &lt;L&gt;</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.lightcontrol.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Cargomaster On/Off _______&lt;C&gt;</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/cargo</property>
+        </binding>
+      </item>
+
+      <item>
+        <label>Cargo Tank On/Off</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/cargo-pod</property>
+        </binding>
+      </item>
+
+      <item>
+        <label>Jumpship On/Off</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/jumpship</property>
+        </binding>
+      </item>
+
+      <item>
+        <label>Yokes On/Off ____________&lt;Y&gt;</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/yokes</property>
+        </binding>
+      </item>
+
+      <item>
+        <label>Co-Pilot On/Off</label>
+        <binding>
+          <command>nasal</command>
+          <script>
+            setprop("/sim/co-pilot", abs(getprop("sim/co-pilot") - 1));
+            if (getprop("/sim/co-pilot")) {
+              var cpstatus = "ON";
+            } else {
+              var cpstatus = "OFF";
+            }
+            setprop ("/sim/messages/copilot", "Co-Pilot messages " ~ cpstatus);
+          </script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Shadow On/Off</label>
+        <binding>
+          <command>nasal</command>
+          <script>
+            setprop("/sim/model/shadow", abs(getprop("sim/model/shadow") - 1));
+            if (getprop("/sim/co-pilot")) {
+              if (getprop("/sim/model/shadow")) {
+                var shadowstatus = "VISIBLE";
+              } else {
+                var shadowstatus = "INVSIBLE";
+              }
+              setprop ("/sim/messages/copilot", "Shadow " ~ shadowstatus);
+            }
+          </script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Domelight On/Off</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/flashlight</property>
+        </binding>
+      </item>
+
+      <item>
+        <label>Steam/Glass Instruments ____&lt;I&gt;</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/model/steamguages</property>
+        </binding>
+      </item>
+
+      <item>
+        <label>Floats/Wheels ____________&lt;F&gt;</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/model/float-command</property>
+        </binding>
+      </item>
+
+      <item>
+        <label>Raise/Lower Float Rudders __&lt;R&gt;</label>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/gear/wrudders</property>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>doors.movedoor("/controls/doors/RudderLever",2.5);</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Tooltips On/Off</label>
+        <binding>
+          <command>nasal</command>
+          <script>
+            setprop("/sim/mouse/tooltips-enabled", abs(getprop("/sim/mouse/tooltips-enabled") - 1));
+            setprop("/sim/mouse/click-shows-tooltip", abs(getprop("/sim/mouse/tooltips-enabled")));
+            if (getprop("/sim/mouse/tooltips-enabled")) {
+              var ttstatus = "ON";
+            } else {
+              var ttstatus = "OFF";
+            }
+            setprop ("/sim/messages/copilot", "Tooltips " ~ ttstatus);
+          </script>
+        </binding>
+      </item>
+
+    </menu>
+
+    <menu n="11">
+      <label>Checklists</label>
+      <enabled type="bool">true</enabled>
+
+      <item>
+        <label>Pre-Start</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_prestart.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Startup</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_startup.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Taxi to Runway</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_taxi2rwy.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Pre Take Off</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_pretakeoff.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Take Off</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_takeoff.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Descent &amp; Approach</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_descent.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Landing</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_landing.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Taxi to Ramp</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_taxi2ramp.toggle()</script>
+        </binding>
+      </item>
+
+      <item>
+        <label>Shutdown</label>
+        <binding>
+          <command>nasal</command>
+          <script>dialogs.checklist_shutdown.toggle()</script>
+        </binding>
+      </item>
+
+    </menu>
+
+  </default>
+
+</PropertyList>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      wakes.xml - ePilot                                  ####
+      ####                                                          ####
+      ####    Main load file for wake effects files                 ####
+      ################################################################## -->
+
+
+<PropertyList>
+
+  <!-- Float Wakes -->
+
+  <model>
+    <name>Left-Float-Wake</name>
+    <path>Aircraft/Cessna-208B/Models/Effects/wake/left-float.xml</path>
+  </model>
+
+  <model>
+    <name>Left-Float-Gear-Down</name>
+    <path>Aircraft/Cessna-208B/Models/Effects/wake/left-float-gear-down.xml</path>
+  </model>
+
+  <model>
+    <name>Right-Float-Wake</name>
+    <path>Aircraft/Cessna-208B/Models/Effects/wake/right-float.xml</path>
+  </model>
+
+  <model>
+    <name>Right-Float-Gear-Down</name>
+    <path>Aircraft/Cessna-208B/Models/Effects/wake/right-float-gear-down.xml</path>
+  </model>
+
+
+</PropertyList>

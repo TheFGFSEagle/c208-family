@@ -1,0 +1,393 @@
+<?xml version="1.0"?>
+<!--
+KING KI-525A Pictorial Indicator
+Syd Adams
+-->
+
+<PropertyList>
+
+    <path>ki252a.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+  <object-name>KI252A</object-name>
+    <emission>
+      <red>   .020 </red>
+      <green> .020 </green>
+      <blue>  .020 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+        <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+        <object-name>kfc-hdgbug</object-name>
+        <object-name>kfc-crs</object-name>
+        <object-name>kfc-crs.001</object-name>
+        <object-name>To-flag</object-name>
+        <object-name>From-flag</object-name>
+        <object-name>Compass</object-name>
+        <object-name>nav-warning</object-name>
+        <object-name>hdg-warning</object-name>
+        <object-name>GSneedle</object-name>
+        <object-name>KI252A.back</object-name>
+        <object-name>CRSknob</object-name>
+        <object-name>HDGknob</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+    <animation>
+        <type>material</type>
+        <object-name>kfc-hdgbug</object-name>
+        <object-name>kfc-crs</object-name>
+        <object-name>kfc-crs.001</object-name>
+        <object-name>To-flag</object-name>
+        <object-name>From-flag</object-name>
+        <object-name>Compass</object-name>
+        <object-name>nav-warning</object-name>
+        <object-name>hdg-warning</object-name>
+        <object-name>GSneedle</object-name>
+        <object-name>KI252A.back</object-name>
+        <object-name>CRSknob</object-name>
+        <object-name>HDGknob</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+        </emission>
+    </animation>
+
+<!-- End of Emission Animations -->
+
+
+
+<!--  KI-525A   -->
+
+
+    <animation>
+        <type>rotate</type>
+        <object-name>kfc-hdgbug</object-name>
+        <property>autopilot/internal/heading-bug-error-deg</property>
+        <axis>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>kfc-crs</object-name>
+        <object-name>kfc-crs.001</object-name>
+        <object-name>To-flag</object-name>
+        <object-name>From-flag</object-name>
+        <object-name>Compass</object-name>
+        <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>kfc-crs</object-name>
+        <object-name>kfc-crs.001</object-name>
+        <object-name>To-flag</object-name>
+        <object-name>From-flag</object-name>
+        <property>instrumentation/nav/radials/selected-deg</property>
+        <axis>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>CRSknob</object-name>
+        <property>instrumentation/nav/radials/selected-deg</property>
+        <factor>25</factor>
+        <axis>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+        <x-m>0.01682</x-m>
+        <y-m>-0.03916</y-m>
+        <z-m>-0.02491</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>HDGknob</object-name>
+        <property>autopilot/settings/heading-bug-deg</property>
+        <factor>25</factor>
+        <axis>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+        <x-m>0.01682</x-m>
+        <y-m>0.03893</y-m>
+        <z-m>-0.02491</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>kfc-crs.001</object-name>
+        <property>instrumentation/nav/heading-needle-deflection</property>
+        <interpolation>
+            <entry><ind>-10.0</ind><dep>-0.018</dep></entry>
+            <entry><ind>0.0</ind><dep>0.0</dep></entry>
+            <entry><ind>10.0</ind><dep>0.018</dep></entry>
+        </interpolation>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>GSneedle</object-name>
+        <property>instrumentation/nav/gs-needle-deflection-norm</property>
+        <interpolation>
+            <entry><ind>-1</ind><dep>-0.0085</dep></entry>
+            <entry><ind>-0.5</ind><dep>-0.0085</dep></entry>
+            <entry><ind>0.0</ind><dep>0.0</dep></entry>
+            <entry><ind>1.0</ind><dep>0.0162</dep></entry>
+        </interpolation>
+        <axis>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1.0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>To-flag</object-name>
+        <condition>
+            <equals>
+                <property>instrumentation/nav/to-flag</property>
+                <value>true</value>
+            </equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>From-flag</object-name>
+        <condition>
+            <equals>
+                <property>instrumentation/nav/from-flag</property>
+                <value>true</value>
+            </equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>nav-warning</object-name>
+        <condition>
+            <or>
+                <not>
+                    <property>instrumentation/nav/in-range</property>
+                </not>
+                <less-than>
+                <property>systems/electrical/outputs/nav</property>
+                <value>0.2</value>
+            </less-than>
+            </or>
+        </condition>
+        </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>hdg-warning</object-name>
+        <condition>
+            <less-than>
+                <property>systems/electrical/outputs/nav</property>
+                <value>0.2</value>
+            </less-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>GSneedle</object-name>
+        <condition>
+            <and>
+                <property>instrumentation/nav/has-gs</property>
+                <less-than>
+                    <property>instrumentation/nav/gs-distance</property>
+                    <value>30000.0</value>
+                </less-than>
+            </and>
+        </condition>
+    </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>CRSknob</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.05</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav/radials/selected-deg</property>
+        <step>  1 </step>
+        <min>   0 </min>
+        <max>   359 </max>
+        <wrap>  1 </wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.05</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav/radials/selected-deg</property>
+        <step>  -1 </step>
+        <min>   0 </min>
+        <max>   359 </max>
+        <wrap>  1 </wrap>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>nav-radial</tooltip-id>
+        <label>Nav1 Radial: %3.0f</label>
+        <property>instrumentation/nav/radials/selected-deg</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>HDGknob</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.05</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/settings/heading-bug-deg</property>
+        <step>  1 </step>
+        <min>   0 </min>
+        <max>   359 </max>
+        <wrap>  1 </wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.05</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/settings/heading-bug-deg</property>
+        <step>  -1 </step>
+        <min>   0 </min>
+        <max>   359 </max>
+        <wrap>  1 </wrap>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>heading-bug</tooltip-id>
+        <label>Heading Bug: %3.0f</label>
+        <property>autopilot/settings/heading-bug-deg</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">HSI</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.1</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.0 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      Windows.xml - ePilot                                ####
+      ####                                                          ####
+      ####    Window models and animations                          ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>windows.ac</path>
+
+  <effect>
+    <inherits-from>Aircraft/Cessna-208B/Models/Effects/model-transparent</inherits-from>
+    <object-name>windows-cabin</object-name>
+    <object-name>windows-cabin-door-upper</object-name>
+    <object-name>windows-cockpit</object-name>
+    <object-name>windows-crew-door-left</object-name>
+    <object-name>windows-crew-door-right</object-name>
+  </effect>
+
+  <animation>
+    <type>select</type>
+    <object-name>windows-cabin</object-name>
+    <object-name>windows-cabin-door-upper</object-name>
+    <condition>
+      <not>
+        <or>
+<!--        <property>sim/model/cargo</property> -->
+        <property>sim/multiplay/generic/int[10]</property>
+<!--        <property>sim/model/jumpship</property> -->
+        <property>sim/multiplay/generic/int[12]</property>
+        </or>
+      </not>
+    </condition>
+  </animation>
+
+</PropertyList>

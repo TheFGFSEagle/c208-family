@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      interior.xml - ePilot                               ####
+      ####                                                          ####
+      ####    Interior models and animations                        ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>interior.ac</path>
+
+    <!-- Cold and Dark Unlighted -->
+
+  <animation>
+    <type>material</type>
+    <object-name>CoPilotDoor.Int</object-name>
+    <object-name>PilotDoor.Int</object-name>
+    <object-name>PassDoorLower.Int</object-name>
+    <object-name>PassDoorUpper.Int</object-name>
+    <object-name>interior</object-name>
+    <emission>
+      <red>   .011 </red>
+      <green> .011 </green>
+      <blue>  .011 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+        <property>/sim/time/sun-angle-rad</property>
+        <value>1.55</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <!-- Cold and Dark Lighted -->
+
+  <!-- Instrument Lights On -->
+
+  <!-- End of Emission Animations -->
+
+  <animation>
+    <type>select</type>
+    <object-name>interior-cargo</object-name>
+    <object-name>cabin-door-int-cargo</object-name>
+    <condition>
+      <property>sim/model/cargo</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>interior-windows</object-name>
+    <object-name>cabin-door-int-windows</object-name>
+    <condition>
+      <not>
+        <property>sim/model/cargo</property>
+      </not>
+    </condition>
+  </animation>
+
+
+  <!-- Jumpship Any - Remove All Cabin Doors -->
+  <animation>
+    <type>select</type>
+    <object-name>CabinDoorUpperHandle</object-name>
+    <object-name>CabinDoorUpperHandleBase</object-name>
+    <object-name>cabin-door-int-windows</object-name>
+    <object-name>cabin-door-int-cargo</object-name>
+    <object-name>PassDoorLower.Int</object-name>
+    <condition>
+      <not>
+        <!--        <property>sim/multiplay/generic/int[]</property> -->
+        <property>sim/model/jumpship</property>
+      </not>
+    </condition>
+  </animation>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/Seat/allseats.xml</path>
+    <offsets>
+      <x-m> 6.68134 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> -0.43343 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg>   0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>PassDoorUpper.Int</object-name>
+    <object-name>CabinDoorUpperHandleBase</object-name>
+    <object-name>CabinDoorUpperHandle</object-name>
+    <property>sim/multiplay/generic/float[1]</property>
+    <object-name>cabin-door-int-cargo</object-name>
+    <object-name>cabin-door-int-windows</object-name>
+    <factor> -140 </factor>
+    <axis>
+      <x1-m> 6.60934 </x1-m>
+      <y1-m> -0.839 </y1-m>
+      <z1-m>  0.54057 </z1-m>
+      <x2-m>  7.88134 </x2-m>
+      <y2-m> -0.798 </y2-m>
+      <z2-m>  0.46757 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CabinDoorUpperHandle</object-name>
+    <property>sim/multiplay/generic/float[1]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>0.02</ind><dep>45</dep></entry>
+      <entry><ind>1</ind><dep>45</dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  7.2451 </x-m>
+      <y-m>  0.82758 </y-m>
+      <z-m>  0.04619 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <!-- Pick Upper Cabin Door Handle-->
+  <animation>
+    <type>pick</type>
+    <object-name>CabinDoorUpperHandle</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/CabinDoorUpper",6);</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>PassDoorLower.Int</object-name>
+    <property>sim/multiplay/generic/float[7]</property>
+    <factor> -180 </factor>
+    <axis>
+      <x1-m> 6.60934 </x1-m>
+      <y1-m> -0.871 </y1-m>
+      <z1-m>  -0.40543 </z1-m>
+      <x2-m> 6.60934 </x2-m>
+      <y2-m> -0.871 </y2-m>
+      <z2-m>  0.00057 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>PilotDoor.Int</object-name>
+    <object-name>Fire-Ex</object-name>
+    <object-name>PilotDoorHandle</object-name>
+    <object-name>PilotDoorHandleBase</object-name>
+    <object-name>Vent</object-name>
+    <object-name>PullStrapPilot</object-name>
+    <object-name>StrapEndsPilot</object-name>
+    <property>sim/multiplay/generic/float[0]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>0.02</ind><dep>0</dep></entry>
+      <entry><ind>0.04</ind><dep>-18</dep></entry>
+      <entry><ind>0.05</ind><dep>-17</dep></entry>
+      <entry><ind>0.08</ind><dep>-19</dep></entry>
+      <entry><ind>0.1</ind><dep>-26</dep></entry>
+      <entry><ind>0.5</ind><dep>-140</dep></entry>
+      <entry><ind>1</ind><dep>-140</dep></entry>
+    </interpolation>
+    <factor> -140 </factor>
+    <axis>
+      <x1-m>  3.46029  </x1-m>
+      <y1-m> -0.862661 </y1-m>
+      <z1-m> -0.344821 </z1-m>
+      <x2-m>  3.46029  </x2-m>
+      <y2-m> -0.8743   </y2-m>
+      <z2-m>  0.121188 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>PilotDoorHandle</object-name>
+    <property>sim/multiplay/generic/float[0]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>0.02</ind><dep>45</dep></entry>
+      <entry><ind>1</ind><dep>45</dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  3.66367 </x1-m>
+      <y1-m> -0.81396 </y1-m>
+      <z1-m>  0.06012 </z1-m>
+      <x2-m>  3.66286 </x2-m>
+      <y2-m> -0.78251 </y2-m>
+      <z2-m>  0.06052 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Pick Pilot Door Handle-->
+  <animation>
+    <type>pick</type>
+    <object-name>PilotDoorHandle</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/Pilot",6);</script>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Vent Animation -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Vent</object-name>
+    <property>sim/multiplay/generic/float[8]</property>
+    <factor> -160 </factor>
+    <center>
+      <x-m> 3.66188</x-m>
+      <y-m>-0.82899</y-m>
+      <z-m> 0.19991</z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- Pick Vent-->
+  <animation>
+    <type>pick</type>
+    <object-name>Vent</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/Vent",1);</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CoPilotDoor.Int</object-name>
+    <object-name>CoPilotDoorHandle</object-name>
+    <object-name>CoPilotDoorHandleBase</object-name>
+    <object-name>PullStrapCoPilot</object-name>
+    <object-name>StrapEndsCoPilot</object-name>
+    <property>sim/multiplay/generic/float[6]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>0.02</ind><dep>0</dep></entry>
+      <entry><ind>0.04</ind><dep>18</dep></entry>
+      <entry><ind>0.05</ind><dep>17</dep></entry>
+      <entry><ind>0.08</ind><dep>19</dep></entry>
+      <entry><ind>0.1</ind><dep>26</dep></entry>
+      <entry><ind>0.5</ind><dep>140</dep></entry>
+      <entry><ind>1</ind><dep>140</dep></entry>
+    </interpolation>
+    <factor>  140 </factor>
+    <axis>
+      <x1-m>  3.46029  </x1-m>
+      <y1-m>  0.862661 </y1-m>
+      <z1-m> -0.344821 </z1-m>
+      <x2-m>  3.46029  </x2-m>
+      <y2-m>  0.8743   </y2-m>
+      <z2-m>  0.121188 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CoPilotDoorHandle</object-name>
+    <property>sim/multiplay/generic/float[6]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>0.02</ind><dep>45</dep></entry>
+      <entry><ind>1</ind><dep>45</dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  3.66286 </x1-m>
+      <y1-m>  0.781465</y1-m>
+      <z1-m>  0.060965</z1-m>
+      <x2-m>  3.66367 </x2-m>
+      <y2-m>  0.812905</y2-m>
+      <z2-m>  0.06057 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Pick CoPilot Door Handle-->
+  <animation>
+    <type>pick</type>
+    <object-name>CoPilotDoorHandle</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/CoPilot",6);</script>
+      </binding>
+    </action>
+  </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Cessna-208B/Models/Effects/chrome</inherits-from>
+    <object-name>StrapEndsPilot</object-name>
+    <object-name>StrapEndsCoPilot</object-name>
+  </effect>
+
+</PropertyList>
+

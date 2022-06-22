@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      longitude.xml - ePilot                              ####
+      ####                                                          ####
+      ####    Component for Custom Cessna-208B Hud display          ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <label>
+    <name>Longitude</name>
+    <width>1</width>
+    <height>1</height>
+
+    <halign>center</halign>
+    <input>
+      <property>/position/longitude-string</property>
+    </input>
+  </label>
+
+</PropertyList>

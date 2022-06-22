@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>kra10a.ac</path>
+
+  <animation>
+    <object-name>KRA.fond</object-name>
+    <object-name>KRA.screws</object-name>
+    <object-name>KRA.push</object-name>
+    <object-name>KRA.DHoff</object-name>
+    <object-name>KRA.face</object-name>
+    <object-name>KRA.knob</object-name>
+    <object-name>KRA.needle</object-name>
+    <object-name>KRA.bug</object-name>
+    <object-name>KRA.cache</object-name>
+  </animation>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>KRA.fond</object-name>
+    <object-name>KRA.screws</object-name>
+    <object-name>KRA.push</object-name>
+    <object-name>KRA.DHoff</object-name>
+    <emission>
+      <red>   .025 </red>
+      <green> .025 </green>
+      <blue>  .025 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>KRA.face</object-name>
+    <object-name>KRA.knob</object-name>
+    <object-name>KRA.needle</object-name>
+    <object-name>KRA.bug</object-name>
+    <object-name>KRA.cache</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>KRA.face</object-name>
+    <object-name>KRA.knob</object-name>
+    <object-name>KRA.needle</object-name>
+    <object-name>KRA.bug</object-name>
+    <object-name>KRA.cache</object-name>
+    <emission>
+      <red>   0.028 </red>
+      <green> 0.014 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+<!-- End of Emission Animations -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>KRA.needle</object-name>
+    <property>position/altitude-agl-ft</property>
+    <interpolation>
+      <entry><ind>    0 </ind><dep> 0 </dep></entry>
+      <entry><ind>   50 </ind><dep> -41.1 </dep></entry>
+      <entry><ind>  100 </ind><dep> -84.1 </dep></entry>
+      <entry><ind>  150 </ind><dep> -128 </dep></entry>
+      <entry><ind>  200 </ind><dep> -168 </dep></entry>
+      <entry><ind>  300 </ind><dep> -184 </dep></entry>
+      <entry><ind>  400 </ind><dep> -199 </dep></entry>
+      <entry><ind>  500 </ind><dep> -214 </dep></entry>
+      <entry><ind> 1000 </ind><dep> -225 </dep></entry>
+      <entry><ind> 1500 </ind><dep> -237 </dep></entry>
+      <entry><ind> 2000 </ind><dep> -250 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </center>
+    <condition>
+      <property>systems/electrical/on</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>KRA.bug</object-name>
+    <property>instrumentation/radar-altimeter/decision-height</property>
+    <interpolation>
+      <entry><ind>    0 </ind><dep> 0 </dep></entry>
+      <entry><ind>   50 </ind><dep> -41.1 </dep></entry>
+      <entry><ind>  100 </ind><dep> -84.1 </dep></entry>
+      <entry><ind>  150 </ind><dep> -128 </dep></entry>
+      <entry><ind>  200 </ind><dep> -168 </dep></entry>
+      <entry><ind>  300 </ind><dep> -184 </dep></entry>
+      <entry><ind>  400 </ind><dep> -199 </dep></entry>
+      <entry><ind>  500 </ind><dep> -214 </dep></entry>
+      <entry><ind> 1000 </ind><dep> -225 </dep></entry>
+      <entry><ind> 1500 </ind><dep> -237 </dep></entry>
+      <entry><ind> 2000 </ind><dep> -250 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </center>
+  </animation>
+
+  <!-- Radar Alt Decision Height adjust -->
+  <animation>
+    <type>pick</type>
+    <object-name>KRA.knob</object-name>
+    <visible>true</visible>
+    <action>
+      <name>Increase DH</name>
+      <button>0</button>
+      <button>3</button>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/radar-altimeter/decision-height</property>
+        <step>50</step>
+        <min>0</min>
+        <max>2000</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>Decrease DH</name>added initial nav[0] radial setting
+      <button>1</button>
+      <button>4</button>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/radar-altimeter/decision-height</property>
+        <step>-50</step>
+        <min>0</min>
+        <max>2000</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>decisionheight</tooltip-id>
+          <label>Decision Height: %04.0f ft</label>
+        <property>instrumentation/radar-altimeter/decision-height</property>
+       </binding>
+     </hovered>
+  </animation>
+
+<!-- DH Lamp -->
+  <animation>
+  <type>material</type>
+    <object-name>KRA.DHLamp</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+    <condition>
+      <and>
+      <property>systems/electrical/on</property>
+      <less-than>
+        <property>position/altitude-agl-ft</property>
+        <property>instrumentation/radar-altimeter/decision-height</property>
+      </less-than>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Radar Alt Guage Tooltip -->
+  <animation>
+    <type>pick</type>
+    <object-name>KRA.face</object-name>
+    <action></action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>radaralt</tooltip-id>
+        <label>AGL: %5.0f ft</label>
+        <property>position/altitude-agl-ft</property>
+      </binding>
+    </hovered>
+  </animation>
+
+
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">Radar Altimeter</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.1</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.0 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>
+

@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-lights-dialog.xml - ePilot              ####
+      ####                                                          ####
+      ####    Lighting Control Dialog                               ####
+      ################################################################## -->
+
+
+<PropertyList>
+  <name>lightcontrol</name>
+  <width>300</width>
+  <modal>false</modal>
+  <layout>vbox</layout>
+  <x>30</x>
+  <y>500</y>
+
+ <group>
+    <layout>hbox</layout>
+    <empty><stretch>1</stretch></empty>
+
+    <text>
+      <label>208B Lighting Control</label>
+    </text>
+
+    <empty><stretch>1</stretch></empty>
+
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend></legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+     <binding>
+        <command>nasal</command>
+        <script>dialogs.lightcontrol.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+   <hrule>
+    <color>
+      <red>1.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+    <pref-width>230</pref-width>
+  </hrule>
+
+<!-- Start Here -->
+
+  <group>
+    <layout>hbox</layout>
+
+    <group>
+      <layout>vbox</layout>
+      <halign>center</halign>
+      <valign>top</valign>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Left Ldg</label>
+        <property>/controls/electric/leftldg-switch</property>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/leftldg-switch</property>
+      </binding>
+        <live>true</live>
+      </checkbox>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Strobe</label>
+        <property>/controls/electric/strobe-switch</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/electric/strobe-switch</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>No Smoke</label>
+        <property>/controls/electric/nosmoke-switch</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/electric/nosmoke-switch</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+    </group>
+
+    <group>
+     <layout>vbox</layout>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Taxi Recog</label>
+        <property>/controls/electric/taxi-switch</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/electric/taxi-switch</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Nav Lights</label>
+        <property>controls/electric/nav-switch</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/electric/nav-switch</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Seat Belt</label>
+        <property>/controls/electric/seatbelt-switch</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/electric/seatbelt-switch</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+    </group>
+
+    <group>
+     <layout>vbox</layout>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Right Ldg</label>
+        <property>controls/electric/rightldg-switch</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/electric/rightldg-switch</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Beacon</label>
+        <property>/controls/electric/bcn-switch</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/electric/bcn-switch</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+
+
+      <checkbox>
+        <halign>left</halign>
+        <label>Cabin</label>
+        <property>/controls/lighting/flashlight</property>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/flashlight</property>
+        </binding>
+        <live>true</live>
+      </checkbox>
+    </group>
+
+  </group>
+
+
+   <hrule>
+    <color>
+      <red>1.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+    <pref-width>230</pref-width>
+  </hrule>
+
+
+<!-- Brightness variometers -->
+
+<group>
+  <layout>table</layout>
+   <text>
+      <row>0</row>
+      <col>0</col>
+      <halign>center</halign>
+      <label>Flight</label>
+    </text>
+
+   <text>
+      <row>0</row>
+      <col>1</col>
+      <halign>center</halign>
+      <label>Engine</label>
+    </text>
+
+   <text>
+      <row>1</row>
+      <col>0</col>
+      <halign>center</halign>
+      <label>Instruments</label>
+    </text>
+
+   <text>
+      <row>1</row>
+      <col>1</col>
+      <halign>center</halign>
+      <label>Instruments</label>
+    </text>
+
+  <dial>
+    <row>2</row>
+    <col>0</col>
+    <name>Instrument Lights Dimmer</name>
+    <pref-width>40</pref-width>
+    <pref-height>40</pref-height>
+    <halign>center</halign>
+    <live>true</live>
+    <property>/controls/lighting/inst-lights-dim</property>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>false</wrap>
+    <binding>
+      <command>dialog-apply</command>
+    </binding>
+  </dial>
+
+
+  <dial>
+    <row>2</row>
+    <col>1</col>
+    <name>Engine Instrument Lights Dimmer</name>
+    <pref-width>40</pref-width>
+    <pref-height>40</pref-height>
+    <halign>center</halign>
+    <live>true</live>
+    <property>/controls/lighting/inst-lights-eng-dim</property>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>false</wrap>
+    <binding>
+      <command>dialog-apply</command>
+    </binding>
+  </dial>
+
+  </group>
+
+
+<!--   <hrule>
+    <pref-height>2</pref-height>
+    <pref-width>200</pref-width>
+  </hrule> -->
+
+  <empty><stretch>1</stretch></empty>
+
+</PropertyList>

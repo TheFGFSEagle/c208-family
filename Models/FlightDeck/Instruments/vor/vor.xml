@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <params>
+    <nav-to-flag>/instrumentation/nav[1]/to-flag</nav-to-flag>
+    <nav-from-flag>/instrumentation/nav[1]/from-flag</nav-from-flag>
+    <nav-radial-selected>/instrumentation/nav[1]/radials/selected-deg</nav-radial-selected>
+    <nav-gs-needle-deflection>/instrumentation/nav[1]/gs-needle-deflection</nav-gs-needle-deflection>
+    <nav-heading-needle-deflection>/instrumentation/nav[1]/heading-needle-deflection</nav-heading-needle-deflection>
+    <nav-in-range>/instrumentation/nav[1]/in-range</nav-in-range>
+  </params>
+
+  <path>vor.ac</path>
+
+  <animation>
+    <object-name>VOR.fond</object-name>
+    <object-name>VOR.visses</object-name>
+    <object-name>VOR.knob</object-name>
+    <object-name>VOR.ring</object-name>
+    <object-name>VOR.face</object-name>
+    <object-name>VOR.LocalizerNeedle</object-name>
+    <object-name>VOR.GlidescopeNeedle</object-name>
+    <object-name>VOR.FR</object-name>
+    <object-name>VOR.TO</object-name>
+    <object-name>VOR.NAV</object-name>
+  </animation>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>VOR.fond</object-name>
+    <object-name>VOR.visses</object-name>
+    <emission>
+      <red>   .025 </red>
+      <green> .025 </green>
+      <blue>  .025 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>VOR.knob</object-name>
+    <object-name>VOR.ring</object-name>
+    <object-name>VOR.face</object-name>
+    <object-name>VOR.LocalizerNeedle</object-name>
+    <object-name>VOR.GlidescopeNeedle</object-name>
+    <object-name>VOR.FR</object-name>
+    <object-name>VOR.TO</object-name>
+    <object-name>VOR.NAV</object-name>
+    <emission>
+      <red>   .019 </red>
+      <green> .019 </green>
+      <blue>  .019 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>VOR.knob</object-name>
+    <object-name>VOR.ring</object-name>
+    <object-name>VOR.face</object-name>
+    <object-name>VOR.LocalizerNeedle</object-name>
+    <object-name>VOR.GlidescopeNeedle</object-name>
+    <object-name>VOR.FR</object-name>
+    <object-name>VOR.TO</object-name>
+    <object-name>VOR.NAV</object-name>
+    <emission>
+      <red>   0.028 </red>
+      <green> 0.014 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+<!-- End of Emission Animations -->
+
+
+  <animation>
+    <name>LocalizerNeedleTransform</name>
+    <type>rotate</type>
+    <object-name>VOR.LocalizerNeedle</object-name>
+    <property alias="../../params/nav-heading-needle-deflection"/>
+    <factor> -3.2 </factor>
+    <center>
+      <x-m> 0.00 </x-m>
+      <y-m> 0.00 </y-m>
+      <z-m> 0.03 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>VOR.GlidescopeNeedle</object-name>
+    <condition>
+      <property alias="../../../params/nav-in-range"/>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>VOR.NAV</object-name>
+    <condition>
+      <not>
+        <property alias="../../../../params/nav-in-range"/>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>VOR.TO</object-name>
+    <condition>
+      <property alias="../../../params/nav-to-flag"/>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>VOR.FR</object-name>
+    <condition>
+      <property alias="../../../params/nav-from-flag"/>
+    </condition>
+  </animation>
+
+  <animation>
+    <name>GlidescopeNeedleTransform</name>
+    <type>rotate</type>
+    <object-name>VOR.GlidescopeNeedle</object-name>
+    <property alias="../../params/nav-gs-needle-deflection"/>
+    <factor> -3.2 </factor>
+    <min-deg> -32 </min-deg>
+    <max-deg> 32 </max-deg>
+    <center>
+      <x-m>  0.00 </x-m>
+      <y-m> -0.03 </y-m>
+      <z-m>  0.00 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>RingTransform</name>
+    <type>rotate</type>
+    <object-name>VOR.ring</object-name>
+    <property alias="../../params/nav-radial-selected"/>
+    <factor> -1 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>VOR.knob</object-name>
+    <property alias="../../params/nav-radial-selected"/>
+    <center>
+      <x-m>  0.013 </x-m>
+      <y-m> -0.026 </y-m>
+      <z-m> -0.030 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+
+  <animation>
+    <type>pick</type>
+    <object-name>VOR.knob</object-name>
+    <visible>0</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/nav[1]/radials/selected-deg</property>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/nav[1]/radials/selected-deg</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>nav-radial</tooltip-id>
+        <label>Nav2 Radial: %3.0f</label>
+        <property>instrumentation/nav[1]/radials/selected-deg</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">VOR 2</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.1</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.0 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>
+
+

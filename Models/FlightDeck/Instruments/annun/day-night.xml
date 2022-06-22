@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <path>day-night.ac</path>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>base</object-name>
+    <object-name>day-night</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>base</object-name>
+    <object-name>day-night</object-name>
+    <emission>
+      <red>   0.007 </red>
+      <green> 0.007 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+
+<!-- End of Emission Animations -->
+
+ <animation>
+   <type>pick</type>
+   <visible>true</visible>
+   <object-name>day-night</object-name>
+   <action>
+     <name>Day-Night Switch</name>
+     <button>0</button>
+     <repeatable>false</repeatable>
+       <binding>
+        <command>property-toggle</command>
+          <property>/controls/switches/day-night</property>
+        <value>true</value>
+    <condition>
+      <property>/systems/electrical/on</property>
+    </condition>
+      </binding>
+   </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>daynight</tooltip-id>
+        <label>Annun: %s</label>
+          <property>/controls/switches/day-night</property>
+        <mapping>nasal</mapping>
+        <script>
+          var modes = ['NIGHT', 'DAY'];
+          return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+ </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>day-night</object-name>
+    <property>/controls/switches/day-night</property>
+    <factor>20</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m> 0.00090</x-m>
+      <y-m>-0.00140</y-m>
+      <z-m>-0.00025</z-m>
+    </center>
+  </animation>
+</PropertyList>

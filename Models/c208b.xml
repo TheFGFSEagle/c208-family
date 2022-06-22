@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      C208B.xml - ePilot                                  ####
+      ####                                                          ####
+      ####    Main model / animation file                           ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>Exterior.ac</path>
+
+  <!-- Prop -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Prop/prop.xml</path>
+  </model>
+
+  <!-- Flightdeck -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/flightdeck.xml</path>
+    <offsets>
+      <x-m> 2.90534 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.06457 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Interior -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- Wheels -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Gear/gear.xml</path>
+    <condition>
+      <not>
+        <property>sim/multiplay/generic/int[9]</property>
+<!--        <property>sim/model/floats</property> -->
+      </not>
+    </condition>
+  </model>
+
+  <!-- Floats -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Floats/floats.xml</path>
+    <condition>
+      <property>sim/multiplay/generic/int[9]</property>
+<!--        <property>sim/model/floats</property> -->
+    </condition>
+  </model>
+
+  <!-- Cargo Pod -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Cargo/pod.xml</path>
+    <condition>
+      <property>sim/multiplay/generic/int[11]</property>
+    </condition>
+  </model>
+
+  <!-- Effects (Wake)-->
+  <model>
+    <name>Wake</name>
+    <path>Aircraft/Cessna-208B/Models/Effects/wakes.xml</path>
+  </model>
+
+  <!-- Windows -->
+  <model>
+    <path>/Aircraft/Cessna-208B/Models/Windows/Windows.xml</path>
+  </model>
+
+  <!-- Flat Shadow -->
+  <model>
+    <path>/Aircraft/Cessna-208B/Models/Shadow/Cessna-208B-generic-shadow.xml</path>
+    <condition>
+      <and>
+        <property>sim/model/shadow</property>
+        <not>
+          <or>
+            <property>sim/rendering/shaders/skydome</property>
+            <property>sim/rendering/rembrandt/enabled</property>
+          </or>
+        </not>
+      </and>
+    </condition>
+  </model>
+
+  <!-- ALS 3d Shadow -->
+  <model>
+    <path>/Aircraft/Cessna-208B/Models/Shadow/Cessna-208B-3d-shadow.xml</path>
+    <condition>
+      <property>sim/model/shadow</property>
+      <property>sim/rendering/shaders/skydome</property>
+    </condition>
+  </model>
+
+  <!-- Jumpship Cargo Net -->
+  <model>
+    <path>/Aircraft/Cessna-208B/Models/Cargo-Net/cargo-net.ac</path>
+  </model>
+
+
+  <!-- Cold and Dark Unlighted -->
+
+  <animation>
+    <type>material</type>
+    <object-name>aileron-left</object-name>
+    <object-name>aileron-right</object-name>
+    <object-name>door-crew-left</object-name>
+    <object-name>door-crew-right</object-name>
+    <object-name>door-cabin-lower</object-name>
+    <object-name>door-cabin-upper-cargo</object-name>
+    <object-name>door-cabin-upper-windows</object-name>
+    <object-name>elevators</object-name>
+    <object-name>flaps-left</object-name>
+    <object-name>flaps-right</object-name>
+    <object-name>fuse-cargo</object-name>
+    <object-name>fuse-windows</object-name>
+    <object-name>misc</object-name>
+    <object-name>rudder</object-name>
+    <object-name>spoiler-left</object-name>
+    <object-name>spoiler-right</object-name>
+    <emission>
+      <red>   0.015 </red>
+      <green> 0.015 </green>
+      <blue>  0.015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+        <property>/sim/time/sun-angle-rad</property>
+        <value>1.55</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <!-- Cold and Dark Lighted -->
+
+  <!-- Instrument Lights On -->
+
+  <!-- End of Emission Animations -->
+
+  <nasal>
+    <load>
+      <!--
+      ##############################################################################
+      # The on-load Nasal is not executed when this file is loaded as the user
+      # aircraft. The code is only executed if the file is loaded for a remote
+      # aircraft in Multi-Player mode (MP)
+      ##############################################################################
+      -->
+      <![CDATA[
+        var livery_update = aircraft.livery_update.new("Aircraft/Cessna-208B/Models/Liveries");
+      ]]>
+    </load>
+
+    <unload><![CDATA[livery_update.stop();]]></unload>
+  </nasal>
+
+  <animation>
+    <!-- Opaque -->
+    <object-name>aileron-left</object-name>
+    <object-name>aileron-right</object-name>
+    <object-name>door-crew-left</object-name>
+    <object-name>door-crew-right</object-name>
+    <object-name>door-cabin-upper-cargo</object-name>
+    <object-name>door-cabin-upper-windows</object-name>
+    <object-name>door-cabin-lower</object-name>
+    <object-name>elevators</object-name>
+    <object-name>flaps-left</object-name>
+    <object-name>flaps-right</object-name>
+    <object-name>fuse-windows</object-name>
+    <object-name>fuse-cargo</object-name>
+    <object-name>lights-landing-left</object-name>
+    <object-name>lights-landing-right</object-name>
+    <object-name>misc</object-name>
+    <object-name>rudder</object-name>
+    <object-name>spoiler-left</object-name>
+    <object-name>spoiler-right</object-name>
+    <!-- Transparent -->
+    <object-name>glass-landing-lights</object-name>
+    <object-name>lights-nav-green</object-name>
+    <object-name>lights-nav-red</object-name>
+    <object-name>lights-beacon</object-name>
+    <object-name>lights-strobe</object-name>
+    <object-name>NavWhiteSource</object-name>
+  </animation>
+
+
+  <!-- Apply Livery texture -->
+  <animation>
+    <type>material</type>
+    <object-name>aileron-left</object-name>
+    <object-name>aileron-right</object-name>
+    <object-name>door-crew-left</object-name>
+    <object-name>door-crew-right</object-name>
+    <object-name>door-cabin-lower</object-name>
+    <object-name>door-cabin-upper-cargo</object-name>
+    <object-name>door-cabin-upper-windows</object-name>
+    <object-name>elevators</object-name>
+    <object-name>flaps-left</object-name>
+    <object-name>flaps-right</object-name>
+    <object-name>fuse-cargo</object-name>
+    <object-name>fuse-windows</object-name>
+    <object-name>lights-landing-left</object-name>
+    <object-name>lights-landing-right</object-name>
+    <object-name>misc</object-name>
+    <object-name>rudder</object-name>
+    <object-name>spoiler-left</object-name>
+    <object-name>spoiler-right</object-name>
+
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>Default.png</texture>
+  </animation>
+
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>glass-landing-lights</object-name>
+    <object-name>lights-nav-green</object-name>
+    <object-name>lights-nav-red</object-name>
+    <object-name>lights-beacon</object-name>
+    <object-name>lights-strobe</object-name>
+    <object-name>LandLightSourceLeft</object-name>
+    <object-name>LandLightSourceRight</object-name>
+    <object-name>TaxiLightSourceLeft</object-name>
+    <object-name>TaxiLightSourceRight</object-name>
+  </animation>
+
+
+  <effect>
+    <inherits-from>Aircraft/Cessna-208B/Models/Effects/model-transparent</inherits-from>
+    <object-name>glass-landing-lights</object-name>
+    <object-name>lights-nav-green</object-name>
+    <object-name>lights-nav-red</object-name>
+    <object-name>lights-beacon</object-name>
+    <object-name>lights-strobe</object-name>
+    <object-name>LandLightSourceLeft</object-name>
+    <object-name>LandLightSourceRight</object-name>
+    <object-name>TaxiLightSourceLeft</object-name>
+    <object-name>TaxiLightSourceRight</object-name>
+    <object-name>NavWhiteSource</object-name>
+  </effect>
+
+
+
+  <animation>
+    <type>select</type>
+    <object-name>door-cabin-upper-cargo</object-name>
+    <object-name>fuse-cargo</object-name>
+    <condition>
+      <property>sim/multiplay/generic/int[10]</property>
+<!--        <property>sim/model/cargo</property> -->
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>fuse-windows</object-name>
+    <object-name>door-cabin-upper-windows</object-name>
+    <condition>
+      <not>
+        <property>sim/multiplay/generic/int[10]</property>
+<!--        <property>sim/model/cargo</property> -->
+      </not>
+    </condition>
+  </animation>
+
+<!-- Jumpship Any - Remove All Cabin Doors -->
+  <animation>
+    <type>select</type>
+    <object-name>door-cabin-lower</object-name>
+    <object-name>door-cabin-upper-cargo</object-name>
+    <object-name>door-cabin-upper-windows</object-name>
+    <condition>
+      <not>
+        <property>sim/multiplay/generic/int[12]</property>
+<!--        <property>sim/model/jumpship</property> -->
+      </not>
+    </condition>
+  </animation>
+
+
+<!-- Jumpship Cargo Net -->
+  <animation>
+    <type>select</type>
+    <object-name>net</object-name>
+    <condition>
+      <and>
+        <property>sim/multiplay/generic/int[12]</property>
+<!--        <property>sim/model/jumpship</property> -->
+        <property>sim/model/cargo-net</property>
+      </and>
+    </condition>
+  </animation>
+
+
+  <!-- Cranking effects -->
+  <!-- Left -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> 1.99834 </x-m>
+      <y-m>  0.677 </y-m>
+      <z-m> -0.63743 </z-m>
+    </offsets>
+  </model>
+
+
+  <!-- Ailerons -->
+  <animation>
+    <type>rotate</type>
+    <object-name>aileron-left</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> 20 </factor>
+    <axis>
+      <x1-m> 5.74198 </x1-m>
+      <y1-m> -7.76617 </y1-m>
+      <z1-m> 1.01618</z1-m>
+      <x2-m> 5.79557 </x2-m>
+      <y2-m> -5.83554 </y2-m>
+      <z2-m>  0.894855 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>spoiler-left</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <interpolation>
+      <entry><ind> -1 </ind><dep> -45 </dep></entry>
+      <entry><ind>  0 </ind><dep>   0 </dep></entry>
+      <entry><ind>  1 </ind><dep>   0 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  5.62240 </x1-m>
+      <y1-m> -5.83911 </y1-m>
+      <z1-m>  0.97976 </z1-m>
+      <x2-m>  5.63814 </x2-m>
+      <y2-m> -4.29485 </y2-m>
+      <z2-m>  0.905315 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>aileron-right</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <factor> 20 </factor>
+    <axis>
+      <x1-m> 5.74198 </x1-m>
+      <y1-m> 7.76617 </y1-m>
+      <z1-m> 1.01618</z1-m>
+      <x2-m> 5.79557 </x2-m>
+      <y2-m> 5.83554 </y2-m>
+      <z2-m> 0.894855 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>spoiler-right</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <factor> -1 </factor>
+    <interpolation>
+      <entry><ind> -1 </ind><dep>  0  </dep></entry>
+      <entry><ind>  0 </ind><dep>  0  </dep></entry>
+      <entry><ind>  1 </ind><dep> 45 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  5.62240 </x1-m>
+      <y1-m>  5.83911 </y1-m>
+      <z1-m>  0.97976 </z1-m>
+      <x2-m>  5.63814 </x2-m>
+      <y2-m>  4.29485 </y2-m>
+      <z2-m>  0.905315 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Flaps -->
+  <!-- Track slide left -->
+  <animation>
+    <type>rotate</type>
+    <object-name>flaps-left</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> 18 </factor>
+    <axis>
+      <x1-m>  5.80824  </x1-m>
+      <y1-m> -5.22683  </y1-m>
+      <z1-m>  0.344115 </z1-m>
+      <x2-m>  5.8669   </x2-m>
+      <y2-m> -1.30529  </y2-m>
+      <z2-m>  0.128876 </z2-m>
+    </axis>
+  <condition>
+<!--      <property>/systems/electrical/on</property> -->
+      <property>sim/multiplay/generic/int[0]</property>
+  </condition>
+  </animation>
+
+  <!-- Droop Angle Left-->
+  <animation>
+    <type>rotate</type>
+    <object-name>flaps-left</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m>  5.82556  </x1-m>
+      <y1-m> -4.56418  </y1-m>
+      <z1-m>  0.760545 </z1-m>
+      <x2-m>  5.85726  </x2-m>
+      <y2-m> -3.256    </y2-m>
+      <z2-m>  0.684848 </z2-m>
+    </axis>
+  <condition>
+<!--      <property>/systems/electrical/on</property> -->
+      <property>sim/multiplay/generic/int[0]</property>
+  </condition>
+  </animation>
+
+<!-- Track slide right -->
+  <animation>
+    <type>rotate</type>
+    <object-name>flaps-right</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> -18 </factor>
+    <axis>
+      <x1-m>  5.80824  </x1-m>
+      <y1-m>  5.22683  </y1-m>
+      <z1-m>  0.344115 </z1-m>
+      <x2-m>  5.8669   </x2-m>
+      <y2-m>  1.30529  </y2-m>
+      <z2-m>  0.128876 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Droop Angle right-->
+  <animation>
+    <type>rotate</type>
+    <object-name>flaps-right</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor> -15 </factor>
+    <axis>
+      <x1-m>  5.82556  </x1-m>
+      <y1-m>  4.56418  </y1-m>
+      <z1-m>  0.760545 </z1-m>
+      <x2-m>  5.85726  </x2-m>
+      <y2-m>  3.256    </y2-m>
+      <z2-m>  0.684848 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Elevator -->
+  <animation>
+    <type>rotate</type>
+    <object-name>elevators</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> 12.18334 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.28757 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- Rudder -->
+  <animation>
+    <type>rotate</type>
+    <object-name>rudder</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> 12.03234 </x1-m>
+      <y1-m> 0.000 </y1-m>
+      <z1-m> 0.40457 </z1-m>
+      <x2-m> 12.46434 </x2-m>
+      <y2-m> 0.000 </y2-m>
+      <z2-m> 2.26257 </z2-m>
+    </axis>
+  </animation>
+
+
+  <!-- Cabin Doors -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>door-cabin-upper-windows</object-name>
+    <object-name>windows-cabin-door-upper</object-name>
+    <object-name>door-cabin-upper-cargo</object-name>
+    <!--    <property>instrumentation/doors/passenger/position-norm</property> -->
+    <property>sim/multiplay/generic/float[1]</property>
+    <factor> -140 </factor>
+    <axis>
+      <x1-m> 6.60934 </x1-m>
+      <y1-m> -0.839 </y1-m>
+      <z1-m>  0.54057 </z1-m>
+      <x2-m>  7.88134 </x2-m>
+      <y2-m> -0.798 </y2-m>
+      <z2-m>  0.46757 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Pick Upper Cabin Door -->
+  <animation>
+    <type>pick</type>
+    <object-name>door-cabin-upper-cargo</object-name>
+    <object-name>door-cabin-upper-windows</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/CabinDoorUpper",6);</script>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Lower Cabin Door -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>door-cabin-lower</object-name>
+    <!--    <property>instrumentation/doors/passenger/position-norm</property> -->
+    <property>sim/multiplay/generic/float[7]</property>
+    <factor> -180 </factor>
+  <center>
+    <x-m>6.60923</x-m>
+    <y-m>-0.87749</y-m>
+    <z-m>-0.016511</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>0</y>
+    <z>1</z>
+  </axis>
+  </animation>
+
+  <!-- Pick Lower Cabin Door -->
+  <animation>
+    <type>pick</type>
+    <object-name>door-cabin-lower</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/CabinDoorLower",6);</script>
+      </binding>
+    </action>
+  </animation>
+
+
+  <!-- Crew Doors -->
+  <animation>
+    <name>PilotDoor</name>
+    <object-name>door-crew-left</object-name>
+    <object-name>windows-crew-door-left</object-name>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>PilotDoor</object-name>
+    <!--    <property>instrumentation/doors/crew/position-norm</property> -->
+    <property>sim/multiplay/generic/float[0]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>0.02</ind><dep>0</dep></entry>
+      <entry><ind>0.04</ind><dep>-18</dep></entry>
+      <entry><ind>0.05</ind><dep>-17</dep></entry>
+      <entry><ind>0.08</ind><dep>-19</dep></entry>
+      <entry><ind>0.1</ind><dep>-26</dep></entry>
+      <entry><ind>0.5</ind><dep>-140</dep></entry>
+      <entry><ind>1</ind><dep>-140</dep></entry>
+    </interpolation>
+    <factor> -140 </factor>
+    <axis>
+      <x1-m>  3.46029  </x1-m>
+      <y1-m> -0.862661 </y1-m>
+      <z1-m> -0.344821 </z1-m>
+      <x2-m>  3.46029  </x2-m>
+      <y2-m> -0.8743   </y2-m>
+      <z2-m>  0.121188 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Pick Pilot Door -->
+  <animation>
+    <type>pick</type>
+    <object-name>door-crew-left</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/Pilot",6);</script>
+      </binding>
+    </action>
+  </animation>
+
+
+
+  <animation>
+    <name>CoPilotDoor</name>
+    <object-name>door-crew-right</object-name>
+    <object-name>windows-crew-door-right</object-name>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CoPilotDoor</object-name>
+    <!--    <property>instrumentation/doors/crew/position-norm</property> -->
+    <property>sim/multiplay/generic/float[6]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>0.02</ind><dep>0</dep></entry>
+      <entry><ind>0.04</ind><dep>18</dep></entry>
+      <entry><ind>0.05</ind><dep>17</dep></entry>
+      <entry><ind>0.08</ind><dep>19</dep></entry>
+      <entry><ind>0.1</ind><dep>26</dep></entry>
+      <entry><ind>0.5</ind><dep>140</dep></entry>
+      <entry><ind>1</ind><dep>140</dep></entry>
+    </interpolation>
+    <factor>  140 </factor>
+    <axis>
+      <x1-m>  3.46029  </x1-m>
+      <y1-m>  0.862661 </y1-m>
+      <z1-m> -0.344821 </z1-m>
+      <x2-m>  3.46029  </x2-m>
+      <y2-m>  0.8743   </y2-m>
+      <z2-m>  0.121188 </z2-m>
+    </axis>
+
+  </animation>
+
+  <!-- Pick CoPilot Door -->
+  <animation>
+    <type>pick</type>
+    <object-name>door-crew-right</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/CoPilot",6);</script>
+      </binding>
+    </action>
+  </animation>
+
+
+
+
+<!-- Landing Light Source Left -->
+
+  <animation>
+  <type>material</type>
+    <object-name>landing-light-fixture-left</object-name>
+    <object-name>light-landing-left</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+    <condition>
+      <and>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/leftldg-switch</property> -->
+        <property>sim/multiplay/generic/int[6]</property>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LandLightSourceLeft</object-name>
+    <condition>
+      <and>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/leftldg-switch</property> -->
+        <property>sim/multiplay/generic/int[6]</property>
+<!--      <greater-than>
+            <property>/sim/time/sun-angle-rad</property>
+            <value>1.55</value>
+          </greater-than> -->
+      </and>
+    </condition>
+  </animation>
+
+    <!--Landing Light Flash (Left) -->
+    <animation>
+      <type>flash</type>
+      <object-name>LandLightSourceLeft</object-name>
+      <center>
+        <x-m>4.67687</x-m>
+        <y-m>-4.7952</y-m>
+        <z-m>0.916311</z-m>
+      </center>
+      <axis>
+        <x>-1</x>
+        <y>0</y>
+        <z>0</z>
+      </axis>
+      <power>8</power>
+      <factor>6</factor>
+      <offset>0</offset>
+      <two-sides type="bool">false</two-sides>
+      <min>0.5</min>
+      <max>120</max>
+    </animation>
+
+
+
+<!-- Landing Light Source Right -->
+   <animation>
+    <type>select</type>
+    <object-name>LandLightSourceRight</object-name>
+    <condition>
+      <and>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/rightldg-switch</property> -->
+        <property>sim/multiplay/generic/int[7]</property>
+<!--        <greater-than>
+              <property>/sim/time/sun-angle-rad</property>
+              <value>1.55</value>
+            </greater-than> -->
+      </and>
+    </condition>
+  </animation>
+
+
+  <animation>
+  <type>material</type>
+    <object-name>landing-light-fixture-right</object-name>
+    <object-name>light-landing-right</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+    <condition>
+      <and>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/rightldg-switch</property> -->
+        <property>sim/multiplay/generic/int[7]</property>
+      </and>
+    </condition>
+  </animation>
+
+  <!--Landing Light Flash (Right) -->
+    <animation>
+      <type>flash</type>
+        <object-name>LandLightSourceRight</object-name>
+        <center>
+            <x-m>4.67687</x-m>
+            <y-m>4.7952</y-m>
+            <z-m>0.916311</z-m>
+        </center>
+        <axis>
+          <x>-1</x>
+          <y>0</y>
+          <z>0</z>
+        </axis>
+        <power>8</power>
+        <factor>6</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.5</min>
+        <max>120</max>
+    </animation>
+
+
+
+<!-- Taxi Light Source -->
+  <animation>
+  <type>material</type>
+    <object-name>landing-light-fixture-left</object-name>
+    <object-name>light-taxi-left</object-name>
+    <object-name>light-taxi-right</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+    <condition>
+      <and>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/taxi-switch</property> -->
+        <property>sim/multiplay/generic/int[13]</property>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>TaxiLightSourceLeft</object-name>
+    <object-name>TaxiLightSourceRight</object-name>
+    <condition>
+      <and>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/taxi-switch</property> -->
+        <property>sim/multiplay/generic/int[13]</property>
+<!--        <greater-than>
+              <property>/sim/time/sun-angle-rad</property>
+              <value>1.55</value>
+            </greater-than> -->
+      </and>
+    </condition>
+  </animation>
+
+<!-- Taxi Light Flash (Left) -->
+    <animation>
+      <type>flash</type>
+      <object-name>TaxiLightSourceLeft</object-name>
+      <center>
+        <x-m>4.67411</x-m>
+        <y-m>-4.59707</y-m>
+        <z-m>0.90677</z-m>
+      </center>
+      <axis>
+        <x>-1</x>
+        <y>0</y>
+        <z>0</z>
+      </axis>
+      <power>8</power>
+      <factor>6</factor>
+      <offset>0</offset>
+      <two-sides type="bool">false</two-sides>
+      <min>0.5</min>
+      <max>40</max>
+    </animation>
+
+
+<!-- Taxi Light Flash (Right) -->
+    <animation>
+      <type>flash</type>
+      <object-name>TaxiLightSourceRight</object-name>
+      <center>
+        <x-m>4.67117</x-m>
+        <y-m>4.59841</y-m>
+        <z-m>0.9058</z-m>
+      </center>
+      <axis>
+        <x>-1</x>
+        <y>0</y>
+        <z>0</z>
+      </axis>
+      <power>8</power>
+      <factor>6</factor>
+      <offset>0</offset>
+      <two-sides type="bool">false</two-sides>
+      <min>0.5</min>
+      <max>40</max>
+    </animation>
+
+
+<!-- End of Landing Light/Taxi Light Source Animations -->
+
+<!-- #################### Landing Lights ############################## -->
+
+<!-- Generic Shader Fake Bright Spot -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/Landing/landing-light-generic.xml</path>
+    <offsets>
+      <x-m> 7.27734 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.14343 </z-m>
+    </offsets>
+<!-- Use only if not using ALS or Rembrandt -->
+    <condition>
+      <not>
+        <or>
+          <property>sim/rendering/rembrandt/enabled</property>
+          <property>/sim/rendering/shaders/skydome</property>
+        </or>
+      </not>
+    </condition>
+  </model>
+
+<!-- ALS Landing Lights -->
+<!-- ALS Landing lights are controlled by ALSLandingLights.nas -->
+
+
+<!-- Rembrandt Landing Lights -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/Landing/landing-light-rembrandt-left.xml</path>
+    <offsets>
+      <x-m>  4.68734  </x-m>
+      <y-m> -4.69685  </y-m>
+      <z-m>  0.909452 </z-m>
+    </offsets>
+<!-- Use only if using Rembrandt -->
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+  </model>
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/Landing/landing-light-rembrandt-right.xml</path>
+    <offsets>
+      <x-m>  4.68734  </x-m>
+      <y-m>  4.69685  </y-m>
+      <z-m>  0.909452 </z-m>
+    </offsets>
+<!-- Use only if using Rembrandt -->
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+  </model>
+
+<!-- Rembrandt Taxi Lights -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/Landing/taxi-lights-rembrandt.xml</path>
+    <offsets>
+      <x-m>  4.68734  </x-m>
+      <y-m>  -4.59825  </y-m>
+      <z-m>  0.909452 </z-m>
+    </offsets>
+<!-- Use only if using Rembrandt -->
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+  </model>
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/Landing/taxi-lights-rembrandt.xml</path>
+    <offsets>
+      <x-m>  4.68734  </x-m>
+      <y-m>  4.59825  </y-m>
+      <z-m>  0.909452 </z-m>
+    </offsets>
+<!-- Use only if using Rembrandt -->
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+  </model>
+
+<!-- Nav White -->
+
+  <animation>
+    <type>select</type>
+    <object-name>NavWhiteSource</object-name>
+    <condition>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/taxi-switch</property> -->
+        <property>sim/multiplay/generic/int[3]</property>
+    </condition>
+  </animation>
+
+<!-- Nav White Flash -->
+    <animation>
+      <type>flash</type>
+      <object-name>NavWhiteSource</object-name>
+      <center>
+        <x-m>12.8959</x-m>
+        <y-m>0</y-m>
+        <z-m>0.289057</z-m>
+      </center>
+      <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+      </axis>
+      <power>8</power>
+      <factor>5</factor>
+      <offset>0</offset>
+      <two-sides type="bool">false</two-sides>
+      <min>1.8</min>
+      <max>5</max>
+    </animation>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/beacon.xml</path>
+    <offsets>
+      <x-m> 12.2769 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 2.74962 </z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>material</type>
+    <object-name>lights-beacon</object-name>
+    <emission>
+      <red>   1.0 </red>
+      <green> 0.0 </green>
+      <blue>  0.0 </blue>
+    </emission>
+    <condition>
+<!--      <property>/systems/electrical/on</property> -->
+      <property>sim/multiplay/generic/int[0]</property>
+<!--      <property>/controls/electric/bcn-switch</property> -->
+      <property>sim/multiplay/generic/int[1]</property>
+  </condition>
+  </animation>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/nav-red.xml</path>
+    <offsets>
+      <x-m> 5.08468 </x-m>
+      <y-m> -7.84895 </y-m>
+      <z-m>  1.06943 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/nav-green.xml</path>
+    <offsets>
+      <x-m> 5.08468 </x-m>
+      <y-m>  7.84895 </y-m>
+      <z-m>  1.06943 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/strobe-white.xml</path>
+    <offsets>
+      <x-m> 5.16061 </x-m>
+      <y-m> 7.87741 </y-m>
+      <z-m>  1.07157 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Lights/strobe-white.xml</path>
+    <offsets>
+      <x-m> 5.16061 </x-m>
+      <y-m> -7.87741 </y-m>
+      <z-m>  1.06943 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>marker</name>
+    <path>Aircraft/Cessna-208B/Models/Marker/marker.xml</path>
+  </model>
+
+</PropertyList>
+

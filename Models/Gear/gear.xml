@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      gear.xml - ePilot                                   ####
+      ####                                                          ####
+      ####    Tricycle Gear model and animation                     ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>gear.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>brakeright</object-name>
+    <object-name>brakeleft</object-name>
+    <object-name>fairing</object-name>
+    <object-name>mainleft</object-name>
+    <object-name>mainright</object-name>
+    <object-name>mainstrutleft</object-name>
+    <object-name>mainstrutright</object-name>
+    <object-name>nose-axle</object-name>
+    <object-name>nose-link-lower</object-name>
+    <object-name>nose-link-upper</object-name>
+    <object-name>nose-strut-brace</object-name>
+    <object-name>nose-strut-lower</object-name>
+    <object-name>nose-strut-upper</object-name>
+<!--    <object-name>nose-strut-piston</object-name> -->
+    <object-name>nose-wheel</object-name>
+    <object-name>vert-stab-fins</object-name>
+    <emission>
+      <red>   0.015 </red>
+      <green> 0.015 </green>
+      <blue>  0.015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+<!-- Instrument Lights On -->
+
+<!-- End of Emission Animations -->
+
+  <animation>
+    <type>material</type>
+    <object-name>brakeright</object-name>
+    <object-name>brakeleft</object-name>
+    <object-name>fairing</object-name>
+    <object-name>mainleft</object-name>
+    <object-name>mainright</object-name>
+    <object-name>mainstrutleft</object-name>
+    <object-name>mainstrutright</object-name>
+    <object-name>nose-axle</object-name>
+    <object-name>nose-link-lower</object-name>
+    <object-name>nose-link-upper</object-name>
+    <object-name>nose-strut-brace</object-name>
+    <object-name>nose-strut-lower</object-name>
+    <object-name>nose-strut-upper</object-name>
+<!--    <object-name>nose-strut-piston</object-name> Chrome effect applied-->
+    <object-name>nose-wheel</object-name>
+    <object-name>vert-stab-fins</object-name>
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>gear-texture</texture-prop>
+    <texture>Default-Gear.png</texture>
+  </animation>
+
+
+  <!-- Nosewheel effects -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Effects/ground/ground0.xml</path>
+    <offsets>
+      <x-m> 1.44734 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.79443 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Left Main effects -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Effects/ground/ground1.xml</path>
+    <offsets>
+      <x-m> 5.43334 </x-m>
+      <y-m> -1.784  </y-m>
+      <z-m>-1.81443 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Right Main effects -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Effects/ground/ground2.xml</path>
+    <offsets>
+      <x-m> 5.46145 </x-m>
+      <y-m> 1.784  </y-m>
+      <z-m>-1.81443 </z-m>
+    </offsets>
+  </model>
+
+
+  <!-- Wheel rotation / compression -->
+  <animation>
+    <type>translate</type>
+    <object-name>mainleft</object-name>
+    <object-name>brakeleft</object-name>
+    <property>gear/gear[1]/compression-ft</property>
+    <factor> 0.2 </factor>
+    <center>
+      <x-m> 5.46145  </x-m>
+      <y-m> -1.86673 </y-m>
+      <z-m> -1.5011- </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+
+  <animation>
+    <type>spin</type>
+    <object-name>mainleft</object-name>
+    <property>gear/gear[1]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 5.46145 </x-m>
+      <y-m>-1.86673 </y-m>
+      <z-m>-1.50110 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+
+  <animation>
+    <type>translate</type>
+    <object-name>mainright</object-name>
+    <object-name>brakeright</object-name>
+    <property>gear/gear[2]/compression-ft</property>
+    <factor> 0.2 </factor>
+    <center>
+      <x-m>  5.46145 </x-m>
+      <y-m>  1.86673 </y-m>
+      <z-m> -1.50110 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>mainright</object-name>
+    <property>gear/gear[2]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 5.46145 </x-m>
+      <y-m> 1.86673 </y-m>
+      <z-m>-1.50110 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<!-- Nose Compression -->
+  <animation>
+  <type>translate</type>
+  <object-name>nose-wheel</object-name>
+  <object-name>nose-strut-lower</object-name>
+  <object-name>nose-strut-piston</object-name>
+  <object-name>nose-link-lower</object-name>
+  <object-name>nose-strut-brace</object-name>
+  <object-name>nose-axle</object-name>
+    <property>gear/gear[0]/compression-ft</property>
+    <factor> .25 </factor>
+   <axis>
+   <x1-m>1.41238</x1-m>
+   <y1-m>0.0    </y1-m>
+   <z1-m>-1.02515</z1-m>
+   <x2-m>1.43297</x2-m>
+   <y2-m>0.0    </y2-m>
+   <z2-m>-0.664026</z2-m>
+  </axis>
+ </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>nose-wheel</object-name>
+    <object-name>nose-strut-upper</object-name>
+    <object-name>nose-strut-lower</object-name>
+    <object-name>nose-link-lower</object-name>
+    <object-name>nose-link-upper</object-name>
+    <object-name>nose-axle</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -50 </factor>
+   <axis>
+   <x1-m>1.41238</x1-m>
+   <y1-m>0.0    </y1-m>
+   <z1-m>-1.02515</z1-m>
+   <x2-m>1.43297</x2-m>
+   <y2-m>0.0    </y2-m>
+   <z2-m>-0.664026</z2-m>
+  </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>nose-link-upper</object-name>
+    <property>gear/gear[0]/compression-ft</property>
+    <factor> 52 </factor>
+
+    <center>
+      <x-m> 1.39502 </x-m>
+      <y-m> 0.000   </y-m>
+      <z-m>-0.807791 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>nose-link-lower</object-name>
+    <property>gear/gear[0]/compression-ft</property>
+    <factor> -57 </factor>
+    <center>
+      <x-m> 1.36479 </x-m>
+      <y-m> 0.000   </y-m>
+      <z-m>-1.06652 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>nose-strut-brace</object-name>
+    <property>gear/gear[0]/compression-ft</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 1.41352 </x-m>
+      <y-m> 0       </y-m>
+      <z-m>-1.03047 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>nose-wheel</object-name>
+    <property>gear/gear[0]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 1.38829 </x-m>
+      <y-m> 0.000   </y-m>
+      <z-m>-1.44762 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<effect>
+  <inherits-from>Aircraft/Cessna-208B/Models/Effects/chrome</inherits-from>
+    <object-name>nose-strut-piston</object-name>
+</effect>
+
+</PropertyList>
+

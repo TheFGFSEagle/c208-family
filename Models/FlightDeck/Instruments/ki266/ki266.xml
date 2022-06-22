@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>ki266.ac</path>
+
+  <animation>
+    <object-name>fond</object-name>
+    <object-name>left.100</object-name>
+    <object-name>left.10</object-name>
+    <object-name>left.1</object-name>
+    <object-name>Left.Dot</object-name>
+    <object-name>right.100</object-name>
+    <object-name>right.10</object-name>
+    <object-name>right.1</object-name>
+    <object-name>ModeSwitch</object-name>
+    <object-name>Miles</object-name>
+    <object-name>Min</object-name>
+    <object-name>Kts</object-name>
+  </animation>
+
+
+<!-- Cold and Dark -->
+
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>
+    <emission>
+      <red>   .020 </red>
+      <green> .020 </green>
+      <blue>  .020 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+        <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>ModeSwitch</object-name>
+    <object-name>left.100</object-name>
+    <object-name>left.10</object-name>
+    <object-name>left.1</object-name>
+    <object-name>Left.Dot</object-name>
+    <object-name>right.kts.100</object-name>
+    <object-name>right.kts.10</object-name>
+    <object-name>right.kts.1</object-name>
+    <object-name>right.mins.10</object-name>
+    <object-name>right.mins.1</object-name>
+    <object-name>Miles</object-name>
+    <object-name>Min</object-name>
+    <object-name>Kts</object-name>
+    <object-name>ModeSwitch</object-name>
+
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+
+<!-- Instrument Lights On -->
+  <animation>
+    <type>material</type>
+    <object-name>left.100</object-name>
+    <object-name>left.10</object-name>
+    <object-name>left.1</object-name>
+    <object-name>Left.Dot</object-name>
+    <object-name>right.kts.100</object-name>
+    <object-name>right.kts.10</object-name>
+    <object-name>right.kts.1</object-name>
+    <object-name>right.mins.10</object-name>
+    <object-name>right.mins.1</object-name>
+    <object-name>Miles</object-name>
+    <object-name>Min</object-name>
+    <object-name>Kts</object-name>
+    <object-name>ModeSwitch</object-name>
+    <emission>
+      <red>   0.028 </red>
+      <green> 0.014 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <name>Indicators</name>
+    <object-name>left.100</object-name>
+    <object-name>left.10</object-name>
+    <object-name>left.1</object-name>
+    <object-name>Left.Dot</object-name>
+    <object-name>right.kts.100</object-name>
+    <object-name>right.kts.10</object-name>
+    <object-name>right.kts.1</object-name>
+    <object-name>right.mins.10</object-name>
+    <object-name>right.mins.1</object-name>
+<!--    <object-name>Miles</object-name>
+    <object-name>Min</object-name>
+    <object-name>Kts</object-name> -->
+  </animation>
+
+  <!-- turn it off, when u/s or switched off -->
+  <animation>
+    <type>select</type>
+    <object-name>Indicators</object-name>
+    <condition>
+      <and>
+        <property>systems/electrical/on</property>
+        <property>instrumentation/dme/in-range</property>
+      </and>
+    </condition>
+  </animation>
+
+  <!-- Mode switch - in=kts out=mins -->
+  <animation>
+    <type>select</type>
+    <object-name>Min</object-name>
+    <condition>
+      <not>
+    <property>instrumentation/dme/switch-mins-kts</property>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Kts</object-name>
+    <condition>
+    <property>instrumentation/dme/switch-mins-kts</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>ModeSwitch</object-name>
+    <factor>-0.003</factor>
+    <property>instrumentation/dme/switch-mins-kts</property>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>ModeSwitch</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>instrumentation/dme/switch-mins-kts</property>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>dmebut</tooltip-id>
+        <label>DME: %s</label>
+        <property>instrumentation/dme/switch-mins-kts</property>
+        <mapping>nasal</mapping>
+        <script>
+          if (arg[0]) {
+          return "Speed to Station: " ~ sprintf("%3.0d", getprop("/instrumentation/dme/indicated-ground-speed-kt")) ~ " kts";
+          } else {
+          return "Time to Station: " ~ sprintf("%2.0d", getprop("/instrumentation/dme/indicated-time-min")) ~ " min";
+          }
+        </script>
+      </binding>
+  </hovered>
+  </animation>
+
+  <!-- distance display, always on.
+       Shows nn.n when distance is less than 100NM and
+       shows nnn when distance is greater than or equal to 100NM
+  -->
+  <animation>
+    <name>LeftDecimalDot</name>
+    <type>select</type>
+    <object-name>Left.Dot</object-name>
+    <condition>
+    <less-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>100</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <!-- blank leading zeros -->
+  <animation>
+    <name>miles_100_blank</name>
+    <type>select</type>
+    <object-name>left.100</object-name>
+    <condition>
+      <greater-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>9.99</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <name>miles_10_blank</name>
+    <type>select</type>
+    <object-name>left.10</object-name>
+    <condition>
+        <greater-than>
+          <property>instrumentation/dme/indicated-distance-nm</property>
+          <value>0.99</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+
+  <!-- left display, left digit -->
+  <animation>
+    <name>miles_100_lo</name>
+    <type>textranslate</type>
+    <object-name>left.100</object-name>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+    <step>10</step>
+    <factor>0.01</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <condition>
+      <greater-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>99.9</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <!-- left display, center digit -->
+  <animation>
+    <name>miles_10_lo</name>
+    <type>textranslate</type>
+    <object-name>left.10</object-name>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+    <step>1</step>
+    <factor>0.1</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <condition>
+      <greater-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>99.9</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <!-- left display, right digit -->
+  <animation>
+    <name>miles_1_lo</name>
+    <type>textranslate</type>
+    <object-name>left.1</object-name>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+    <step>.1</step>
+    <factor>1</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <condition>
+      <greater-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>99.9</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <!-- left display, left digit -->
+  <animation>
+    <name>miles_100_lo</name>
+    <type>textranslate</type>
+    <object-name>left.100</object-name>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+    <step>10</step>
+    <factor>0.01</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <condition>
+      <less-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>100</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <!-- left display, center digit -->
+  <animation>
+    <name>miles_10_lo</name>
+    <type>textranslate</type>
+    <object-name>left.10</object-name>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+    <step>1</step>
+    <factor>0.1</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <condition>
+      <less-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>100</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <!-- left display, right digit -->
+  <animation>
+    <name>miles_1_lo</name>
+    <type>textranslate</type>
+    <object-name>left.1</object-name>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+    <step>.1</step>
+    <factor>1</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <condition>
+      <less-than>
+        <property>instrumentation/dme/indicated-distance-nm</property>
+        <value>100</value>
+      </less-than>
+    </condition>
+  </animation>
+
+
+
+
+  <!-- Right display, showing either kts or min -->
+  <animation>
+    <name>kts_display</name>
+    <type>select</type>
+    <object-name>right.kts.100</object-name>
+    <object-name>right.kts.10</object-name>
+    <object-name>right.kts.1</object-name>
+    <condition>
+        <property>instrumentation/dme/switch-mins-kts</property>
+    </condition>
+  </animation>
+
+
+  <animation>
+    <name>kts_100</name>
+    <type>textranslate</type>
+    <object-name>right.kts.100</object-name>
+    <property>instrumentation/dme/indicated-ground-speed-kt</property>
+    <step>100</step>
+    <factor>0.001</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>kts_10</name>
+    <type>textranslate</type>
+    <object-name>right.kts.10</object-name>
+    <property>instrumentation/dme/indicated-ground-speed-kt</property>
+    <step>10</step>
+    <factor>0.01</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>kts_1</name>
+    <type>textranslate</type>
+    <object-name>right.kts.1</object-name>
+    <property>instrumentation/dme/indicated-ground-speed-kt</property>
+    <step>1</step>
+    <factor>0.1</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+
+<!-- Min Display -->
+
+  <animation>
+    <type>select</type>
+      <object-name>right.mins.10</object-name>
+      <object-name>right.mins.1</object-name>
+    <condition>
+    <not>
+        <property>instrumentation/dme/switch-mins-kts</property>
+      </not>
+    </condition>
+  </animation>
+
+
+  <animation>
+    <name>min_10</name>
+    <type>textranslate</type>
+    <object-name>right.mins.10</object-name>
+    <property>instrumentation/dme/indicated-time-min</property>
+    <step>10</step>
+    <factor>0.01</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>min_1</name>
+    <type>textranslate</type>
+    <object-name>right.mins.1</object-name>
+    <property>instrumentation/dme/indicated-time-min</property>
+    <step>1</step>
+    <factor>0.1</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">DME</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.1</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.01 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>
+

@@ -1,0 +1,26 @@
+AC3Db
+MATERIAL "PanelTan" rgb 1 1 1 amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.102 0.079 0.054  shi 50 trans 0.000
+OBJECT world
+name "Blender_exporter_v2.26__annunpanel.ac"
+kids 1
+OBJECT poly
+name "annunpanel"
+data 15
+annunpanel.mesh
+crease 40.0
+texture "annunpanel.png"
+texrep 1 1
+numvert 4
+0.00896 -0.03076 0.01098
+0.00896 0.01131 0.01098
+0.00896 -0.03076 0.08947
+0.00896 0.01131 0.08947
+numsurf 1
+SURF 0X0
+mat 0
+refs 4
+2 0.000088 0.000088
+0 0.999912 0.000088
+1 0.999912 0.523121
+3 0.000088 0.523121
+kids 0

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      coordnates.xml - ePilot                             ####
+      ####                                                          ####
+      ####    Component for Custom Cessna-208B Hud display          ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <import>
+    <path>Huds/Instruments/latitude.xml</path>
+    <x-offset>-210</x-offset>
+  </import>
+
+  <import>
+    <path>Huds/Instruments/longitude.xml</path>
+    <x-offset>210</x-offset>
+  </import>
+
+</PropertyList>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-sound.xml - ePilot                      ####
+      ####                                                          ####
+      ####    Propeller model and animations                        ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>prop.ac</path>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Prop/propblur.ac</path>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/Prop/propdisc.ac</path>
+  </model>
+
+  <!-- Prop -->
+  <animation>
+    <name>PropComplete</name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+    <object-name>blade.001</object-name>
+    <object-name>blade.002</object-name>
+    <object-name>blade.003</object-name>
+    <!--    <object-name>spinner</object-name> -->
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>blade.001</object-name>
+    <object-name>blade.002</object-name>
+    <object-name>blade.003</object-name>
+    <!--    <object-name>spinner</object-name> -->
+    <emission>
+      <red>0.015</red>
+      <green>0.015</green>
+      <blue>0.015</blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+        <property>/sim/time/sun-angle-rad</property>
+        <value>1.55</value>
+      </greater-than>
+    </condition>
+  </animation>
+  <animation>
+    <type>noshadow</type>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </animation>
+
+  <!-- Show prop/blur/disc depedning on rpm -->
+  <animation>
+    <type>select</type>
+    <object-name>propblur</object-name>
+    <condition>
+      <greater-than>
+        <!--        <property>engines/engine[0]/thruster/rpm</property> -->
+        <property>sim/multiplay/generic/float[10]</property>
+        <value>500</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <!--        <property>engines/engine[0]/thruster/rpm</property> -->
+          <property>sim/multiplay/generic/float[10]</property>
+          <value>350.000</value>
+        </greater-than>
+        <less-than>
+          <!--        <property>engines/engine[0]/thruster/rpm</property> -->
+          <property>sim/multiplay/generic/float[10]</property>
+          <value>500.001</value>
+        </less-than>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>blade.001</object-name>
+    <object-name>blade.002</object-name>
+    <object-name>blade.003</object-name>
+    <condition>
+      <less-than>
+        <!--        <property>engines/engine[0]/thruster/rpm</property> -->
+        <property>sim/multiplay/generic/float[10]</property>
+        <value>400</value>
+      </less-than>
+    </condition>
+  </animation>
+
+
+  <!-- MOTOR spin -->
+  <animation>
+    <type>spin</type>
+    <object-name>PropComplete</object-name> -->
+    <property>controls/engines/engine[0]/motor-rpm</property>
+    <factor>1</factor>
+    <condition>
+      <greater-than-equals>
+        <property>controls/engines/engine[0]/motor-rpm</property>
+        <value>0</value>
+      </greater-than-equals>
+    </condition>
+    <center>
+      <x-m>0.39094</x-m>
+      <y-m>0.000</y-m>
+      <z-m>-0.00022</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>PropComplete</object-name>
+    <!--    <property>engines/engine[0]/thruster/rpm</property> -->
+    <property>sim/multiplay/generic/float[10]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>20</ind><dep>2</dep></entry>
+      <entry><ind>50</ind><dep>10</dep></entry>
+      <entry><ind>75</ind><dep>20</dep></entry>
+      <entry><ind>109</ind><dep>80</dep></entry>
+      <entry><ind>110</ind><dep>110</dep></entry>
+      <entry><ind>1900</ind><dep>1900</dep></entry>
+    </interpolation>
+    <condition>
+      <greater-than-equals>
+        <property>engines/engine[0]/thruster/rpm</property>
+        <value>0</value>
+      </greater-than-equals>
+    </condition>
+    <center>
+      <x-m>0.39094</x-m>
+      <y-m>0.000</y-m>
+      <z-m>-0.00022</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <!-- Prop Pitch  -->
+  <animation>
+    <type>rotate</type>
+    <object-name>blade.001</object-name>
+    <!--    <property>controls/engines/engine/propeller-pitch</property> -->
+    <property>sim/multiplay/generic/float[4]</property>
+    <offset>0</offset>
+    <factor>1.0</factor>
+    <axis>
+      <x1-m>0.76982</x1-m>
+      <y1-m>-0.00642</y1-m>
+      <z1-m>-0.00022</z1-m>
+      <x2-m>0.77312</x2-m>
+      <y2-m>-0.00435</y2-m>
+      <z2-m>1.46381</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>blade.002</object-name>
+    <!--    <property>controls/engines/engine/propeller-pitch</property> -->
+    <property>sim/multiplay/generic/float[4]</property>
+    <offset>0</offset>
+    <factor>1.0</factor>
+    <axis>
+      <x1-m>0.76982</x1-m>
+      <y1-m>0.00382</y1-m>
+      <z1-m>-0.00613</z1-m>
+      <x2-m>0.77281</x2-m>
+      <y2-m>-1.26516</y2-m>
+      <z2-m>-0.73628</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>blade.003</object-name>
+    <!--    <property>controls/engines/engine/propeller-pitch</property> -->
+    <property>sim/multiplay/generic/float[4]</property>
+    <offset>0</offset>
+    <factor>1.0</factor>
+    <axis>
+      <x1-m>0.76982</x1-m>
+      <y1-m>0.00382</y1-m>
+      <z1-m>0.00569</z1-m>
+      <x2-m>0.77281</x2-m>
+      <y2-m>1.27064</y2-m>
+      <z2-m>-0.72821</z2-m>
+    </axis>
+  </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Cessna-208B/Models/Effects/chrome</inherits-from>
+    <object-name>spinner</object-name>
+    <object-name>exhaust</object-name>
+  </effect>
+  <effect>
+    <inherits-from>Aircraft/Cessna-208B/Models/Effects/model-transparent</inherits-from>
+    <object-name>propblur</object-name>
+    <object-name>propdisc</object-name>
+  </effect>
+
+</PropertyList>

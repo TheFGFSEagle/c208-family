@@ -1,0 +1,72 @@
+AC3Db
+MATERIAL "Green" rgb 0.062 0.640 0.009  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 25 trans 0.000
+MATERIAL "Blue" rgb 0.008 0.074 0.640  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 25 trans 0.000
+MATERIAL "Orange" rgb 0.800 0.063 0.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 25 trans 0.000
+OBJECT world
+name "Blender_exporter_v2.26__gearwarn.ac"
+kids 3
+OBJECT poly
+name "gearwarn"
+data 9
+Plane.004
+crease 180.0
+texture "gearwarn.png"
+texrep 1 1
+numvert 5
+0.0018 0.02924 -0.0277
+0.0018 0.02924 -0.00447
+0.0018 0.01763 -0.00447
+0.0018 0.01762 -0.0277
+0.0018 0.01762 -0.01609
+numsurf 1
+SURF 0X0
+mat 2
+refs 5
+1 0.02517 0.984131
+2 0.02517 0.509545
+4 0.499756 0.509545
+3 0.974342 0.509545
+0 0.974342 0.984131
+kids 0
+OBJECT poly
+name "land-ind"
+data 5
+Plane
+crease 180.0
+texture "gearwarn.png"
+texrep 1 1
+numvert 4
+0.0018 0.00601 -0.0277
+0.0018 0.00601 -0.01724
+0.0018 0.01762 -0.0277
+0.0018 0.01762 -0.01724
+numsurf 1
+SURF 0X0
+mat 0
+refs 4
+2 0.982581 0.489068
+3 0.555172 0.489068
+1 0.555172 0.014482
+0 0.982581 0.014482
+kids 0
+OBJECT poly
+name "water-ind"
+data 9
+Plane.005
+crease 180.0
+texture "gearwarn.png"
+texrep 1 1
+numvert 4
+0.0018 0.00601 -0.00447
+0.0018 0.00601 -0.01724
+0.0018 0.01763 -0.00447
+0.0018 0.01762 -0.01724
+numsurf 1
+SURF 0X0
+mat 1
+refs 4
+3 0.534532 0.489068
+2 0.012769 0.488888
+0 0.012932 0.014302
+1 0.534696 0.014482
+kids 0

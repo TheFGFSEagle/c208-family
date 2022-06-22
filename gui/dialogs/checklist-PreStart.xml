@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-checklist-PreStart.xml - ePilot         ####
+      ####                                                          ####
+      ####    PreStart Checklist Dialog                             ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <name>Checklist_PreStart</name>
+  <layout>vbox</layout>
+
+  <x>20</x>
+  <y>20</y>
+
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <text>
+      <label>Cessna-208 Pre-Start</label>
+    </text>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>x</legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,0,0,0,0,-8.6,359)</script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          setprop("/sim/model/marker/arrow-enabled", 0);
+        </script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.checklist_prestart.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+  <hrule>
+    <color>
+      <red>1</red>
+      <green>0.45</green>
+      <blue>0.12</blue>
+    </color>
+    <pref-height>1</pref-height>
+    <pref-width>200</pref-width>
+  </hrule>
+
+
+  <!-- Section Pre-Start -->
+
+  <group>
+    <layout>table</layout>
+
+    <!-- Red Text -->
+    <text>
+      <label>Doors Closed / Locked</label>
+      <halign>left</halign>
+      <row>0</row>
+      <col>0</col>
+      <visible>
+        <or>
+          <property>/controls/doors/CabinDoorLower</property>
+          <property>/controls/doors/CabinDoorUpper</property>
+          <property>/controls/doors/CoPilot</property>
+          <property>/controls/doors/Pilot</property>
+          <property>/controls/doors/cargodoor1</property>
+          <property>/controls/doors/cargodoor2</property>
+          <property>/controls/doors/cargodoor3</property>
+          <property>/controls/doors/cargodoor4</property>
+        </or>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+
+    <!-- Green Text -->
+    <text>
+      <label>Doors Closed / Locked</label>
+      <halign>left</halign>
+      <row>0</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <or>
+            <property>/controls/doors/CabinDoorLower</property>
+            <property>/controls/doors/CabinDoorUpper</property>
+            <property>/controls/doors/CoPilot</property>
+            <property>/controls/doors/Pilot</property>
+            <property>/controls/doors/cargodoor1</property>
+            <property>/controls/doors/cargodoor2</property>
+            <property>/controls/doors/cargodoor3</property>
+            <property>/controls/doors/cargodoor4</property>
+          </or>
+        </not>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>0</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.0,-0.45,0.47,1.2,-6,359)</script>
+      </binding>
+    </button>
+
+
+    <!-- Fuel Selectors -->
+    <!-- Red Text -->
+    <text>
+      <label>Fuel Selectors Both On</label>
+      <halign>left</halign>
+      <row>1</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <and>
+            <property>/fdm/jsbsim/propulsion/tank[0]/collector-valve</property>
+            <property>/fdm/jsbsim/propulsion/tank[1]/collector-valve</property>
+          </and>
+        </not>
+      </visible>
+      <color>
+      <red>1</red>
+      <green>0.45</green>
+      <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Fuel Selectors Both On</label>
+      <halign>left</halign>
+      <row>1</row>
+      <col>0</col>
+      <visible>
+        <and>
+          <property>/fdm/jsbsim/propulsion/tank[0]/collector-valve</property>
+          <property>/fdm/jsbsim/propulsion/tank[1]/collector-valve</property>
+        </and>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>1</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.61,-0.03,0.82,7,16.169,328.308)</script>
+      </binding>
+    </button>
+
+
+    <!-- Parking Brake -->
+    <!-- Red Text -->
+    <text>
+      <label>Parking Brake On</label>
+      <halign>left</halign>
+      <row>2</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/gear/brake-parking</property>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Parking Brake On</label>
+      <halign>left</halign>
+      <row>2</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/gear/brake-parking</property>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>2</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.1,-0.31,0.11,3.6,-28.06,352.65)</script>
+      </binding>
+    </button>
+
+
+
+    <!-- Propeller Control Lever -->
+    <!-- Red Text -->
+    <text>
+      <label>Prop Ctrl Lever Full Forward</label>
+      <halign>left</halign>
+      <row>3</row>
+      <col>0</col>
+      <visible>
+        <not-equals>
+          <property>/controls/engines/engine[0]/propeller-pitch</property>
+          <value>1</value>
+        </not-equals>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Prop Ctrl Lever Full Forward</label>
+      <halign>left</halign>
+      <row>3</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/controls/engines/engine[0]/propeller-pitch</property>
+          <value>1</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>3</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.15,0.0,0.11,3.0,-25.03,338.98)</script>
+      </binding>
+    </button>
+
+    <!-- Throttle Lever -->
+    <!-- Red Text -->
+    <text>
+      <label>Throttle Idle</label>
+      <halign>left</halign>
+      <row>4</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <equals>
+            <property>/controls/engines/engine/throttle</property>
+            <value>0</value>
+          </equals>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Throttle Idle</label>
+      <halign>left</halign>
+      <row>4</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/controls/engines/engine/throttle</property>
+          <value>0</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>4</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.18,-0.03,0.11,3.0,-25.03,338.98)</script>
+      </binding>
+    </button>
+
+    <!-- De Ice -->
+    <!-- Red Text -->
+    <text>
+      <label>De-Ice Off</label>
+      <halign>left</halign>
+      <row>5</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <and>
+            <not>
+              <property>/controls/electric/pitotheat-switch</property>
+            </not>
+            <not>
+              <property>/controls/electric/stallheat-switch</property>
+            </not>
+            <not>
+              <property>/controls/electric/winglight-switch</property>
+            </not>
+            <not>
+              <property>/controls/electric/ws1-switch</property>
+            </not>
+            <not>
+              <property>/controls/electric/ws2-switch</property>
+            </not>
+            <not>
+              <property>/controls/electric/prop-switch</property>
+            </not>
+            <not>
+              <property>/controls/electric/bootpress-switch</property>
+            </not>
+          </and>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>De-Ice Off</label>
+      <halign>left</halign>
+      <row>5</row>
+      <col>0</col>
+      <visible>
+        <and>
+          <not>
+            <property>/controls/electric/pitotheat-switch</property>
+          </not>
+          <not>
+            <property>/controls/electric/stallheat-switch</property>
+          </not>
+          <not>
+            <property>/controls/electric/winglight-switch</property>
+          </not>
+          <not>
+            <property>/controls/electric/ws1-switch</property>
+          </not>
+          <not>
+            <property>/controls/electric/ws2-switch</property>
+          </not>
+          <not>
+            <property>/controls/electric/prop-switch</property>
+          </not>
+          <not>
+            <property>/controls/electric/bootpress-switch</property>
+          </not>
+        </and>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>5</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,-0.55,0.09,6,-20.82,10.35)</script>
+      </binding>
+    </button>
+
+    <!-- Fuel Condition Lever -->
+    <!-- Red Text -->
+    <text>
+      <label>Fuel Condition Lever Cutoff</label>
+      <halign>left</halign>
+      <row>6</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <equals>
+            <property>/controls/engines/engine[0]/mixture</property>
+            <value>0</value>
+          </equals>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Fuel Condition Lever Cutoff</label>
+      <halign>left</halign>
+      <row>6</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/controls/engines/engine[0]/mixture</property>
+          <value>0</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>6</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.1,0.02,0.11,2.6,-25.03,338.98)</script>
+      </binding>
+    </button>
+
+
+    <!-- Battery Switch -->
+    <!-- Red Text -->
+    <text>
+      <label>Battery Switch On</label>
+      <halign>left</halign>
+      <row>7</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/electric/battery-switch</property>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Battery Switch On</label>
+      <halign>left</halign>
+      <row>7</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/electric/battery-switch</property>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>7</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.02,-0.75,0.11,1.0,-24.50,19.77)</script>
+      </binding>
+    </button>
+
+
+    <!-- Panel Lights -->
+    <!-- White Text -->
+    <text>
+      <label>Panel Lights as Required</label>
+      <halign>left</halign>
+      <row>8</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>8</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.98,-0.24,0.10,5.6,-25.4,349.8)</script>
+      </binding>
+    </button>
+
+    <!-- Flaps -->
+    <!-- Red Text -->
+    <text>
+      <label>Flaps Up</label>
+      <halign>left</halign>
+      <row>9</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/flight/flaps</property>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Flaps Up</label>
+      <halign>left</halign>
+      <row>9</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/flight/flaps</property>
+        </not>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>9</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.03,0.06,0.09,2.6,-25.03,338.98)</script>
+      </binding>
+    </button>
+
+    <!-- Fuel Quantity -->
+    <!-- White Text -->
+    <text>
+      <label>Fuel Quantity Check</label>
+      <halign>left</halign>
+      <row>10</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>10</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,0.2,0.48,5.6,-5.3,336.3)</script>
+      </binding>
+    </button>
+
+    <!-- Flight Controls -->
+    <!-- White Text -->
+    <text>
+      <label>Flight Controls Free and Correct</label>
+      <halign>left</halign>
+      <row>11</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <!--    <button>
+      <row>11</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.1,-0.3,0.48,3.6)</script>
+      </binding>
+    </button> -->
+
+
+    <!-- Seat Belt Sign -->
+    <!-- Red Text -->
+    <text>
+      <label>Seat Belt Sign On</label>
+      <halign>left</halign>
+      <row>12</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/electric/seatbelt-switch</property>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Seat Belt Sign On</label>
+      <halign>left</halign>
+      <row>12</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/electric/seatbelt-switch</property>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>12</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,-0.61,0.12,1.4,-20.82,10.35)</script>
+      </binding>
+    </button>
+
+    <!-- No Smoke Sign -->
+    <!-- Red Text -->
+    <text>
+      <label>No Smoking Sign On</label>
+      <halign>left</halign>
+      <row>13</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/electric/nosmoke-switch</property>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>No Smoking Sign On</label>
+      <halign>left</halign>
+      <row>13</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/electric/nosmoke-switch</property>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>13</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,-0.64,0.12,1.4,-20.82,10.35)</script>
+      </binding>
+    </button>
+
+    <!-- Transponder -->
+    <!-- Red Text -->
+    <text>
+      <label>Transponder to Standby (F12)</label>
+      <halign>left</halign>
+      <row>14</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <equals>
+            <property>/instrumentation/transponder/inputs/mode</property>
+            <value>1</value>
+          </equals>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Transponder to Standby (F12)</label>
+      <halign>left</halign>
+      <row>14</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/instrumentation/transponder/inputs/mode</property>
+          <value>1</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>14</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,0.23,0.37,3.4,-3.71,333.02)</script>
+      </binding>
+    </button>
+
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <hrule>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+      <pref-height>1</pref-height>
+      <pref-width>200</pref-width>
+    </hrule>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <pref-width>50</pref-width>
+      <pref-height>25</pref-height>
+      <legend>Close</legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,0,0,0,0,-8.6,359)</script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          setprop("/sim/model/marker/arrow-enabled", 0);
+        </script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.checklist_prestart.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+  <empty>
+    <stretch>1</stretch>
+  </empty>
+
+</PropertyList>

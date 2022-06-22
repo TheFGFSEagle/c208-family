@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      switchpanel.xml - ePilot                            ####
+      ####                                                          ####
+      ####    Lights, Anti-Ice etc switches                         ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>switchpanel.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+  <object-name>switchpanel</object-name>
+  <object-name>base</object-name>
+  <object-name>base.000</object-name>
+  <object-name>base.001</object-name>
+  <object-name>base.002</object-name>
+  <object-name>base.003</object-name>
+  <object-name>base.004</object-name>
+  <object-name>base.005</object-name>
+  <object-name>base.006</object-name>
+  <object-name>base.007</object-name>
+  <object-name>base.008</object-name>
+  <object-name>base.009</object-name>
+  <object-name>base.010</object-name>
+  <object-name>base.011</object-name>
+  <object-name>base.012</object-name>
+  <object-name>base.013</object-name>
+  <object-name>base.014</object-name>
+  <object-name>base.015</object-name>
+  <object-name>base.016</object-name>
+  <object-name>base.017</object-name>
+  <object-name>switch-bcn</object-name>
+  <object-name>switch-bootpress</object-name>
+  <object-name>switch-cabin</object-name>
+  <object-name>switch-leftldg</object-name>
+  <object-name>switch-nav</object-name>
+  <object-name>switch-nosmoke</object-name>
+  <object-name>switch-pitotheat</object-name>
+  <object-name>switch-prop</object-name>
+  <object-name>switch-rightldg</object-name>
+  <object-name>switch-seatbelt</object-name>
+  <object-name>switch-stallheat</object-name>
+  <object-name>switch-strobe</object-name>
+  <object-name>switch-taxi</object-name>
+  <object-name>switch-winglight</object-name>
+  <object-name>switch-ws1</object-name>
+  <object-name>switch-ws2</object-name>
+
+    <emission>
+      <red>   .011 </red>
+      <green> .011 </green>
+      <blue>  .011 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>controls/lighting/flashlight</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+  <type>material</type>
+  <object-name>switchpanel</object-name>
+  <object-name>base</object-name>
+  <object-name>base.000</object-name>
+  <object-name>base.001</object-name>
+  <object-name>base.002</object-name>
+  <object-name>base.003</object-name>
+  <object-name>base.004</object-name>
+  <object-name>base.005</object-name>
+  <object-name>base.006</object-name>
+  <object-name>base.007</object-name>
+  <object-name>base.008</object-name>
+  <object-name>base.009</object-name>
+  <object-name>base.010</object-name>
+  <object-name>base.011</object-name>
+  <object-name>base.012</object-name>
+  <object-name>base.013</object-name>
+  <object-name>base.014</object-name>
+  <object-name>base.015</object-name>
+  <object-name>base.016</object-name>
+  <object-name>base.017</object-name>
+  <object-name>switch-bcn</object-name>
+  <object-name>switch-bootpress</object-name>
+  <object-name>switch-cabin</object-name>
+  <object-name>switch-leftldg</object-name>
+  <object-name>switch-nav</object-name>
+  <object-name>switch-nosmoke</object-name>
+  <object-name>switch-pitotheat</object-name>
+  <object-name>switch-prop</object-name>
+  <object-name>switch-rightldg</object-name>
+  <object-name>switch-seatbelt</object-name>
+  <object-name>switch-stallheat</object-name>
+  <object-name>switch-strobe</object-name>
+  <object-name>switch-taxi</object-name>
+  <object-name>switch-winglight</object-name>
+  <object-name>switch-ws1</object-name>
+  <object-name>switch-ws2</object-name>
+
+    <emission>
+      <red>   .1 </red>
+      <green> .1 </green>
+      <blue>  .1 </blue>
+      <factor-prop>/controls/lighting/flashlight</factor-prop>
+    </emission>
+     <condition>
+     <and>
+      <property>/controls/lighting/flashlight</property>
+        <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+<!-- Instrument Lights On -->
+
+<!-- End of Emission Animations -->
+
+<!-- Instrument Lights -->
+
+<!-- Left Landing Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-leftldg</object-name>
+    <property>/controls/electric/leftldg-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00060</x-m>
+      <y-m>-0.07493</y-m>
+      <z-m> 0.00063</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-leftldg</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/leftldg-switch</property>
+      </binding>
+    </action>
+<!-- Left Landing Light Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>lft-ldg</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Left Ldg Light Switch: %s</label>
+        <property>/controls/electric/leftldg-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Taxi Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-taxi</object-name>
+    <property>/controls/electric/taxi-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00065</x-m>
+      <y-m>-0.04951</y-m>
+      <z-m> 0.00063</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-taxi</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/taxi-switch</property>
+      </binding>
+    </action>
+<!-- Taxi Light Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>taxi-light</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Taxi Light Switch: %s</label>
+        <property>/controls/electric/taxi-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Right Landing Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-rightldg</object-name>
+    <property>/controls/electric/rightldg-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00053</x-m>
+      <y-m>-0.02487</y-m>
+      <z-m> 0.00063</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-rightldg</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/rightldg-switch</property>
+      </binding>
+    </action>
+<!-- Right Landing Light Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>rght-ldg</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Right Ldg Light Switch: %s</label>
+        <property>/controls/electric/rightldg-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Strobe Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-strobe</object-name>
+    <property>/controls/electric/strobe-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00058</x-m>
+      <y-m>-0.07411</y-m>
+      <z-m>-0.03000</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-strobe</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/strobe-switch</property>
+      </binding>
+    </action>
+<!-- Strobe Light Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>strobe</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Strobe Light Switch: %s</label>
+        <property>/controls/electric/strobe-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Nav Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-nav</object-name>
+    <property>/controls/electric/nav-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00065</x-m>
+      <y-m>-0.04951</y-m>
+      <z-m>-0.03004</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-nav</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/nav-switch</property>
+      </binding>
+    </action>
+<!-- Nav Lights Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>navlights</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Nav Lights Switch: %s</label>
+        <property>/controls/electric/nav-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Beacon Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-bcn</object-name>
+    <property>/controls/electric/bcn-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00053</x-m>
+      <y-m>-0.02487</y-m>
+      <z-m>-0.03006</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-bcn</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/bcn-switch</property>
+      </binding>
+    </action>
+<!-- Beacon Light Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>beacon</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Beacon Switch: %s</label>
+        <property>/controls/electric/bcn-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- No Smoke Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-nosmoke</object-name>
+    <property>/controls/electric/nosmoke-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00054</x-m>
+      <y-m>-0.07383</y-m>
+      <z-m>-0.05999</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-nosmoke</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/nosmoke-switch</property>
+      </binding>
+    </action>
+<!-- No Smoke Sign Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>nosmoke</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>No Smoking Switch: %s</label>
+        <property>/controls/electric/nosmoke-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Seat Belt -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-seatbelt</object-name>
+    <property>/controls/electric/seatbelt-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00065</x-m>
+      <y-m>-0.04951</y-m>
+      <z-m>-0.05995</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-seatbelt</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/seatbelt-switch</property>
+      </binding>
+    </action>
+<!-- Seatbelt Sign Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>seatbelt</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Seatbelt Sign Switch: %s</label>
+        <property>/controls/electric/seatbelt-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Cabin Light -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-cabin</object-name>
+    <property>/controls/lighting/flashlight</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00076</x-m>
+      <y-m>-0.02498</y-m>
+      <z-m>-0.05990</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-cabin</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/lighting/flashlight</property>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/cabin-switch</property>
+      </binding>
+    </action>
+<!-- Cabin Lights Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>cabin-lights</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Cabin Lights: %s</label>
+        <property>/controls/lighting/flashlight</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Pitot Heat -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-pitotheat</object-name>
+    <property>/controls/electric/pitotheat-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00046</x-m>
+      <y-m>-0.07738</y-m>
+      <z-m>-0.08962</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-pitotheat</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/pitotheat-switch</property>
+      </binding>
+    </action>
+<!-- Pitot Heat Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>pitot-heat</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Pitot Heat Switch: %s</label>
+        <property>/controls/electric/pitotheat-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Stall Heat -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-stallheat</object-name>
+    <property>/controls/electric/stallheat-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00046</x-m>
+      <y-m>-0.05301</y-m>
+      <z-m>-0.08962</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-stallheat</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/stallheat-switch</property>
+      </binding>
+    </action>
+<!-- Stall Warn Heat Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>stallwarn-heat</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Stall Warning Heat Switch: %s</label>
+        <property>/controls/electric/stallheat-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+
+<!-- Wing Light DeIce -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-winglight</object-name>
+    <property>/controls/electric/winglight-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00046</x-m>
+      <y-m>-0.02832</y-m>
+      <z-m>-0.08962</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-winglight</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/winglight-switch</property>
+      </binding>
+    </action>
+<!-- Wing Light DeIce Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>winglight-deice</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Wing Light DeIce Switch: %s</label>
+        <property>/controls/electric/winglight-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Windscreen DeIce 1 -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-ws1</object-name>
+    <property>/controls/electric/ws1-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00046</x-m>
+      <y-m>-0.00184</y-m>
+      <z-m>-0.08962</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-ws1</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/ws1-switch</property>
+      </binding>
+    </action>
+<!-- Windscreen DeIce 1 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>windscreen1-deice</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Windscreen DeIce Switch 1: %s</label>
+        <property>/controls/electric/ws1-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Windscreen DeIce 2 -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-ws2</object-name>
+    <property>/controls/electric/ws2-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00046</x-m>
+      <y-m> 0.02265</y-m>
+      <z-m>-0.08962</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-ws2</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/ws2-switch</property>
+      </binding>
+    </action>
+<!-- Windscreen DeIce 2 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>windscreen2-deice</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Windscreen DeIce Switch 2: %s</label>
+        <property>/controls/electric/ws2-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Prop Anti-ice -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-prop</object-name>
+    <property>/controls/electric/prop-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00046</x-m>
+      <y-m> 0.04717</y-m>
+      <z-m>-0.08962</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-prop</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/prop-switch</property>
+      </binding>
+    </action>
+<!-- Prop Anti-Ice Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>prop-anti-ice</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>Prop Anti-Ice Switch: %s</label>
+        <property>/controls/electric/prop-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+<!-- Deice Boot Pressure -->
+  <animation>
+    <type>rotate</type>
+    <object-name>switch-bootpress</object-name>
+    <property>/controls/electric/bootpress-switch</property>
+    <factor>-40</factor>
+    <axis>
+      <x> 0</x>
+      <y> 1</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.00046</x-m>
+      <y-m> 0.07159</y-m>
+      <z-m>-0.08962</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>switch-bootpress</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/electric/bootpress-switch</property>
+      </binding>
+    </action>
+<!-- De-Ice Boot Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>deice-boot</tooltip-id>
+        <mapping>on-off</mapping>
+        <label>DeIce Boot Pressure Switch: %s</label>
+        <property>/controls/electric/bootpress-switch</property>
+      </binding>
+    </hovered>
+  </animation>
+
+</PropertyList>
+

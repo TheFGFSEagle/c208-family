@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  ##################################################################
+      ####      gearcontrol.xml - ePilot                            ####
+      ####                                                          ####
+      ####    Retractable Float Gear Control and Indicator          ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>gearcontrol.ac</path>
+
+  <animation>
+    <object-name>face</object-name>
+    <object-name>bezel</object-name>
+    <object-name>warn-ind</object-name>
+    <object-name>noseup1</object-name>
+    <object-name>noseup2</object-name>
+    <object-name>mainup1</object-name>
+    <object-name>mainup2</object-name>
+    <object-name>nosedn1</object-name>
+    <object-name>nosedn2</object-name>
+    <object-name>maindn1</object-name>
+    <object-name>maindn2</object-name>
+    <object-name>pump</object-name>
+    <object-name>Gearswitch</object-name>
+    <object-name>Dim.bezel</object-name>
+    <object-name>Dim.toggle</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>face</object-name>
+    <object-name>bezel</object-name>
+    <object-name>warn-ind</object-name>
+    <object-name>noseup1</object-name>
+    <object-name>noseup2</object-name>
+    <object-name>mainup1</object-name>
+    <object-name>mainup2</object-name>
+    <object-name>nosedn1</object-name>
+    <object-name>nosedn2</object-name>
+    <object-name>maindn1</object-name>
+    <object-name>maindn2</object-name>
+    <object-name>pump</object-name>
+    <object-name>Gearswitch</object-name>
+    <object-name>Dim.bezel</object-name>
+    <object-name>Dim.toggle</object-name>
+    <object-name>LabelText</object-name>
+    <condition>
+      <property>/sim/model/floats</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>noseup1</object-name>
+    <object-name>noseup2</object-name>
+    <object-name>mainup1</object-name>
+    <object-name>mainup2</object-name>
+    <object-name>nosedn1</object-name>
+    <object-name>nosedn2</object-name>
+    <object-name>maindn1</object-name>
+    <object-name>maindn2</object-name>
+    <object-name>pump</object-name>
+    <condition>
+      <property>/systems/electrical/on</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>noseup1</object-name>
+    <object-name>noseup2</object-name>
+    <object-name>mainup1</object-name>
+    <object-name>mainup2</object-name>
+    <object-name>nosedn1</object-name>
+    <object-name>nosedn2</object-name>
+    <object-name>maindn1</object-name>
+    <object-name>maindn2</object-name>
+    <object-name>pump</object-name>
+    <object-name>Gearswitch</object-name>
+    <condition>
+      <property>/systems/electrical/on</property>
+    </condition>
+    <emission>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+      <red>   0.50 </red>
+      <green> 0.25 </green>
+      <blue>  0.25 </blue>
+    </emission>
+  </animation>
+
+  <!--  Gear Down - land -->
+  <animation>
+    <type>select</type>
+    <object-name>nosedn1</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[3]/position-norm</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>nosedn2</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[4]/position-norm</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>maindn1</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[5]/position-norm</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>maindn2</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[6]/position-norm</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <!--  Gear Up - water -->
+  <animation>
+    <type>select</type>
+    <object-name>noseup1</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[3]/position-norm</property>
+        <value>0</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>noseup2</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[4]/position-norm</property>
+        <value>0</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>mainup1</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[5]/position-norm</property>
+        <value>0</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>mainup2</object-name>
+    <condition>
+      <equals>
+        <property>gear/gear[6]/position-norm</property>
+        <value>0</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <!-- in transit -->
+  <animation>
+    <type>select</type>
+    <object-name>pump</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <property>gear/gear[5]/position-norm</property>
+          <value> 0 </value>
+        </greater-than>
+        <less-than>
+          <property>gear/gear[5]/position-norm</property>
+          <value> 1 </value>
+        </less-than>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Gearswitch</object-name>
+    <property>controls/gear/gear-down</property>
+    <factor> 180 </factor>
+    <offset-deg> 180 </offset-deg>
+
+    <axis>
+      <x>  1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+    <center>
+      <x-m>  0.00464 </x-m>
+      <y-m>  0.01521 </y-m>
+      <z-m> -0.01753 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Gearswitch</object-name>
+    <action>
+      <button> 0 </button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/gear/gear-down</property>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Label Text -->
+
+  <text>
+    <name>LabelText</name>
+    <type type="string">literal</type>
+    <text type="string">Float Gear Control &amp; Warning Panel</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.015</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> 0.02</x-m>
+      <y-m> 0.0 </y-m>
+      <z-m> -0.05 </z-m>
+    </offsets>
+  </text>
+
+  <animation>
+    <type>material</type>
+    <object-name>LabelText</object-name>
+    <emission>
+      <red>0.7</red>
+      <green>0.7</green>
+      <blue>0.7</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LabelText</object-name>
+    <condition>
+      <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+</PropertyList>

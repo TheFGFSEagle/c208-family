@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-at-dialog.xml - ePilot                  ####
+      ####                                                          ####
+      ####    Autothrottle Dialog                                   ####
+      ################################################################## -->
+
+
+<PropertyList>
+  <name>autothrottle</name>
+  <layout>vbox</layout>
+
+  <x>20</x>
+  <y>20</y>
+
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>1</stretch></empty>
+
+    <text>
+      <label>208 AutoThrottle</label>
+    </text>
+
+    <empty><stretch>1</stretch></empty>
+
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend></legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+    <hrule/>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>1</stretch></empty>
+
+    <text>
+      <label>A/T</label>
+    </text>
+    <input>
+      <pref-width>38</pref-width>
+
+      <property>/autopilot/settings/target-speed-kt</property>
+      <live>true</live>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+    </input>
+    <checkbox>
+      <label>Enable</label>
+      <property>/autopilot/internal/SPD</property>
+      <live>true</live>
+      <binding>
+        <command>property-toggle</command>
+        <property>/autopilot/internal/SPD</property>
+      </binding>
+    </checkbox>
+
+    <empty><stretch>1</stretch></empty>
+  </group>
+
+</PropertyList>

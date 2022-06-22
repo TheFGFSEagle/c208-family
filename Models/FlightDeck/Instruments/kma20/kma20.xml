@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <!--
+  Bendix/King KMA20 Marker/Audio panel
+
+  Created by Torsten Dreyer, December 2008
+
+  -->
+
+  <params>
+    <outer>instrumentation/marker-beacon/outer</outer>
+    <middle>instrumentation/marker-beacon/middle</middle>
+    <inner>instrumentation/marker-beacon/inner</inner>
+    <test>instrumentation/kma20/test</test>
+    <auto>instrumentation/kma20/auto</auto>
+    <com1>instrumentation/kma20/com1</com1>
+    <com2>instrumentation/kma20/com2</com2>
+    <nav1>instrumentation/kma20/nav1</nav1>
+    <nav2>instrumentation/kma20/nav2</nav2>
+    <adf>instrumentation/kma20/adf</adf>
+    <dme>instrumentation/kma20/dme</dme>
+    <mkr>instrumentation/kma20/mkr</mkr>
+    <sens>instrumentation/kma20/sens</sens>
+    <knob>instrumentation/kma20/knob</knob>
+  </params>
+
+  <path>kma20.ac</path>
+
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+  <object-name>A</object-name>
+  <object-name>M</object-name>
+  <object-name>O</object-name>
+  <object-name>SENS</object-name>
+  <object-name>NAV2</object-name>
+  <object-name>NAV1</object-name>
+  <object-name>MKR</object-name>  
+  <object-name>DME</object-name>
+  <object-name>COM2</object-name>
+  <object-name>COM1</object-name>
+  <object-name>AUTO</object-name>
+  <object-name>ADF</object-name>
+    <emission>
+      <red>   .025 </red>
+      <green> .025 </green>
+      <blue>  .025 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+	    <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+  <object-name>Chassis</object-name>
+  <object-name>Knob</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+	    <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+  <type>material</type>
+  <object-name>Chassis</object-name>
+  <object-name>Knob</object-name>
+    <emission>
+      <red>   0.028 </red>
+      <green> 0.014 </green>
+      <blue>  0.007 </blue>
+    <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+<!-- End of Emission Animations -->
+
+  <animation>
+    <type>material</type>
+    <object-name>O</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+      <factor-prop alias="../../../params/outer"/>
+      <offset-prop alias="../../../params/test"/>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>M</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+      <factor-prop alias="../../../params/middle"/>
+      <offset-prop alias="../../../params/test"/>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>A</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+      <factor-prop alias="../../../params/inner"/>
+      <offset-prop alias="../../../params/test"/>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AUTO</object-name>
+    <property alias="../../params/auto"/>
+    <factor> 30 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>AUTOUp</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/auto"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>AUTODown</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/auto"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>COM1</object-name>
+    <property alias="../../params/com1"/>
+    <factor> 30 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>COM1Up</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/com1"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>COM1Down</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/com1"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>COM2</object-name>
+    <property alias="../../params/com2"/>
+    <factor> 30 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>COM2Up</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/com2"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>COM2Down</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/com2"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>NAV1</object-name>
+    <property alias="../../params/nav1"/>
+    <factor>30</factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>NAV1Up</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/nav1"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>NAV1Down</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/nav1"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>NAV2</object-name>
+    <property alias="../../params/nav2"/>
+    <factor>30</factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>NAV2Up</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/nav2"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>NAV2Down</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/nav2"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>ADF</object-name>
+    <property alias="../../params/adf"/>
+    <factor>30</factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>ADFUp</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/adf"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>ADFDown</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/adf"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>DME</object-name>
+    <property alias="../../params/dme"/>
+    <factor>30</factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>DMEUp</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/dme"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>DMEDown</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/dme"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>MKR</object-name>
+    <property alias="../../params/mkr"/>
+    <factor>30</factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>MKRUp</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/mkr"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>MKRDown</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/mkr"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>SENS</object-name>
+    <property alias="../../params/sens"/>
+    <factor>30</factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+    <center>
+      <x-m> 0.01316290 </x-m>
+      <y-m> 0.00000000 </y-m>
+      <z-m> 0.00714385 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>SENSUp</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/sens"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>SENSDown</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/sens"/>
+        <step>1</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+      <mod-up>
+        <binding>
+          <condition>
+            <equals>
+              <property alias="../../../../../../../params/sens"/>
+              <value>1</value>
+            </equals>
+          </condition>
+          <command>property-assign</command>
+          <property alias="../../../../../params/sens"/>
+          <value>0</value>
+        </binding>
+        <binding>
+          <condition>
+            <equals>
+              <property alias="../../../../../../../params/sens"/>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>property-assign</command>
+          <property alias="../../../../../params/test"/>
+          <value>0</value>
+        </binding>
+      </mod-up>
+      <binding>
+        <condition>
+          <greater-than>
+            <property alias="../../../../../../params/sens"/>
+            <value>-1</value>
+          </greater-than>
+        </condition>
+        <command>property-assign</command>
+        <property alias="../../../../params/test"/>
+        <property alias="../../../../params/sens"/>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Knob</object-name>
+    <property alias="../../params/knob"/>
+    <factor> -30 </factor>
+    <center>
+      <x-m>  0.025 </x-m>
+      <y-m> -0.061 </y-m>
+      <z-m>  0.006 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>MICLeft</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/knob"/>
+        <step> -1 </step>
+        <min>  -1 </min>
+        <max>   1 </max>
+        <wrap>  0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>MICRight</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property alias="../../../../params/knob"/>
+        <step> 1 </step>
+        <min> -1 </min>
+        <max>  1 </max>
+        <wrap> 0 </wrap>
+      </binding>
+    </action>
+  </animation>
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">Marker/Audio Control</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.2</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.03 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>

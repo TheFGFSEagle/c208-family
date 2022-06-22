@@ -1,0 +1,992 @@
+<?xml version="1.0"?>
+<!--
+    KFC-200 FlightDirector / Autopilot Controller
+    Syd Adams
+-->
+
+<PropertyList>
+
+    <path>fd-control.ac</path>
+
+<!-- Cold and Dark Unlighted -->
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+  <object-name>FDbase</object-name>
+    <emission>
+      <red>   .0008 </red>
+      <green> .0008 </green>
+      <blue>  .0008 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+    <animation>
+        <type>material</type>
+        <object-name>FDbase</object-name>
+        <emission>
+            <red>0.014</red>
+            <green>0.007</green>
+            <blue>0.00035</blue>
+            <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+        </emission>
+    </animation>
+
+<!-- End of Emission Animations -->
+
+<!-- Pitch Down -->
+    <animation>
+        <type>pick</type>
+        <object-name>Pitch.down</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+              <condition>
+                <or>
+                  <property>/autopilot/internal/FMS</property>
+                  <property>/autopilot/internal/VNAV-ALT</property>
+                </or>
+              </condition>
+              <command>property-adjust</command>
+              <property>/autopilot/settings/target-altitude-ft</property>
+              <step>-100.0</step>
+              <wrap>false</wrap>
+            </binding>
+            <binding>
+              <condition>
+                <and>
+                  <property>/autopilot/internal/CMD</property>
+                  <not>
+                    <property>/autopilot/internal/VNAV-ALT</property>
+                  </not>
+                  <not>
+                    <property>/autopilot/internal/FMS</property>
+                  </not>
+                </and>
+              </condition>
+              <command>property-adjust</command>
+              <property>/autopilot/internal/last-pitch</property>
+              <step>-0.5</step>
+              <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Down</tooltip-id>
+            <label>Reduce Pitch: %2.1f</label>
+            <property>/autopilot/internal/last-pitch</property>
+            <condition>
+            <or>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <not>
+                  <property>/autopilot/internal/FMS</property>
+                </not>
+                <not>
+                  <property>/autopilot/internal/VNAV-ALT</property>
+                </not>
+              </and>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <property>/autopilot/internal/APPR</property>
+              </and>
+            </or>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Down</tooltip-id>
+            <label>Reduce ALT: %5.0f</label>
+            <property>/autopilot/settings/target-altitude-ft</property>
+            <condition>
+              <or>
+                <property>/autopilot/internal/VNAV-ALT</property>
+                <property>/autopilot/internal/FMS</property>
+              </or>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Down</tooltip-id>
+            <label>AP Not Engaged</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Down</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+<!-- Pitch Up -->
+    <animation>
+        <type>pick</type>
+        <object-name>Pitch.up</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+              <condition>
+                <or>
+                  <property>/autopilot/internal/FMS</property>
+                  <property>/autopilot/internal/VNAV-ALT</property>
+                </or>
+              </condition>
+              <command>property-adjust</command>
+              <property>/autopilot/settings/target-altitude-ft</property>
+              <step>100.0</step>
+              <wrap>false</wrap>
+            </binding>
+            <binding>
+              <condition>
+                <and>
+                  <property>/autopilot/internal/CMD</property>
+                  <not>
+                    <property>/autopilot/internal/VNAV-ALT</property>
+                  </not>
+                  <not>
+                    <property>/autopilot/internal/FMS</property>
+                  </not>
+                </and>
+              </condition>
+              <command>property-adjust</command>
+              <property>/autopilot/internal/last-pitch</property>
+              <step>0.5</step>
+              <wrap>false</wrap>
+            </binding>
+        </action>
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Up</tooltip-id>
+            <label>Increase Pitch: %2.1f</label>
+            <property>/autopilot/internal/last-pitch</property>
+            <condition>
+            <or>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <not>
+                  <property>/autopilot/internal/FMS</property>
+                </not>
+                <not>
+                  <property>/autopilot/internal/VNAV-ALT</property>
+                </not>
+              </and>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <property>/autopilot/internal/APPR</property>
+              </and>
+            </or>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Up</tooltip-id>
+            <label>Increase ALT: %5.0f</label>
+            <property>/autopilot/settings/target-altitude-ft</property>
+            <condition>
+              <or>
+                <property>/autopilot/internal/VNAV-ALT</property>
+                <property>/autopilot/internal/FMS</property>
+              </or>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Up</tooltip-id>
+            <label>AP Not Engaged</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-Pitch-Up</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>HDG.btn</object-name>
+        <condition>
+              <property>/autopilot/internal/CMD</property>
+        </condition>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/internal/LNAV-HDG</property>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/FMS</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-NAV1</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-BC</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/APPR</property>
+                <value>false</value>
+            </binding>
+        </action>
+    </animation>
+
+<!-- HDG Button Tooltip -->
+    <animation>
+        <type>pick</type>
+        <object-name>HDG.btn</object-name>
+        <action></action>
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-HDG</tooltip-id>
+            <label>HDG Not Active</label>
+            <condition>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <not>
+                  <property>/autopilot/internal/LNAV-HDG</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-HDG</tooltip-id>
+            <label>AP Not Engaged</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-HDG</tooltip-id>
+            <label>Heading Mode: %3.0f</label>
+            <property>/autopilot/settings/heading-bug-deg</property>
+            <condition>
+              <property>/autopilot/internal/LNAV-HDG</property>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-HDG</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>FD.btn</object-name>
+    <condition>
+          <property>/autopilot/internal/CMD</property>
+    </condition>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/internal/FMS</property>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-HDG</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-NAV1</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-BC</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/APPR</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/VNAV-ALT</property>
+                <value>false</value>
+            </binding>
+        </action>
+    </animation>
+
+<!-- FD Button Tooltip -->
+    <animation>
+        <type>pick</type>
+        <object-name>FD.btn</object-name>
+        <action></action>
+
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-FD</tooltip-id>
+            <label>FD Not Active</label>
+            <condition>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <not>
+                  <property>/autopilot/internal/FMS</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-FD</tooltip-id>
+            <label>AP Not Engaged</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-FD</tooltip-id>
+            <label>FD Mode: Active</label>
+<!--            <property>/autopilot/settings/target-altitude-ft</property> -->
+            <condition>
+              <property>/autopilot/internal/FMS</property>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-FD</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>/systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+
+<!-- ALT Button -->
+    <animation>
+        <type>pick</type>
+        <object-name>ALT.btn</object-name>
+    <condition>
+          <property>/autopilot/internal/CMD</property>
+    </condition>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/internal/VNAV-ALT</property>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/FMS</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/APPR</property>
+                <value>false</value>
+            </binding>
+        </action>
+    </animation>
+
+<!-- ALT Button Tooltip -->
+    <animation>
+        <type>pick</type>
+        <object-name>ALT.btn</object-name>
+        <action></action>
+
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-ALT</tooltip-id>
+            <label>ALT Not Active</label>
+            <condition>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <not>
+                  <property>/autopilot/internal/VNAV-ALT</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-ALT</tooltip-id>
+            <label>AP Not Engaged</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-ALT</tooltip-id>
+            <label>ALT Mode: %5.0f</label>
+            <property>/autopilot/settings/target-altitude-ft</property>
+            <condition>
+              <property>/autopilot/internal/VNAV-ALT</property>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-ALT</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>/systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+
+    <animation>
+        <type>pick</type>
+        <object-name>NAV.btn</object-name>
+    <condition>
+          <property>/autopilot/internal/CMD</property>
+    </condition>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/internal/LNAV-NAV1</property>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-HDG</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/FMS</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-BC</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/APPR</property>
+                <value>false</value>
+            </binding>
+        </action>
+    </animation>
+
+<!-- NAV Button Tooltip -->
+    <animation>
+        <type>pick</type>
+        <object-name>NAV.btn</object-name>
+        <action></action>
+
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-NAV</tooltip-id>
+            <label>NAV Not Active</label>
+            <condition>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <not>
+                  <property>/autopilot/internal/LNAV-NAV1</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-NAV</tooltip-id>
+            <label>AP Not Engaged</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-NAV</tooltip-id>
+            <label>NAV Mode: %3.0f</label>
+            <property>/instrumentation/nav[0]/radials/selected-deg</property>
+            <condition>
+              <property>/autopilot/internal/LNAV-NAV1</property>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-NAV</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>/systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+<!--    <animation>
+        <type>pick</type>
+        <object-name>BC.btn</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>
+                    if(getprop("/instrumentation/kfc200/fdmode") != "bc"){
+                    setprop("/instrumentation/kfc200/fdmode","bc");}
+                    else{setprop("/instrumentation/kfc200/fdmode","off");}
+                </script>
+            </binding>
+        </action>
+    </animation> -->
+
+<!-- BC Button Tooltip -->
+    <animation>
+        <type>pick</type>
+        <object-name>BC.btn</object-name>
+        <action></action>
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-NAV</tooltip-id>
+            <label>BC Not Implemented</label>
+          </binding>
+        </hovered>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>APPR.btn</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/internal/APPR</property>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/FMS</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/VNAV-ALT</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-NAV1</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-HDG</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-BC</property>
+                <value>false</value>
+            </binding>
+        </action>
+    </animation>
+
+<!-- APPR Button Tooltip -->
+    <animation>
+        <type>pick</type>
+        <object-name>APPR.btn</object-name>
+        <action></action>
+
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-APPR</tooltip-id>
+            <label>APPR Not Active</label>
+            <condition>
+              <and>
+                <property>/autopilot/internal/CMD</property>
+                <not>
+                  <property>/autopilot/internal/APPR</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-APPR</tooltip-id>
+            <label>AP Not Engaged</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-APPR</tooltip-id>
+            <label>APPR Mode: Active</label>
+<!--            <property>/instrumentation/nav[0]/radials/selected-deg</property> -->
+            <condition>
+              <property>/autopilot/internal/APPR</property>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-APPR</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>/systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>APtoggle</object-name>
+        <property>/autopilot/internal/CMD</property>
+        <factor>-40</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>0.002</x-m>
+            <y-m>0.046</y-m>
+            <z-m>0.002</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>APtoggle</object-name>
+        <action>
+            <button>0</button>
+            <button>1</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/autopilot/internal/CMD</property>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/APPR</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-NAV1</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-HDG</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-BC</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/FMS</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/VNAV-ALT</property>
+                <value>0</value>
+            </binding>
+         </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>APtoggle</object-name>
+        <action>
+            <button>3</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/CMD</property>
+                <value>true</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/APPR</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-NAV1</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-HDG</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-BC</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/FMS</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/VNAV-ALT</property>
+                <value>0</value>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>APtoggle</object-name>
+        <action>
+            <button>4</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/CMD</property>
+                <value>false</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/APPR</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-NAV1</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-HDG</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/LNAV-BC</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/FMS</property>
+                <value>0</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/autopilot/internal/VNAV-ALT</property>
+                <value>0</value>
+            </binding>
+        </action>
+    </animation>
+
+<!-- AP Toggle Tooltip -->
+    <animation>
+        <type>pick</type>
+        <object-name>APtoggle</object-name>
+        <action></action>
+
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-toggle</tooltip-id>
+            <label>AP: Off</label>
+            <condition>
+              <and>
+                <property>/systems/electrical/on</property>
+                <not>
+                  <property>/autopilot/internal/CMD</property>
+                </not>
+              </and>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-toggle</tooltip-id>
+            <label>AP: Active</label>
+            <condition>
+              <property>/autopilot/internal/CMD</property>
+            </condition>
+          </binding>
+
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>AP-toggle</tooltip-id>
+            <label>No Power - Inactive</label>
+            <condition>
+              <not>
+                <property>/systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">A/P Control</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.1</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> -0.01 </y-m>
+    <z-m> 0.003 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>

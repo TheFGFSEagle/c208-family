@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      quadrant.xml - ePilot                               ####
+      ####                                                          ####
+      ####    Throttle quqadrant model and animations               ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>208Bquadrant.ac</path>
+
+    <!-- Cold and Dark Unlighted -->
+
+  <animation>
+    <type>material</type>
+    <object-name>TrimElevator</object-name>
+    <object-name>TrimRudder</object-name>
+    <object-name>Pedestal</object-name>
+    <object-name>Throttle</object-name>
+    <object-name>PropPitch</object-name>
+    <object-name>Mixture</object-name>
+    <object-name>Flaps</object-name>
+    <emission>
+      <red>   .011 </red>
+      <green> .011 </green>
+      <blue>  .011 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+        <property>/sim/time/sun-angle-rad</property>
+        <value>1.55</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+
+  <!-- Cold and Dark Lighted -->
+
+  <!-- Instrument Lights On -->
+
+  <!-- End of Emission Animations -->
+
+
+  <!-- ePower -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>ePower</object-name>
+    <property>controls/engines/engine[0]/ePower</property>
+    <offset-deg>10</offset-deg>
+    <factor>60</factor>
+    <center>
+      <x-m> 0.06971 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.10837 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>ePower</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>1</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/engines/engine[0]/ePower</property>
+      </binding>
+    </action>
+  </animation>
+
+
+
+
+  <!-- Throttle -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Throttle</object-name>
+    <property>controls/engines/engine[0]/throttle</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep> 11 </dep></entry>
+      <entry><ind> 0.853 </ind><dep> 50 </dep></entry>
+      <entry><ind> 1.000 </ind><dep> 50 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.04887 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.09476 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+    <condition>
+      <not>
+        <property>/engines/engine/reversed</property>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Throttle</object-name>
+    <property>controls/engines/engine/throttle</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 0.04887 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.09476 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> 1 </y>
+      <z>  0 </z>
+    </axis>
+    <condition>
+      <property>/engines/engine/reversed</property>
+    </condition>
+  </animation>
+
+  <!-- Prop Pitch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>PropPitch</object-name>
+    <property>controls/engines/engine/propeller-pitch</property>
+    <factor>50</factor>
+    <center>
+      <x-m> 0.04887 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.09476 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Fuel Condition -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Mixture</object-name>
+    <property>controls/engines/engine/mixture</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> 0.04887 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.09476 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Flaps -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Flaps</object-name>
+    <property>controls/flight/flaps</property>
+    <factor>75</factor>
+    <center>
+      <x-m> 0.04887 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.09476 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Elevator trim -->
+  <animation>
+    <type>rotate</type>
+    <object-name>TrimElevator</object-name>
+    <property>controls/flight/elevator-trim</property>
+    <factor>-360</factor>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+
+    <center>
+      <x-m>0.06395</x-m>
+      <y-m>-0.08579</y-m>
+      <z-m>0.09281</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>TrimElevator</object-name>
+    <visible>true</visible>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/elevator-trim</property>
+        <step>0.01</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/elevator-trim</property>
+        <step>0.0002</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/elevator-trim</property>
+        <step>-0.01</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/elevator-trim</property>
+        <step>-0.0002</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <!--  Rudder Trim -->
+  <animation>
+    <type>rotate</type>
+    <object-name>TrimRudder</object-name>
+    <property>controls/flight/rudder-trim</property>
+    <factor>-360</factor>
+    <axis>
+      <x1-m> 0.09427</x1-m>
+      <y1-m> 0.0021</y1-m>
+      <z1-m>-0.00509</z1-m>
+      <x2-m> 0.09497</x2-m>
+      <y2-m> 0.0021</y2-m>
+      <z2-m> 0.0017</z2-m>
+    </axis>
+    <center>
+      <x-m>0.09462</x-m>
+      <y-m>0.0021</y-m>
+      <z-m>-0.0017</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>TrimRudder</object-name>
+    <visible>true</visible>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/rudder-trim</property>
+        <step>-0.01</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/rudder-trim</property>
+        <step>-0.0002</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/rudder-trim</property>
+        <step>0.01</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.004</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/flight/rudder-trim</property>
+        <step>0.0002</step>
+        <min>-1</min>
+        <max>1</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- Fuel Shutoff Knob -->
+  <animation>
+    <type>translate</type>
+    <object-name>FuelShutoff</object-name>
+    <property>controls/doors/FuelShutoff</property>
+    <factor>0.015</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <!-- Pick Fuel Shutoff -->
+  <animation>
+    <type>pick</type>
+    <object-name>FuelShutoff</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/FuelShutoff",0.25);</script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          setprop("/fdm/jsbsim/propulsion/tank[2]/priority", abs(getprop("/fdm/jsbsim/propulsion/tank[2]/priority")-1));
+        </script>
+      </binding>
+    </action>
+
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>FuelShutoff</tooltip-id>
+        <label>Fuel Shutoff: %s</label>
+        <property>/controls/doors/FuelShutoff</property>
+        <mapping>on-off</mapping>
+      </binding>
+    </hovered>
+  </animation>
+
+</PropertyList>
+
+

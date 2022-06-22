@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B.xml - ePilot                            ####
+      ####                                                          ####
+      ####    Custom Cessna-208B Hud display                        ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <name>Cessna-208B Hud</name>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/slip.xml</path>
+    <y-offset>-195</y-offset>
+  </import>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/coordinates.xml</path>
+    <y-offset>190</y-offset>
+  </import>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/compass.xml</path>
+    <y-offset>190</y-offset>
+  </import>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/controls.xml</path>
+  </import>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/parameters.xml</path>
+  </import>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/autopilot.xml</path>
+    <x-offset>-90</x-offset>
+    <y-offset>160</y-offset>
+  </import>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/route.xml</path>
+    <x-offset>-300</x-offset>
+    <y-offset>160</y-offset>
+  </import>
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/engine.xml</path>
+    <x-offset>-305</x-offset>
+    <y-offset>-170</y-offset>
+  </import>
+
+
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/ladder.xml</path>
+  </import>
+
+<!-- Big Arrow
+  <import>
+    <path>Aircraft/Cessna-208B/Models/Hud/elements/runway.xml</path>
+  </import> -->
+
+</PropertyList>

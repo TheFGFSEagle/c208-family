@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      C-NTYR.xml - ePilot                                 ####
+      ####                                                          ####
+      ####    Livery - C-NTYR                                       ####
+      ################################################################## -->
+
+<PropertyList>
+  <sim>
+      <model>
+        <!-- Active Livery Commands -->
+        <float-command type="bool">1</float-command>
+        <cargo type="bool">0</cargo>
+        <cargo-pod type="bool">0</cargo-pod>
+        <jumpship type="bool">0</jumpship>
+
+        <livery>
+          <name type="string">C-NTYR</name>
+          <texture type="string">Liveries/C-NTYR.png</texture>
+          <cargo-texture type="string">../Liveries/C-NTYR-Cargo.png</cargo-texture>
+          <gear-texture type="string">../Liveries/C-NTYR-Gear.png</gear-texture>
+          <floats-texture type="string">../Liveries/C-NTYR-Floats.png</floats-texture>
+
+          <diffuse>
+            <red>   1.0 </red>
+            <green> 1.0 </green>
+            <blue>  1.0 </blue>
+          </diffuse>
+
+          <ambient>
+            <red>   1.0 </red>
+            <green> 1.0 </green>
+            <blue>  1.0 </blue>
+          </ambient>
+
+          <specular>
+            <red>   1.0 </red>
+            <green> 1.0 </green>
+            <blue>  1.0 </blue>
+          </specular>
+
+          <emission>
+            <red>   0.0 </red>
+            <green> 0.0 </green>
+            <blue>  0.0 </blue>
+          </emission>
+<!--
+          <transparency>
+            <alpha> 0.0 </alpha>
+          </transparency>
+
+          <shininess>10</shininess>
+-->
+        </livery>
+      </model>
+  </sim>
+</PropertyList>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-checklist-Taxi2Ramp.xml - ePilot        ####
+      ####                                                          ####
+      ####    Taxi2Ramp Checklist Dialog                            ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <name>Checklist_Taxi2Ramp</name>
+  <layout>vbox</layout>
+
+  <x>20</x>
+  <y>20</y>
+
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <text>
+      <label>Taxi to Ramp</label>
+    </text>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>x</legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,0,0,0,0,-8.6,359)</script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          setprop("/sim/model/marker/arrow-enabled", 0);
+        </script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.checklist_taxi2ramp.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+  <hrule>
+    <color>
+      <red>1</red>
+      <green>0.45</green>
+      <blue>0.12</blue>
+    </color>
+    <pref-height>1</pref-height>
+    <pref-width>200</pref-width>
+  </hrule>
+
+
+  <group>
+    <layout>table</layout>
+
+    <!-- Flaps -->
+    <!-- Red Text -->
+    <text>
+      <label>Flaps Up</label>
+      <halign>left</halign>
+      <row>1</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <equals>
+            <property>/controls/flight/flaps</property>
+            <value>0.0</value>
+          </equals>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Flaps Up</label>
+      <halign>left</halign>
+      <row>1</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/controls/flight/flaps</property>
+          <value>0.0</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>1</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.03,0.06,0.09,2.6,-25,338.98)</script>
+      </binding>
+    </button>
+
+
+    <!-- Fuel Condition Lever -->
+    <!-- Red Text -->
+    <text>
+      <label>Fuel Condition Lever to Low Idle</label>
+      <halign>left</halign>
+      <row>2</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <and>
+            <greater-than>
+              <property>/controls/engines/engine[0]/mixture</property>
+              <value>0</value>
+            </greater-than>
+            <less-than>
+              <property>/controls/engines/engine[0]/mixture</property>
+              <value>0.50</value>
+            </less-than>
+          </and>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Fuel Condition Lever to Low Idle</label>
+      <halign>left</halign>
+      <row>2</row>
+      <col>0</col>
+      <visible>
+        <and>
+          <greater-than>
+            <property>/controls/engines/engine[0]/mixture</property>
+            <value>0</value>
+          </greater-than>
+          <less-than>
+            <property>/controls/engines/engine[0]/mixture</property>
+            <value>0.50</value>
+          </less-than>
+        </and>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>2</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.1,0.02,0.11,2.6,-25.03,338.98)</script>
+      </binding>
+    </button>
+
+    <!-- Landing Lights -->
+    <!-- Red Text -->
+    <text>
+      <label>Landing Lights Off</label>
+      <halign>left</halign>
+      <row>3</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <and>
+            <equals>
+              <property>controls/electric/leftldg-switch</property>
+              <value>false</value>
+            </equals>
+            <equals>
+              <property>controls/electric/rightldg-switch</property>
+              <value>false</value>
+            </equals>
+          </and>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Landing Lights Off</label>
+      <halign>left</halign>
+      <row>3</row>
+      <col>0</col>
+      <visible>
+        <and>
+          <equals>
+            <property>controls/electric/leftldg-switch</property>
+            <value>false</value>
+          </equals>
+          <equals>
+            <property>controls/electric/rightldg-switch</property>
+            <value>false</value>
+          </equals>
+        </and>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>3</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,-0.61,0.18,3.2,-20.82,10.35)</script>
+      </binding>
+    </button>
+
+    <!-- Taxi Lights -->
+    <!-- Red Text -->
+    <text>
+      <label>Taxi Lights On</label>
+      <halign>left</halign>
+      <row>4</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/electric/taxi-switch</property>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Taxi Lights On</label>
+      <halign>left</halign>
+      <row>4</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/electric/taxi-switch</property>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+
+    <!-- Button -->
+    <button>
+      <row>4</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,-0.61,0.18,1.4,-20.82,10.35)</script>
+      </binding>
+    </button>
+
+    <!-- Strobe Lights -->
+    <!-- Red Text -->
+    <text>
+      <label>Strobe Light Off</label>
+      <halign>left</halign>
+      <row>5</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/electric/strobe-switch</property>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Strobe Light Off</label>
+      <halign>left</halign>
+      <row>5</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/electric/strobe-switch</property>
+        </not>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>5</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,-0.64,0.15,1.4,-20.82,10.35)</script>
+      </binding>
+    </button>
+
+
+    <!-- Transponder -->
+    <!-- Red Text -->
+    <text>
+      <label>Transponder to Standby (F12)</label>
+      <halign>left</halign>
+      <row>6</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <equals>
+            <property>/instrumentation/transponder/inputs/mode</property>
+            <value>1</value>
+          </equals>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Transponder to Standby (F12)</label>
+      <halign>left</halign>
+      <row>6</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/instrumentation/transponder/inputs/mode</property>
+          <value>1</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>6</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,0.23,0.37,3.4,-3.71,333.02)</script>
+      </binding>
+    </button>
+
+    <!-- Taxi to Ramp -->
+    <!-- Red Text -->
+    <text>
+      <label>Taxi to Ramp Max 20 kts</label>
+      <halign>left</halign>
+      <row>7</row>
+      <col>0</col>
+      <visible>
+        <greater-than>
+          <property>/velocities/groundspeed-kt</property>
+          <value>20</value>
+        </greater-than>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Taxi to Ramp Max 20 kts</label>
+      <halign>left</halign>
+      <row>7</row>
+      <col>0</col>
+      <visible>
+        <less-than>
+          <property>/velocities/groundspeed-kt</property>
+          <value>21</value>
+        </less-than>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>7</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.95,-0.49,0.39,4.2,-6,359)</script>
+      </binding>
+    </button>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <hrule>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+      <pref-height>1</pref-height>
+      <pref-width>200</pref-width>
+    </hrule>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <pref-width>50</pref-width>
+      <pref-height>25</pref-height>
+      <legend>Close</legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,0,0,0,0,-8.6,359)</script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          setprop("/sim/model/marker/arrow-enabled", 0);
+        </script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.checklist_taxi2ramp.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+  <empty>
+    <stretch>1</stretch>
+  </empty>
+
+
+</PropertyList>

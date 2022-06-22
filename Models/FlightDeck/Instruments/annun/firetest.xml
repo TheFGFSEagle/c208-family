@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <path>firetest.ac</path>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>base</object-name>
+    <object-name>button</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>base</object-name>
+    <object-name>button</object-name>
+    <emission>
+      <red>   0.007 </red>
+      <green> 0.007 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+
+<!-- End of Emission Animations -->
+
+ <animation>
+   <type>pick</type>
+   <visible>true</visible>
+   <object-name>button</object-name>
+   <action>
+     <name>Fire Test</name>
+     <button>0</button>
+     <repeatable>false</repeatable>
+       <binding>
+        <command>property-assign</command>
+          <property>/instrumentation/annun/enginefire</property>
+        <value>true</value>
+    <condition>
+      <property>/systems/electrical/on</property>
+    </condition>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/annun/enginefire</property>
+        <value>false</value>
+      </binding>
+      </mod-up>
+   </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>firetest</tooltip-id>
+        <label>Fire Warn Test: %s</label>
+        <property>/instrumentation/annun/enginefire</property>
+        <mapping>on-off</mapping>
+      </binding>
+    </hovered>
+  </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>button</object-name>
+   <property>/instrumentation/annun/enginefire</property>
+   <factor>5</factor>
+   <axis>
+     <x>1</x>
+   </axis>
+ </animation>
+
+</PropertyList>

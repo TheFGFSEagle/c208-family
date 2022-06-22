@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<!--
+KAS 297 ALTITUDE SELECTOR
+Syd Adams
+
+*** requires kfc200.nas to run ***
+-->
+<PropertyList>
+
+    <path>kas297.ac</path>
+
+ <!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+  <object-name>KAS297</object-name>
+    <emission>
+      <red>   .025 </red>
+      <green> .025 </green>
+      <blue>  .025 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+        <object-name>armbtn</object-name>
+        <object-name>knob</object-name>
+        <object-name>alt-10000</object-name>
+        <object-name>alt-1000</object-name>
+        <object-name>alt-100</object-name>
+        <object-name>alt-10</object-name>
+        <object-name>alt-1</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+    <animation>
+        <type>material</type>
+        <object-name>armbtn</object-name>
+        <object-name>knob</object-name>
+        <object-name>alt-10000</object-name>
+        <object-name>alt-1000</object-name>
+        <object-name>alt-100</object-name>
+        <object-name>alt-10</object-name>
+        <object-name>alt-1</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+        </emission>
+    </animation>
+
+<!-- Turn off Alert for now -->
+
+<!--    <animation>
+        <type>material</type>
+        <object-name>Alert.msg</object-name>
+        <emission>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </emission>
+    </animation> -->
+
+<!-- End of Emission Animations -->
+
+    <animation>
+        <type>select</type>
+        <object-name>alt-10000</object-name>
+        <object-name>alt-1000</object-name>
+        <object-name>alt-100</object-name>
+        <object-name>alt-10</object-name>
+        <object-name>alt-1</object-name>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+    </animation>
+
+
+    <animation>
+        <type>select</type>
+        <object-name>Alert.msg</object-name>
+        <condition>
+            <and>
+              <property>/instrumentation/kfc200/alt-alert</property>
+              <property>systems/electrical/on</property>
+            </and>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Arm.msg</object-name>
+        <condition>
+          <and>
+            <property>systems/electrical/on</property>
+            <property>/autopilot/internal/CMD</property>
+            <or>
+              <property>/autopilot/internal/VNAV-ALT</property>
+              <property>/autopilot/internal/VNAV-FMS</property>
+            </or>
+          </and>
+        </condition>
+    </animation> -->
+
+<!--    Altitude Select    -->
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>alt-10000</object-name>
+        <property>autopilot/settings/target-altitude-ft</property>
+        <factor>0.00001</factor>
+        <step>10000</step>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>alt-1000</object-name>
+        <property>autopilot/settings/target-altitude-ft</property>
+        <factor>0.0001</factor>
+        <step>1000</step>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+     <animation>
+        <type>textranslate</type>
+        <object-name>alt-100</object-name>
+        <property>autopilot/settings/target-altitude-ft</property>
+        <factor>0.001</factor>
+        <step>100</step>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>alt-10</object-name>
+        <property>autopilot/settings/target-altitude-ft</property>
+        <factor>0.01</factor>
+        <step>10</step>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>alt-1</object-name>
+        <property>autopilot/settings/target-altitude-ft</property>
+        <factor>0.1</factor>
+        <step>1</step>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <!-- Pick Animations -->
+
+    <animation>
+        <type>pick</type>
+        <object-name>knob</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>true</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>autopilot/settings/target-altitude-ft</property>
+                <step>100</step>
+                <min>0.0</min>
+                <max>25000.0</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>knob</object-name>
+        <action>
+            <button>3</button>
+            <repeatable>true</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>autopilot/settings/target-altitude-ft</property>
+                <step>1000</step>
+                <min>0.0</min>
+                <max>25000.0</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>knob</object-name>
+        <action>
+            <button>1</button>
+            <repeatable>true</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>autopilot/settings/target-altitude-ft</property>
+                <step>-100</step>
+                <min>0.0</min>
+                <max>25000.0</max>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>knob</object-name>
+        <action>
+            <button>4</button>
+            <repeatable>true</repeatable>
+            <binding>
+                <command>property-adjust</command>
+                <property>autopilot/settings/target-altitude-ft</property>
+                <step>-1000</step>
+                <min>0.0</min>
+                <max>25000.0</max>
+                <wrap>false</wrap>
+            </binding>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+        </action>
+        <hovered>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>Ap-Alt-Setting</tooltip-id>
+            <label>Target Altitude: %5.0f</label>
+            <property>autopilot/settings/target-altitude-ft</property>
+            <condition>
+              <property>systems/electrical/on</property>
+            </condition>
+          </binding>
+          <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>Ap-Alt-Setting</tooltip-id>
+            <label>No Power - Inactive</label>
+            <property>autopilot/settings/target-altitude-ft</property>
+            <condition>
+              <not>
+                <property>systems/electrical/on</property>
+              </not>
+            </condition>
+          </binding>
+        </hovered>
+    </animation>
+
+<!--    <animation>
+        <type>pick</type>
+        <object-name>armbtn</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+            <command>nasal</command>
+            <script>
+                if(getprop("instrumentation/kfc200/vnav")!= 1){
+                setprop("instrumentation/kfc200/vnav",1);
+                setprop("autopilot/settings/target-altitude-ft",getprop("instrumentation/kfc200/alt-preset"));
+                }else{
+                setprop("instrumentation/kfc200/vnav",0);
+                }
+            </script>
+        </binding>
+        </action>
+    </animation> -->
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">Alt Select</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.1</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> -0.01 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>

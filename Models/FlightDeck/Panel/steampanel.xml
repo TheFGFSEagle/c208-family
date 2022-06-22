@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      steampanel.xml - ePilot                             ####
+      ####                                                          ####
+      ####    Steam Guage Panel instruments and animations          ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>panel.ac</path>
+
+  <animation>
+    <type>select</type>
+    <condition>
+      <property>/sim/model/steamguages</property>
+    </condition>
+  </animation>
+
+  <!-- Cold and Dark Unlighted -->
+
+  <animation>
+    <type>material</type>
+    <object-name>CompartmentDoor</object-name>
+    <object-name>Compartmenthandle</object-name>
+    <object-name>Inert-Sep-Base</object-name>
+    <object-name>Inert-Sep-Handle</object-name>
+    <object-name>Inert-Sep-Rod</object-name>
+    <object-name>Vent</object-name>
+    <object-name>altstaticair</object-name>
+    <object-name>altstaticairplate</object-name>
+    <object-name>WarnLabel</object-name>
+    <object-name>panel</object-name>
+    <emission>
+      <red>   .011 </red>
+      <green> .011 </green>
+      <blue>  .011 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+        <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>controls/lighting/flashlight</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+  <!-- Flashlight -->
+
+  <animation>
+    <type>material</type>
+    <object-name>CompartmentDoor</object-name>
+    <object-name>Compartmenthandle</object-name>
+    <object-name>Inert-Sep-Base</object-name>
+    <object-name>Inert-Sep-Handle</object-name>
+    <object-name>Inert-Sep-Rod</object-name>
+    <object-name>Vent</object-name>
+    <object-name>altstaticair</object-name>
+    <object-name>altstaticairplate</object-name>
+    <object-name>WarnLabel</object-name>
+    <object-name>panel</object-name>
+    <emission>
+      <red>   .1 </red>
+      <green> .1 </green>
+      <blue>  .1 </blue>
+      <factor-prop>/controls/lighting/flashlight</factor-prop>
+    </emission>
+    <condition>
+      <and>
+        <property>/controls/lighting/flashlight</property>
+        <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+      </and>
+    </condition>
+  </animation>
+
+  <!-- Cold and Dark Lighted -->
+
+  <!-- Instrument Lights On -->
+
+  <!-- End of Emission Animations -->
+
+  <animation>
+    <type>translate</type>
+    <object-name>parkbrake</object-name>
+    <property>/controls/gear/brake-parking</property>
+    <factor>0.02</factor>
+    <axis>
+      <x> 1</x>
+      <y> 0</y>
+      <z> 0</z>
+    </axis>
+    <center>
+      <x-m>-0.05308</x-m>
+      <y-m>-0.29930</y-m>
+      <z-m>-0.00154</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>parkbrake</object-name>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/gear/brake-parking</property>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>parmixture</tooltip-id>
+        <label>Parking Brake: %s</label>
+        <mapping>on-off</mapping>
+       <property>/controls/gear/brake-parking</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <!-- Annunciator Panel -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/annun.xml</path>
+    <offsets>
+      <x-m>  0.0605 </x-m>
+      <y-m> -0.450 </y-m>
+      <z-m>  0.443 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot ASI -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/asi/asi.xml</path>
+    <offsets>
+      <x-m>  0.061 </x-m>
+      <y-m> -0.490 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot ASI -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/asi/asi.xml</path>
+    <offsets>
+      <x-m>  0.061 </x-m>
+      <y-m>  0.330 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot AI -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki256.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.390 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot AI -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki256.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.440 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot ADF -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/adf/ki227.xml</path>
+    <offsets>
+      <x-m>  0.061 </x-m>
+      <y-m> -0.490 </y-m>
+      <z-m>  0.250 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot ADF -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/adf/ki227.xml</path>
+    <offsets>
+      <x-m>  0.061 </x-m>
+      <y-m>  0.330 </y-m>
+      <z-m>  0.250 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot ALT -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/alt/alt.xml</path>
+    <offsets>
+      <x-m>  0.061 </x-m>
+      <y-m> -0.290 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot ALT -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/alt/alt.xml</path>
+    <offsets>
+      <x-m>  0.061 </x-m>
+      <y-m>  0.540 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot RadALT -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/radar-alt/kra10a.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.290 </y-m>
+      <z-m>  0.150 </z-m>
+    </offsets>
+  </model>
+
+  <!--Pilot HSI-->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki252a.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.390 </y-m>
+      <z-m>  0.2455 </z-m>
+    </offsets>
+  </model>
+
+  <!--Co-Pilot HSI-->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki252a.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.440 </y-m>
+      <z-m>  0.2455 </z-m>
+    </offsets>
+  </model>
+
+  <!--Pilot FD ANNUN-->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/fd-annun.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.190 </y-m>
+      <z-m>  0.365 </z-m>
+    </offsets>
+  </model>
+
+  <!--Pilot AP Control-->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/fd-control.xml</path>
+    <offsets>
+      <x-m>  0.064 </x-m>
+      <y-m> -0.020 </y-m>
+      <z-m>  0.205 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot DME -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/ki266/ki266.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.190 </y-m>
+      <z-m>  0.320 </z-m>
+    </offsets>
+  </model>
+
+  <!--kas297 Altitude Select-->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/kas297.xml</path>
+    <offsets>
+      <x-m>  0.066 </x-m>
+      <y-m> -0.185 </y-m>
+      <z-m>  0.175 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot CLOCK -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/chrono/chronometer.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.610 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot SUCTION -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/suction/suction.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.610 </y-m>
+      <z-m>  0.266 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot VOLTMETER -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/voltmeter/voltmeter.xml</path>
+    <offsets>
+      <x-m>  0.067 </x-m>
+      <y-m> -0.650 </y-m>
+      <z-m>  0.200 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot TURN -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/turn/turn.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.490 </y-m>
+      <z-m>  0.150 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot TURN -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/turn/turn.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.330 </y-m>
+      <z-m>  0.150 </z-m>
+    </offsets>
+  </model>
+
+  <!-- KMA20 Audio Panel -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kma20/kma20.xml</path>
+    <offsets>
+      <x-m>  0.056 </x-m>
+      <y-m> -0.000 </y-m>
+      <z-m>  0.366 </z-m>
+    </offsets>
+  </model>
+
+  <!-- KLN90B GPS -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kln90b/kln90b.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.170 </y-m>
+      <z-m>  0.363 </z-m>
+    </offsets>
+  </model>
+
+  <!-- COMPASS -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/compass/compass.xml</path>
+    <offsets>
+      <x-m>  0.070 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.500 </z-m>
+    </offsets>
+  </model>
+
+  <!-- KX165 Comm/Nav-->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kx165/kx165-1.xml</path>
+    <offsets>
+      <x-m>  0.057 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.318 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kx165/kx165-2.xml</path>
+    <offsets>
+      <x-m>  0.057 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.268 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot VSI -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vsi/vsi.xml</path>
+    <offsets>
+      <x-m>  0.059 </x-m>
+      <y-m> -0.290 </y-m>
+      <z-m>  0.250 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot VSI -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vsi/vsi.xml</path>
+    <offsets>
+      <x-m>  0.059 </x-m>
+      <y-m>  0.540 </y-m>
+      <z-m>  0.250 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot VOR 2 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vor/vor.xml</path>
+    <offsets>
+      <x-m>  0.062 </x-m>
+      <y-m> -0.190 </y-m>
+      <z-m>  0.250 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot VOR 2 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vor/vor.xml</path>
+    <offsets>
+      <x-m>  0.062 </x-m>
+      <y-m>  0.640 </y-m>
+      <z-m>  0.250 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Pilot Trim -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/trim/trim.xml</path>
+    <offsets>
+      <x-m>  0.068 </x-m>
+      <y-m> -0.690 </y-m>
+      <z-m>  0.346 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Co-Pilot Trim -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/trim/trim.xml</path>
+    <offsets>
+      <x-m>  0.068 </x-m>
+      <y-m>  0.630 </y-m>
+      <z-m>  0.330 </z-m>
+    </offsets>
+  </model>
+
+  <!-- KT70 Transponder -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kt70/kt70.xml</path>
+    <offsets>
+      <x-m>  0.064 </x-m>
+      <y-m>  0.174 </y-m>
+      <z-m>  0.317 </z-m>
+    </offsets>
+  </model>
+
+  <!-- KR87 ADF -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kr87/kr87.xml</path>
+    <offsets>
+      <x-m>  0.056 </x-m>
+      <y-m>  0.174 </y-m>
+      <z-m>  0.278 </z-m>
+    </offsets>
+  </model>
+
+  <!-- RDR-160 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/rdr-160/rdr-160.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.174 </y-m>
+      <z-m>  0.19 </z-m>
+    </offsets>
+  </model>
+
+  <!-- MFD -->
+  <!--  <model>
+    <name>MFD1</name>
+    <path>Aircraft/Instruments-3d/primus-1000/MFD/MFD.xml</path>
+    <offsets>
+    <x-m> -0.050 </x-m>
+    <y-m> -0.3 </y-m>
+    <z-m>  0.281 </z-m>
+    </offsets>
+  </model> -->
+
+  <!-- PFD -->
+  <!--  <model>
+    <name>PFD1</name>
+    <path>Aircraft/Instruments-3d/primus-1000/PFD/PFD.xml</path>
+    <offsets>
+    <x-m> -0.050 </x-m>
+    <y-m> -0.48 </y-m>
+    <z-m>  0.281 </z-m>
+    </offsets>
+  </model> -->
+
+
+  <!-- ************************************* Engine Gauges *********************************** -->
+
+  <!-- TORQUE -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/torq1.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.238 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- RPM -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/rpm1.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.170 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- ITT GAUGE -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/itt1.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.102 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- TURBINE -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/n21.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m> -0.034 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- OIL -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/oilp1.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.034 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- FUEL FLOW -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/fflow1.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.102 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- FUEL 1 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/fuel-qty0.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.170 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- FUEL 2 -->
+  <model>
+    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/fuel-qty1.xml</path>
+    <offsets>
+      <x-m>  0.065 </x-m>
+      <y-m>  0.238 </y-m>
+      <z-m>  0.435 </z-m>
+    </offsets>
+  </model>
+
+  <!-- ++++++++++++++++++++++++++++++++++  Animations  +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Inert-Sep-Handle</object-name>
+    <property>controls/doors/IntSep</property>
+    <factor>90</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.10667</x-m>
+      <y-m>-0.11224</y-m>
+      <z-m>0.08443</z-m>
+    </center>
+  </animation>
+
+
+  <animation>
+    <type>translate</type>
+    <object-name>Inert-Sep-Rod</object-name>
+    <object-name>Inert-Sep-Handle</object-name>
+    <property>controls/doors/IntSep</property>
+    <factor>0.055</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <!-- Pick Intertial Seperator Handle-->
+  <animation>
+    <type>pick</type>
+    <object-name>Inert-Sep-Handle</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/IntSep",1);</script>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>IntSep</tooltip-id>
+        <label>Intertial Seperator: %s</label>
+        <property>/controls/doors/IntSep</property>
+        <mapping>on-off</mapping>
+      </binding>
+  </hovered>
+  </animation>
+
+
+  <effect>
+    <inherits-from>Aircraft/Cessna-208B/Models/Effects/chrome</inherits-from>
+    <object-name>Inert-Sep-Rod</object-name>
+  </effect>
+
+  <!-- Alt Static Air Knob -->
+
+  <animation>
+    <type>translate</type>
+    <object-name>altstaticair</object-name>
+    <property>controls/doors/AltAir</property>
+    <factor>0.015</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <!-- Pick Alt Static Air Handle-->
+  <animation>
+    <type>pick</type>
+    <object-name>altstaticair</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/AltAir",0.25);</script>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>AltStat</tooltip-id>
+        <label>Alt Static Air: %s</label>
+        <property>/controls/doors/AltAir</property>
+        <mapping>on-off</mapping>
+      </binding>
+  </hovered>
+  </animation>
+
+  <!-- Label Text -->
+
+  <text>
+    <name>ISepLabelText</name>
+    <type type="string">literal</type>
+    <text type="string">Inertial Seperator</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.020</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.12</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> 0.1</x-m>
+      <y-m> -0.13 </y-m>
+      <z-m> 0.04 </z-m>
+    </offsets>
+  </text>
+
+  <text>
+    <name>AltAirLabelText</name>
+    <type type="string">literal</type>
+    <text type="string">Alt Static Air</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.020</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.07</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> 0.08</x-m>
+      <y-m> -0.7 </y-m>
+      <z-m> 0.04 </z-m>
+    </offsets>
+  </text>
+
+  <animation>
+    <type>material</type>
+    <object-name>ISepLabelText</object-name>
+    <object-name>AltAirLabelText</object-name>
+    <emission>
+      <red>0.7</red>
+      <green>0.7</green>
+      <blue>0.7</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>ISepLabelText</object-name>
+    <object-name>AltAirLabelText</object-name>
+    <condition>
+      <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <!-- Compartment Door -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CompartmentDoor</object-name>
+    <object-name>CompartmentDoorHandle</object-name>
+    <property>controls/doors/CompDoor</property>
+    <factor>90</factor>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.06601</x-m>
+      <y-m>0.63925</y-m>
+      <z-m>0.01476</z-m>
+    </center>
+  </animation>
+
+  <!-- Pick Compartment Door Handle-->
+  <animation>
+    <type>pick</type>
+    <object-name>CompartmentDoorHandle</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.movedoor("/controls/doors/CompDoor",1);</script>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>
+

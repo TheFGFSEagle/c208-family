@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  ##################################################################
+      ####      gearwarn.xml - ePilot                               ####
+      ####                                                          ####
+      ####    Laser Gear Advisory System control and animation      ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>gearwarn.ac</path>
+
+  <animation>
+    <object-name>gearwarn</object-name>
+    <object-name>water-ind</object-name>
+    <object-name>land-ind</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>gearwarn</object-name>
+    <object-name>water-ind</object-name>
+    <object-name>land-ind</object-name>
+    <condition>
+      <and>
+        <property>/sim/model/floats</property>
+        <less-than>
+          <property>/position/altitude-agl-ft</property>
+          <value>402</value>
+        </less-than>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>gearwarn</object-name>
+    <object-name>water-ind</object-name>
+    <object-name>land-ind</object-name>
+    <condition>
+      <property>/systems/electrical/on</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>gearwarn</object-name>
+    <object-name>water-ind</object-name>
+    <object-name>land-ind</object-name>
+    <condition>
+      <property>/systems/electrical/on</property>
+    </condition>
+    <emission>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+      <red>   0.25 </red>
+      <green> 0.25 </green>
+      <blue>  0.25 </blue>
+    </emission>
+  </animation>
+
+  <!--  Water Ind -->
+  <animation>
+    <type>select</type>
+    <object-name>water-ind</object-name>
+    <condition>
+      <equals>
+        <property>/fdm/jsbsim/ground/solid</property>
+        <value> 0 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <!--  Land Ind -->
+  <animation>
+    <type>select</type>
+    <object-name>land-ind</object-name>
+    <condition>
+      <equals>
+        <property>/fdm/jsbsim/ground/solid</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <!-- Gear Position Warn -->
+
+  <!-- 1 = DOWN  -->
+  <animation>
+    <type>select</type>
+    <object-name>gearwarn</object-name>
+    <condition>
+      <or>
+
+        <and>
+          <property>/fdm/jsbsim/ground/solid</property>
+          <not>
+            <equals>
+              <property>/gear/gear[5]/position-norm</property>
+              <value> 1 </value>
+            </equals>
+          </not>
+        </and>
+
+        <and>
+          <not>
+            <property>/fdm/jsbsim/ground/solid</property>
+          </not>
+          <not>
+            <equals>
+              <property>/gear/gear[5]/position-norm</property>
+              <value> 0 </value>
+            </equals>
+          </not>
+        </and>
+
+      </or>
+    </condition>
+  </animation>
+
+
+</PropertyList>

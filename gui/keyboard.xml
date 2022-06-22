@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ############################################################
+     ####        Cessna-208B-keyboard.xml - ePilot           ####
+     ############################################################ -->
+
+<PropertyList>
+
+  <key n="96">
+    <name>backtick</name>
+    <desc>Marker Dialog</desc>
+    <binding>
+      <command>dialog-show</command>
+      <dialog-name>marker-adjust</dialog-name>
+    </binding>
+  </key>
+
+  <key n="63">
+    <name>?</name>
+    <desc>Show help dialog</desc>
+    <binding>
+      <command>nasal</command>
+      <script>dialogs.aircrafthelp.toggle()</script>
+    </binding>
+  </key>
+
+  <key n="68">
+    <desc>Show Doors dialog</desc>
+    <binding>
+      <command>nasal</command>
+      <script>dialogs.doors.toggle()</script>
+    </binding>
+  </key>
+
+  <key n="99">
+    <name>c</name>
+    <desc>Toggle Cargomaster configuration</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>sim/model/cargo</property>
+    </binding>
+  </key>
+
+  <key n="100">
+    <name>d</name>
+    <desc>Show Doors dialog</desc>
+    <binding>
+      <command>nasal</command>
+      <script>dialogs.doors.toggle()</script>
+    </binding>
+  </key>
+
+  <key n="102">
+    <name>f</name>
+    <desc>Float/Wheels Toggle</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>sim/model/float-command</property>
+    </binding>
+  </key>
+
+  <key n="106">
+    <name>j</name>
+    <desc>Jumpship Toggle</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>sim/model/jumpship</property>
+    </binding>
+    <mod-alt>
+      <desc>Toggle Cargo Net</desc>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/cargo-net</property>
+      </binding>
+    </mod-alt>
+  </key>
+
+ <key n="108">
+  <name>l</name>
+  <desc>Toggle Lights Dialog</desc>
+    <binding>
+      <command>nasal</command>
+      <script>dialogs.lightcontrol.toggle()</script>
+    </binding>
+ </key>
+
+  <key n="74">
+    <!-- Shift-J -->
+    <name>J</name>
+    <desc>Jump!</desc>
+    <binding>
+      <command>nasal</command>
+      <script>movies.jump()</script>
+    </binding>
+  </key>
+
+  <!-- seat vertical adjust -->
+  <key n="21">
+    <name>CTRL-U</name>
+    <desc>Seat Default</desc>
+    <binding>
+      <command>property-assign</command>
+      <property>/controls/seat/vertical-adjust</property>
+      <value type="double">0</value>
+    </binding>
+    <binding>
+      <condition>
+        <equals>
+          <property>sim/current-view/view-number</property>
+          <value>0</value>
+        </equals>
+      </condition>
+      <command>property-assign</command>
+      <property>sim/current-view/y-offset-m</property>
+      <value type="double">0.65</value>
+    </binding>
+  </key>
+
+  <key n="85">
+    <name>U</name>
+    <desc>Seat Down</desc>
+    <binding>
+      <condition>
+        <equals>
+          <property>sim/current-view/view-number</property>
+          <value>0</value>
+        </equals>
+      </condition>
+      <command>property-adjust</command>
+      <property>sim/current-view/y-offset-m</property>
+      <step type="double">-0.005</step>
+      <min type="double">0.60</min>
+      <max type="double">0.70</max>
+    </binding>
+  </key>
+
+  <key n="117">
+    <name>u</name>
+    <desc>Seat Up</desc>
+    <binding>
+      <condition>
+        <equals>
+          <property>sim/current-view/view-number</property>
+          <value>0</value>
+        </equals>
+      </condition>
+      <command>property-adjust</command>
+      <property>sim/current-view/y-offset-m</property>
+      <step type="double">0.005</step>
+      <min type="double">0.60</min>
+      <max type="double">0.70</max>
+    </binding>
+  </key>
+
+  <key n="267">
+    <name>F11</name>
+    <desc>Toggle AutoPilot Dialog</desc>
+    <binding>
+      <command>nasal</command>
+      <script>dialogs.ap_settings.toggle()</script>
+    </binding>
+    <mod-shift>
+      <desc>Toggle A/T Dialog</desc>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.at_settings.toggle()</script>
+      </binding>
+    </mod-shift>
+  </key>
+
+  <key n="268">
+    <name>F12</name>
+    <desc>Toggle Radio Dialog</desc>
+    <binding>
+      <command>nasal</command>
+      <script>dialogs.radio.toggle()</script>
+    </binding>
+  </key>
+
+  <key n="127">
+    <name>Delete</name>
+    <desc>Toggle Reverser</desc>
+    <binding>
+      <command>nasal</command>
+      <script>propeller.togglereverse()</script>
+    </binding>
+  </key>
+
+  <key n="1">
+    <name>Ctrl-A</name>
+    <desc>Toggle Auto-Coordination</desc>
+    <mod-ctrl>
+      <binding>
+        <command>nasal</command>
+        <script>setprop("/controls/flight/auto-coordination", abs(getprop("/controls/flight/auto-coordination") - 1));
+          if (getprop("/sim/co-pilot")) {
+          if (getprop("/controls/flight/auto-coordination")) {
+          var acstatus = "ON";
+          } else {
+          var acstatus = "OFF";
+          }
+          setprop ("/sim/messages/copilot", "Auto-Coordination " ~ acstatus);
+          }</script>
+      </binding>
+    </mod-ctrl>
+  </key>
+
+  <key n="109"> <!-- Alt-m -->
+    <mod-alt>
+      <desc>Toggle Map</desc>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.custommap.toggle()</script>
+      </binding>
+    </mod-alt>
+  </key>
+
+  <key n="114"> <!-- r -->
+    <desc>Toggle Float Rudders</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/gear/wrudders</property>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>doors.movedoor("/controls/doors/RudderLever",2.5);</script>
+    </binding>
+    <mod-alt>
+      <desc>Movie Rotate</desc>
+      <binding>
+        <command>nasal</command>
+        <script>movies.movierotateclockwise()</script>
+      </binding>
+    </mod-alt>
+  </key>
+
+  <key n="115"> <!-- s -->
+    <name>s</name>
+    <desc>Starter Switch Forward</desc>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/electric/starter-switch</property>
+      <step>1</step>
+      <min>0</min>
+      <max>1</max>
+      <wrap>false</wrap>
+    </binding>
+  </key>
+
+ <key n="116">
+  <name>t</name>
+  <desc>Toggle Tooltips</desc>
+  <repeatable type="bool">false</repeatable>
+  <binding>
+   <command>property-adjust</command>
+   <property>/sim/time/warp-delta</property>
+   <step type="int">30</step>
+   <max type="int">720</max>
+  </binding>
+  <binding>
+   <command>show-message</command>
+   <id>warp-feedback</id>
+   <label>Current time: %s</label>
+   <property>/instrumentation/clock/local-short-string</property>
+  </binding>
+  <mod-up>
+    <binding>
+     <command>property-assign</command>
+     <property>/sim/time/warp-delta</property>
+      <value type="int">0</value>
+    </binding>
+  </mod-up>
+    <mod-alt>
+    <binding>
+      <command>nasal</command>
+      <script>
+        setprop("/sim/mouse/tooltips-enabled", abs(getprop("/sim/mouse/tooltips-enabled") - 1));
+        setprop("/sim/mouse/click-shows-tooltip", abs(getprop("/sim/mouse/tooltips-enabled")));
+        if (getprop("/sim/mouse/tooltips-enabled")) {
+          var ttstatus = "ON";
+        } else {
+          var ttstatus = "OFF";
+        }
+        setprop ("/sim/messages/copilot", "Tooltips " ~ ttstatus);
+      </script>
+    </binding>
+    </mod-alt>
+ </key>
+
+  <key n="83"> <!-- Shift-s -->
+    <name>S</name>
+    <desc>Starter Switch Backward</desc>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/electric/starter-switch</property>
+      <step>-1</step>
+      <min>-1</min>
+      <max>0</max>
+      <wrap>false</wrap>
+    </binding>
+  </key>
+
+
+  <key n="82"> <!-- Shift-R -->
+    <desc>Movie Rotate Counter</desc>
+    <binding>
+      <command>nasal</command>
+      <script>movies.movierotatecounter()</script>
+    </binding>
+  </key>
+
+  <key n="105"> <!-- i -->
+    <desc>Toggle Steam/Glass Instrumentation</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>sim/model/steamguages</property>
+    </binding>
+  </key>
+
+  <key n="108"> <!-- Alt-L -->
+    <mod-alt>
+      <desc>Lights On</desc>
+      <binding>
+        <command>nasal</command>
+        <script>movies.lightson()</script>
+      </binding>
+    </mod-alt>
+  </key>
+
+  <key n="98"> <!-- Alt-B -->
+    <mod-alt>
+      <desc>battery On</desc>
+      <binding>
+        <command>nasal</command>
+        <script>movies.batton()</script>
+      </binding>
+    </mod-alt>
+  </key>
+
+  <key n="121"> <!-- y -->
+    <desc>Yokes On/Off</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>sim/model/yokes</property>
+    </binding>
+  </key>
+
+  <key n="103"> <!-- g -->
+    <desc>Toggle Gear</desc>
+    <binding>
+      <condition>
+        <property>/systems/electrical/on</property>
+      </condition>
+      <command>property-toggle</command>
+      <property>controls/gear/gear-down</property>
+    </binding>
+  </key>
+
+  <key n="71"> <!-- G -->
+    <desc>Wrong Key Shift G</desc>
+    <binding>
+      <command>nasal</command>
+      <script>setprop ("/sim/messages/copilot", " ");</script>
+    </binding>
+  </key>
+
+</PropertyList>

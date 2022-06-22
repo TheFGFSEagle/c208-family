@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      SSP.xml - ePilot                                    ####
+      ####                                                          ####
+      ####    Livery - Sydney Seaplanes                             ####
+      ################################################################## -->
+
+<PropertyList>
+  <sim>
+      <model>
+        <!-- Active Livery Commands -->
+        <float-command type="bool">1</float-command>
+        <cargo type="bool">0</cargo>
+        <cargo-pod type="bool">0</cargo-pod>
+        <jumpship type="bool">0</jumpship>
+
+        <livery>
+          <name type="string">Sydney Seaplanes</name>
+          <texture type="string">Liveries/SSP.png</texture>
+          <cargo-texture type="string">../Liveries/SSP-Cargo.png</cargo-texture>
+          <gear-texture type="string">../Liveries/SSP-Gear.png</gear-texture>
+          <floats-texture type="string">../Liveries/SSP-Floats.png</floats-texture>
+
+          <diffuse>
+            <red>   1.0 </red>
+            <green> 1.0 </green>
+            <blue>  1.0 </blue>
+          </diffuse>
+
+          <ambient>
+            <red>   1.0 </red>
+            <green> 1.0 </green>
+            <blue>  1.0 </blue>
+          </ambient>
+
+          <specular>
+            <red>   1.0 </red>
+            <green> 1.0 </green>
+            <blue>  1.0 </blue>
+          </specular>
+
+          <emission>
+            <red>   0.0 </red>
+            <green> 0.0 </green>
+            <blue>  0.0 </blue>
+          </emission>
+<!--
+          <transparency>
+            <alpha> 0.0 </alpha>
+          </transparency>
+
+          <shininess>10</shininess>
+-->
+        </livery>
+      </model>
+
+  </sim>
+</PropertyList>

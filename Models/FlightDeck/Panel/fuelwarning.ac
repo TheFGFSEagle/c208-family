@@ -1,0 +1,26 @@
+AC3Db
+MATERIAL "warning" rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 125 trans 0.000
+OBJECT world
+name "Blender_exporter_v2.26__fuelwarning.ac"
+kids 1
+OBJECT poly
+name "Plane"
+data 5
+Plane
+crease 40.0
+texture "fuelwarning.png"
+texrep 1 1
+numvert 4
+-0 0.5 1
+0 -0.5 1
+-0 0.5 -1
+0 -0.5 -1
+numsurf 1
+SURF 0X0
+mat 0
+refs 4
+0 0.000022 0.999978
+1 0.000022 0.000022
+3 0.999978 0.000022
+2 0.999978 0.999978
+kids 0

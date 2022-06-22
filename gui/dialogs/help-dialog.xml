@@ -1,0 +1,967 @@
+<?xml version="1.0"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-help-dialog.xml - ePilot                ####
+      ####                                                          ####
+      ####    Aircraft Help Dialog                                  ####
+      ################################################################## -->
+
+<PropertyList>
+  <name>Cessna-208B-help-dialog</name>
+
+  <x>100</x>
+  <y>50</y>
+
+  <layout>vbox</layout>
+   <pref-width>600</pref-width>
+   <pref-height>600</pref-height>
+
+<!-- Header group -->
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>1</stretch></empty>
+
+    <text>
+      <label>Cessna 208B Grand Caravan - Help</label>
+    </text>
+
+    <empty><stretch>1</stretch></empty>
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend></legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.aircrafthelp.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+  <hrule>
+    <color>
+      <red>1.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+    <pref-width>600</pref-width>
+  </hrule>
+
+
+<!-- Canvas Image group -->
+  <group>
+    <layout>vbox</layout>
+      <pref-width>600</pref-width>
+      <pref-height>92</pref-height>
+
+      <canvas>
+        <name>headerimage</name>
+        <valign>top</valign>
+        <halign>left</halign>
+        <stretch>false</stretch>
+        <pref-width>600</pref-width>
+        <pref-height>92</pref-height>
+        <nasal>
+  <!--
+       this is the Canvas-specific Nasal section where you can run your own Nasal code
+       to access the canvas region
+  -->
+        <load>
+      <![CDATA[
+
+var my_canvas = canvas.get( cmdarg() ); # this will get a handle to the parent canvas:
+
+                   var root = my_canvas.createGroup();
+
+var path = "Aircraft/Cessna-208B/Nasal/cessna.png";
+# create an image child for the texture
+var child = root.createChild("image")
+    .setFile(path)
+    .setTranslation(-5, 0)
+    .setSize(600, 92);
+
+      ]]>
+        </load>
+      </nasal>
+    </canvas>
+</group>
+
+
+<!-- Master content group> -->
+<group>
+  <layout>table</layout>
+<row>0</row>
+<col>0</col>
+
+
+<!-- Intro Content group -->
+  <group>
+    <layout>vbox</layout>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>intro</value>
+        </equals>
+      </visible>
+
+    <text>
+    <halign>left</halign>
+    <font>
+      <name type="string">helvetica_bold.txf</name>
+      <size>18</size>
+    </font>
+    <label>                Cessna 208B Grand Caravan</label>
+    </text>
+
+
+  <textbox>
+    <font>
+      <name type="string">HELVETICA_12</name>
+    </font>
+    <name>aircraft-description</name>
+    <stretch>true</stretch>
+    <pref-width>575</pref-width>
+    <pref-height>100</pref-height>
+    <width>575</width>
+    <height>100</height>
+    <editable>false</editable>
+    <wrap>true</wrap>
+    <live>true</live>
+    <slider>20</slider>
+    <property>/sim/long-description</property>
+    <border>0</border>
+  </textbox>
+
+
+
+<empty>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>intro</value>
+        </equals>
+      </visible>
+  <stretch>1</stretch>
+</empty>
+
+
+  <hrule>
+    <color>
+      <red>1.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>intro</value>
+        </equals>
+      </visible>
+    <pref-height>1</pref-height>
+    <pref-width>600</pref-width>
+  </hrule>
+
+
+<!-- Aircraft keys -->
+<group>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>intro</value>
+        </equals>
+      </visible>
+
+  <layout>table</layout>
+      <font>
+        <name type="string">HELVETICA_12</name>
+      </font>
+
+<!--  <text>
+      <font>
+        <name type="string">HELVETICA_12</name>
+    </font>
+
+  <col>1</col>
+  <row>1</row>
+  <colspan>4</colspan>
+  <label>Aircraft Keys</label>
+  </text> -->
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>2</row>
+  <halign>right</halign>
+  <label>I</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>2</row>
+  <halign>left</halign>
+  <label>Toggle Steam/Glass Instrument Panel</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>2</row>
+  <halign>right</halign>
+  <label>Alt-M</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>2</row>
+  <halign>left</halign>
+  <label>Map Toggle Key</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>3</row>
+  <halign>right</halign>
+  <label>U</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>3</row>
+  <halign>left</halign>
+  <label>Raise Pilot Seat</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>3</row>
+  <halign>right</halign>
+  <label>Shift-U</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>3</row>
+  <halign>left</halign>
+  <label>Lower Pilot Seat</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>4</row>
+  <halign>right</halign>
+  <label>Ctrl-U</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <halign>left</halign>
+  <col>2</col>
+  <row>4</row>
+  <label>Rest Pilot Seat Height to default</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>4</row>
+  <halign>right</halign>
+  <label>Ctrl-A</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>4</row>
+  <halign>left</halign>
+  <label>Auto Coordination On/Off</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>5</row>
+  <halign>right</halign>
+  <label>F</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>5</row>
+  <halign>left</halign>
+  <label>Attach / Remove Floats</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>5</row>
+  <halign>right</halign>
+  <label>R</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>5</row>
+  <halign>left</halign>
+  <label>Raise / Lower Float Rudders</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>6</row>
+  <halign>right</halign>
+  <label>G</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>6</row>
+  <halign>left</halign>
+  <label>Gear Up/Down (with floats)</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>6</row>
+  <halign>right</halign>
+  <label>Y</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>6</row>
+  <halign>left</halign>
+  <label>Show / Hide Yokes</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>7</row>
+  <halign>right</halign>
+  <label>C</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>7</row>
+  <halign>left</halign>
+  <label>Toggle Cargomaster Congfiguration</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>7</row>
+  <halign>right</halign>
+  <label>J</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>7</row>
+  <halign>left</halign>
+  <label>Toggle Skydiving Congfiguration</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>8</row>
+  <halign>right</halign>
+  <label>S</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>8</row>
+  <halign>left</halign>
+  <label>Move starter switch forward</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>8</row>
+  <halign>right</halign>
+  <label>Shift-S</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>8</row>
+  <halign>left</halign>
+  <label>Move starter switch aft</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>9</row>
+  <halign>right</halign>
+  <label>D</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>9</row>
+  <halign>left</halign>
+  <label>Door Controls</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>9</row>
+  <halign>right</halign>
+  <label>L</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>9</row>
+  <halign>left</halign>
+  <label>Lights Controls</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>1</col>
+  <row>10</row>
+  <halign>right</halign>
+  <label>Alt-T</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>2</col>
+  <row>10</row>
+  <halign>left</halign>
+  <label>Tooltips On/Off</label>
+  </text>
+
+  <text>
+  <pref-height>9</pref-height>
+  <col>3</col>
+  <row>10</row>
+  <halign>right</halign>
+  <label>?</label>
+  </text>
+  <text>
+  <pref-height>9</pref-height>
+  <col>4</col>
+  <row>10</row>
+  <halign>left</halign>
+  <label>Show this Help</label>
+  </text>
+</group>
+
+</group>
+
+
+<!-- Startup Content group -->
+  <group>
+  <row>0</row>
+  <col>0</col>
+    <layout>vbox</layout>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>startupref</value>
+        </equals>
+      </visible>
+
+    <text>
+    <halign>left</halign>
+    <font>
+      <name type="string">helvetica_bold.txf</name>
+      <size>18</size>
+    </font>
+    <label> Cessna 208B Grand Caravan Engine Start Procedure</label>
+    </text>
+
+
+  <textbox>
+    <font>
+      <name type="string">HELVETICA_12</name>
+    </font>
+    <name>ap-help</name>
+    <stretch>true</stretch>
+    <pref-width>575</pref-width>
+    <pref-height>300</pref-height>
+    <editable>false</editable>
+    <wrap>true</wrap>
+    <live>true</live>
+    <slider>20</slider>
+    <property>/sim/help/startupref</property>
+    <border>0</border>
+  </textbox>
+
+</group>
+
+
+<!-- A/P Content group -->
+  <group>
+  <row>0</row>
+  <col>0</col>
+    <layout>vbox</layout>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>ap</value>
+        </equals>
+      </visible>
+
+    <text>
+    <halign>left</halign>
+    <font>
+      <name type="string">helvetica_bold.txf</name>
+      <size>18</size>
+    </font>
+    <label>          Cessna 208B Grand Caravan Autopilot</label>
+    </text>
+
+
+  <textbox>
+    <font>
+      <name type="string">HELVETICA_12</name>
+    </font>
+    <name>ap-help</name>
+    <stretch>true</stretch>
+    <pref-width>575</pref-width>
+    <pref-height>300</pref-height>
+    <editable>false</editable>
+    <wrap>true</wrap>
+    <live>true</live>
+    <slider>20</slider>
+    <property>/sim/help/apref</property>
+    <border>0</border>
+  </textbox>
+
+</group>
+
+
+<!-- Water Ops Content group -->
+  <group>
+  <row>0</row>
+  <col>0</col>
+    <layout>vbox</layout>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>waterops</value>
+        </equals>
+      </visible>
+
+    <text>
+    <halign>left</halign>
+    <font>
+      <name type="string">helvetica_bold.txf</name>
+      <size>18</size>
+    </font>
+    <label>    Cessna 208B Grand Caravan Float Operations</label>
+    </text>
+
+
+  <textbox>
+    <font>
+      <name type="string">HELVETICA_12</name>
+    </font>
+    <name>ap-help</name>
+    <stretch>true</stretch>
+    <pref-width>575</pref-width>
+    <pref-height>300</pref-height>
+    <editable>false</editable>
+    <wrap>true</wrap>
+    <live>true</live>
+    <slider>20</slider>
+    <property>/sim/help/floatopsref</property>
+    <border>0</border>
+  </textbox>
+
+</group>
+
+
+
+<!-- Active Livery Content group -->
+  <group>
+  <row>0</row>
+  <col>0</col>
+    <layout>vbox</layout>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>livery</value>
+        </equals>
+      </visible>
+
+    <text>
+    <halign>left</halign>
+    <font>
+      <name type="string">helvetica_bold.txf</name>
+      <size>18</size>
+    </font>
+    <label> Cessna 208B Grand Caravan Active Livery System</label>
+    </text>
+
+
+  <textbox>
+    <font>
+      <name type="string">HELVETICA_12</name>
+    </font>
+    <name>livery-help</name>
+    <stretch>true</stretch>
+    <pref-width>575</pref-width>
+    <pref-height>300</pref-height>
+    <editable>false</editable>
+    <wrap>true</wrap>
+    <live>true</live>
+    <slider>20</slider>
+    <property>/sim/help/liveryref</property>
+    <border>0</border>
+  </textbox>
+
+</group>
+
+
+<!-- Active Livery Content group -->
+  <group>
+  <row>0</row>
+  <col>0</col>
+    <layout>vbox</layout>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>ops</value>
+        </equals>
+      </visible>
+
+    <text>
+    <halign>left</halign>
+    <font>
+      <name type="string">helvetica_bold.txf</name>
+      <size>18</size>
+    </font>
+    <label>       Cessna 208B Grand Caravan Operations</label>
+    </text>
+
+
+  <textbox>
+    <font>
+      <name type="string">HELVETICA_12</name>
+    </font>
+    <name>ops-help</name>
+    <stretch>true</stretch>
+    <pref-width>575</pref-width>
+    <pref-height>300</pref-height>
+    <editable>false</editable>
+    <wrap>true</wrap>
+    <live>true</live>
+    <slider>20</slider>
+    <property>/sim/help/operationsref</property>
+    <border>0</border>
+  </textbox>
+
+</group>
+
+
+
+<!-- close master content group -->
+</group>
+
+
+    <empty><stretch>1</stretch></empty>
+  <hrule>
+    <color>
+      <red>1.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </color>
+    <pref-height>1</pref-height>
+    <pref-width>600</pref-width>
+  </hrule>
+
+<group>
+  <layout>table</layout>
+
+
+  <!-- Gray Button -->
+    <button>
+      <row>0</row>
+      <col>1</col>
+      <legend>Intro</legend>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>intro</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>intro</value>
+      </binding>
+    </button>
+  <!-- Brown Button -->
+    <button>
+      <row>0</row>
+      <col>1</col>
+      <legend>Intro</legend>
+      <visible>
+        <not>
+          <equals>
+            <property>/sim/help/page</property>
+            <value>intro</value>
+          </equals>
+        </not>
+      </visible>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>intro</value>
+      </binding>
+    </button>
+
+
+  <!-- Gray Button -->
+    <button>
+      <row>0</row>
+      <col>2</col>
+      <legend>Startup</legend>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>startupref</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>startupref</value>
+      </binding>
+    </button>
+  <!-- Brown Button -->
+    <button>
+      <row>0</row>
+      <col>2</col>
+      <legend>Startup</legend>
+      <visible>
+        <not>
+          <equals>
+            <property>/sim/help/page</property>
+            <value>startupref</value>
+          </equals>
+        </not>
+      </visible>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>startupref</value>
+      </binding>
+    </button>
+
+
+  <!-- Gray Button -->
+    <button>
+      <row>0</row>
+      <col>3</col>
+      <legend>A/P</legend>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>ap</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>ap</value>
+      </binding>
+    </button>
+  <!-- Brown Button -->
+    <button>
+      <row>0</row>
+      <col>3</col>
+      <legend>A/P</legend>
+      <visible>
+        <not>
+          <equals>
+            <property>/sim/help/page</property>
+            <value>ap</value>
+          </equals>
+        </not>
+      </visible>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>ap</value>
+      </binding>
+    </button>
+
+
+  <!-- Gray Button -->
+    <button>
+      <row>0</row>
+      <col>4</col>
+      <legend>Float Ops</legend>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>waterops</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>waterops</value>
+      </binding>
+    </button>
+  <!-- Brown Button -->
+    <button>
+      <row>0</row>
+      <col>4</col>
+      <legend>Float Ops</legend>
+      <visible>
+        <not>
+          <equals>
+            <property>/sim/help/page</property>
+            <value>waterops</value>
+          </equals>
+        </not>
+      </visible>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>waterops</value>
+      </binding>
+    </button>
+
+
+  <!-- Gray Button -->
+    <button>
+      <row>0</row>
+      <col>5</col>
+      <legend>Livery</legend>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>livery</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>livery</value>
+      </binding>
+    </button>
+  <!-- Brown Button -->
+    <button>
+      <row>0</row>
+      <col>5</col>
+      <legend>Livery</legend>
+      <visible>
+        <not>
+          <equals>
+            <property>/sim/help/page</property>
+            <value>livery</value>
+          </equals>
+        </not>
+      </visible>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>livery</value>
+      </binding>
+    </button>
+
+
+  <!-- Gray Button -->
+    <button>
+      <row>0</row>
+      <col>6</col>
+      <legend>More</legend>
+      <visible>
+      <equals>
+      <property>/sim/help/page</property>
+          <value>ops</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>ops</value>
+      </binding>
+    </button>
+  <!-- Brown Button -->
+    <button>
+      <row>0</row>
+      <col>6</col>
+      <legend>More</legend>
+      <visible>
+        <not>
+          <equals>
+            <property>/sim/help/page</property>
+            <value>ops</value>
+          </equals>
+        </not>
+      </visible>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/help/page</property>
+        <value>ops</value>
+      </binding>
+    </button>
+
+
+<!-- Close Button -->
+    <button>
+      <row>0</row>
+      <col>7</col>
+      <legend>Close</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.aircrafthelp.toggle()</script>
+      </binding>
+    </button>
+
+
+</group>
+
+    <empty><stretch>1</stretch></empty>
+
+</PropertyList>

@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+  <path>kx165.ac</path>
+
+  <animation>
+    <object-name>Chassis</object-name>
+    <!-- CommUse -->
+    <object-name>CommUse100M</object-name>
+    <object-name>CommUse10M</object-name>
+    <object-name>CommUse1M</object-name>
+    <object-name>CommUseDot</object-name>
+    <object-name>CommUse100K</object-name>
+    <object-name>CommUse10K</object-name>
+    <!-- CommStby -->
+    <object-name>CommStby100M</object-name>
+    <object-name>CommStby10M</object-name>
+    <object-name>CommStby1M</object-name>
+    <object-name>CommStbyDot</object-name>
+    <object-name>CommStby100K</object-name>
+    <object-name>CommStby10K</object-name>
+    <!-- NavUse -->
+    <object-name>NavUse100M</object-name>
+    <object-name>NavUse10M</object-name>
+    <object-name>NavUse1M</object-name>
+    <object-name>NavUseDot</object-name>
+    <object-name>NavUse100K</object-name>
+    <object-name>NavUse10K</object-name>
+    <!-- NavStby -->
+    <object-name>NavStby100M</object-name>
+    <object-name>NavStby10M</object-name>
+    <object-name>NavStby1M</object-name>
+    <object-name>NavStbyDot</object-name>
+    <object-name>NavStby100K</object-name>
+    <object-name>NavStby10K</object-name>
+    <!-- CommKnobs -->
+    <object-name>CommToggle</object-name>
+    <object-name>CommVolume</object-name>
+    <object-name>CommMHz</object-name>
+    <object-name>CommKHz</object-name>
+    <!-- NavKnobs -->
+    <object-name>NavToggle</object-name>
+    <object-name>NavVolume</object-name>
+    <object-name>NavMHz</object-name>
+    <object-name>NavKHz</object-name>
+  </animation>
+
+  <animation>
+    <name>CommUse</name>
+    <object-name>CommUse100M</object-name>
+    <object-name>CommUse10M</object-name>
+    <object-name>CommUse1M</object-name>
+    <object-name>CommUseDot</object-name>
+    <object-name>CommUse100K</object-name>
+    <object-name>CommUse10K</object-name>
+  </animation>
+
+  <animation>
+    <name>CommStby</name>
+    <object-name>CommStby100M</object-name>
+    <object-name>CommStby10M</object-name>
+    <object-name>CommStby1M</object-name>
+    <object-name>CommStbyDot</object-name>
+    <object-name>CommStby100K</object-name>
+    <object-name>CommStby10K</object-name>
+  </animation>
+
+  <animation>
+    <name>NavUse</name>
+    <object-name>NavUse100M</object-name>
+    <object-name>NavUse10M</object-name>
+    <object-name>NavUse1M</object-name>
+    <object-name>NavUseDot</object-name>
+    <object-name>NavUse100K</object-name>
+    <object-name>NavUse10K</object-name>
+  </animation>
+
+  <animation>
+    <name>NavStby</name>
+    <object-name>NavStby100M</object-name>
+    <object-name>NavStby10M</object-name>
+    <object-name>NavStby1M</object-name>
+    <object-name>NavStbyDot</object-name>
+    <object-name>NavStby100K</object-name>
+    <object-name>NavStby10K</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>NavStby100M</object-name>
+    <object-name>NavStby10M</object-name>
+    <object-name>NavStby1M</object-name>
+    <object-name>NavStbyDot</object-name>
+    <object-name>NavStby100K</object-name>
+    <object-name>NavStby10K</object-name>
+    <object-name>NavUse100M</object-name>
+    <object-name>NavUse10M</object-name>
+    <object-name>NavUse1M</object-name>
+    <object-name>NavUseDot</object-name>
+    <object-name>NavUse100K</object-name>
+    <object-name>NavUse10K</object-name>
+    <object-name>CommStby100M</object-name>
+    <object-name>CommStby10M</object-name>
+    <object-name>CommStby1M</object-name>
+    <object-name>CommStbyDot</object-name>
+    <object-name>CommStby100K</object-name>
+    <object-name>CommStby10K</object-name>
+    <object-name>CommUse100M</object-name>
+    <object-name>CommUse10M</object-name>
+    <object-name>CommUse1M</object-name>
+    <object-name>CommUseDot</object-name>
+    <object-name>CommUse100K</object-name>
+    <object-name>CommUse10K</object-name>
+    <condition>
+      <property>/systems/electrical/on</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <name>CommKnobs</name>
+    <object-name>CommToggle</object-name>
+    <object-name>CommVolume</object-name>
+    <object-name>CommMHz</object-name>
+    <object-name>CommKHz</object-name>
+  </animation>
+
+  <animation>
+    <name>NavKnobs</name>
+    <object-name>NavToggle</object-name>
+    <object-name>NavVolume</object-name>
+    <object-name>NavMHz</object-name>
+    <object-name>NavKHz</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>CommUse</object-name>
+    <object-name>CommStby</object-name>
+    <object-name>NavUse</object-name>
+    <object-name>NavStby</object-name>
+    <condition>
+      <property>instrumentation/comm[0]/serviceable</property>
+      <property>instrumentation/nav[0]/serviceable</property>
+      <property>instrumentation/nav[0]/power-btn</property>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>Chassis</object-name>
+    <emission>
+      <red>   .025 </red>
+      <green> .025 </green>
+      <blue>  .025 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>CommToggle</object-name>
+    <object-name>NavToggle</object-name>
+    <object-name>CommVolume</object-name>
+    <object-name>CommMHz</object-name>
+    <object-name>CommKHz</object-name>
+    <object-name>NavVolume</object-name>
+    <object-name>NavMHz</object-name>
+    <object-name>NavKHz</object-name>
+
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>CommToggle</object-name>
+    <object-name>NavToggle</object-name>
+    <object-name>CommVolume</object-name>
+    <object-name>CommMHz</object-name>
+    <object-name>CommKHz</object-name>
+    <object-name>NavVolume</object-name>
+    <object-name>NavMHz</object-name>
+    <object-name>NavKHz</object-name>
+    <object-name>CommUse</object-name>
+    <object-name>CommStby</object-name>
+    <object-name>NavUse</object-name>
+    <object-name>NavStby</object-name>
+
+    <emission>
+      <red>   0.035 </red>
+      <green> 0.021 </green>
+      <blue>  0.014 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+<!-- End of Emission Animations -->
+
+
+  <!-- comm part -->
+  <animation>
+    <type>translate</type>
+    <object-name>CommToggle</object-name>
+    <property>instrumentation/comm[0]/frq-swap-btn</property>
+    <factor> -0.004 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommUse100M</object-name>
+    <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+    <step> 100 </step>
+    <factor> 0.001 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommUse10M</object-name>
+    <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+    <step> 10 </step>
+    <factor> 0.01 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommUse1M</object-name>
+    <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+    <step> 1 </step>
+    <factor> 0.1 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommUse100K</object-name>
+    <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+    <step> 0.1 </step>
+    <factor> 1 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommUse10K</object-name>
+    <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+    <step> 0.01 </step>
+    <factor> 10 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommStby100M</object-name>
+    <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+    <step> 100 </step>
+    <factor> 0.001 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommStby10M</object-name>
+    <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+    <step> 10 </step>
+    <factor> 0.01 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommStby1M</object-name>
+    <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+    <step> 1 </step>
+    <factor> 0.1 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommStby100K</object-name>
+    <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+    <step> 0.1 </step>
+    <factor> 1 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>CommStby10K</object-name>
+    <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+    <step> 0.01 </step>
+    <factor> 10 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- NAV part -->
+
+  <animation>
+    <type>translate</type>
+    <object-name>NavToggle</object-name>
+    <property>instrumentation/nav[0]/frq-swap-btn</property>
+    <factor> -0.004 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavUse100M</object-name>
+    <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+    <step> 100 </step>
+    <factor> 0.001 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavUse10M</object-name>
+    <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+    <step> 10 </step>
+    <factor> 0.01 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavUse1M</object-name>
+    <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+    <step> 1 </step>
+    <factor> 0.1 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavUse100K</object-name>
+    <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+    <step> 0.1 </step>
+    <factor> 1 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavUse10K</object-name>
+    <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+    <step> 0.01 </step>
+    <factor> 10 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavStby100M</object-name>
+    <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+    <step> 100 </step>
+    <factor> 0.001 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavStby10M</object-name>
+    <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+    <step> 10 </step>
+    <factor> 0.01 </factor>
+    <bias> 0.0001 </bias>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavStby1M</object-name>
+    <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+    <step>1</step>
+    <factor>0.1</factor>
+    <bias>0.0001</bias>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavStby100K</object-name>
+    <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+    <step>0.1</step>
+    <factor>1</factor>
+    <bias>0.0001</bias>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>NavStby10K</object-name>
+    <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+    <step>0.01</step>
+    <factor>10</factor>
+    <bias>0.0001</bias>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <!-- knobs and buttons -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CommVolume</object-name>
+    <property>instrumentation/comm[0]/volume</property>
+    <factor>-270</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.0188947</x-m>
+      <y-m>-0.0620002</y-m>
+      <z-m>-0.0139999</z-m>
+    </center>
+  </animation>
+
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CommMHz</object-name>
+    <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+    <factor>-10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.0320882</x-m>
+      <y-m>-0.022</y-m>
+      <z-m>-0.012</z-m>
+    </center>
+  </animation>
+
+
+  <animation>
+    <type>rotate</type>
+    <object-name>CommKHz</object-name>
+    <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+    <factor>-360</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.0320882</x-m>
+      <y-m>-0.022</y-m>
+      <z-m>-0.012</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>NavMHz</object-name>
+    <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+    <factor>-10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.0320882</x-m>
+      <y-m>0.058</y-m>
+      <z-m>-0.012</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>NavKHz</object-name>
+    <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+    <factor>-360</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.0320882</x-m>
+      <y-m>0.058</y-m>
+      <z-m>-0.012</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>NavVolume</object-name>
+    <property>instrumentation/nav[0]/volume</property>
+    <factor>-270</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.0188946</x-m>
+      <y-m>0.0180001</y-m>
+      <z-m>-0.0139999</z-m>
+    </center>
+  </animation>
+
+
+  <!-- actions -->
+
+  <animation>
+    <type>pick</type>
+    <object-name>CommVolume</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/comm[0]/volume</property>
+        <step>0.1</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <wrap>false</wrap>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/nav[0]/power-btn</property>
+        <value>1</value>
+        <condition>
+          <greater-than>
+            <property>instrumentation/comm[0]/volume</property>
+            <value>0.05</value>
+          </greater-than>
+        </condition>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/comm[0]/volume</property>
+        <step>-0.1</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <wrap>false</wrap>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/nav[0]/power-btn</property>
+        <value>0</value>
+        <condition>
+          <less-than>
+            <property>instrumentation/comm[0]/volume</property>
+            <value>0.05</value>
+          </less-than>
+        </condition>
+      </binding>
+    </action>
+
+<!-- Comm1 Volume Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Volume</tooltip-id>
+        <mapping>percent</mapping>
+        <label>Volume: %3d%%</label>
+        <property>instrumentation/comm[0]/volume</property>
+        <condition>
+          <and>
+            <property>systems/electrical/on</property>
+            <property>instrumentation/nav[0]/power-btn</property>
+          </and>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Volume</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Volume</tooltip-id>
+        <label>Radio Power Off</label>
+        <condition>
+          <and>
+          <property>systems/electrical/on</property>
+            <not>
+              <property>instrumentation/nav[0]/power-btn</property>
+            </not>
+          </and>
+        </condition>
+      </binding>
+    </hovered>
+
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>CommMHz</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+        <step>1.0</step>
+        <min>108.0</min>
+        <max>137.0</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+        <step>-1.0</step>
+        <min>108.0</min>
+        <max>137.0</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+
+<!-- Comm1 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Standby</tooltip-id>
+        <label>Comm1 Stby: %3.2f</label>
+        <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Standby</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+    </hovered>
+
+  </animation>
+
+
+  <animation>
+    <type>pick</type>
+    <object-name>CommKHz</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+        <step>0.05</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <resolution>0.05</resolution>
+        <wrap>true</wrap>
+        <mask>decimal</mask>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+        <step>-0.05</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <resolution>0.05</resolution>
+        <wrap>true</wrap>
+        <mask>decimal</mask>
+      </binding>
+    </action>
+
+<!-- Comm1 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Standby</tooltip-id>
+        <label>Comm1 Stby: %3.2f</label>
+        <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Standby</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+    </hovered>
+
+  </animation>
+
+<!-- Nav -->
+
+
+  <animation>
+    <type>pick</type>
+    <object-name>NavVolume</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav[0]/volume</property>
+        <step>0.1</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav[0]/volume</property>
+        <step>-0.1</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+
+<!-- Nav1 Volume Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Volume</tooltip-id>
+        <mapping>percent</mapping>
+        <label>Volume: %3d%%</label>
+        <property>instrumentation/nav[0]/volume</property>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Volume</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+    </hovered>
+
+  </animation>
+
+
+
+  <animation>
+    <type>pick</type>
+    <object-name>NavMHz</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+        <step>1.0</step>
+        <min>108.0</min>
+        <max>118.0</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+        <step>-1.0</step>
+        <min>108.0</min>
+        <max>118.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+
+<!-- Nav1 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Standby</tooltip-id>
+        <label>Nav1 Stby: %3.2f</label>
+        <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Standby</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+    </hovered>
+
+  </animation>
+
+
+  <animation>
+    <type>pick</type>
+    <object-name>NavKHz</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+        <step>0.05</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <resolution>0.05</resolution>
+        <wrap>true</wrap>
+        <mask>decimal</mask>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+        <step>-0.05</step>
+        <min>0.0</min>
+        <max>1.0</max>
+        <resolution>0.05</resolution>
+        <wrap>true</wrap>
+        <mask>decimal</mask>
+      </binding>
+    </action>
+
+<!-- Nav1 Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Standby</tooltip-id>
+        <label>Nav1 Stby: %3.2f</label>
+        <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Standby</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+    </hovered>
+
+
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>CommToggle</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/comm[0]/frq-swap-btn</property>
+        <value type="int">1</value>
+      </binding>
+      <binding>
+        <command>property-swap</command>
+        <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+        <property>instrumentation/comm[0]/frequencies/standby-mhz</property>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>instrumentation/comm[0]/frq-swap-btn</property>
+          <value type="int">0</value>
+        </binding>
+      </mod-up>
+    </action>
+
+<!-- Comm1 Toggle Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Toggle</tooltip-id>
+        <label>Swap Comm1 USE &lt;-&gt; STBY</label>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Comm1-Toggle</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+    </hovered>
+
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>NavToggle</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/nav[0]/frq-swap-btn</property>
+        <value type="int">1</value>
+      </binding>
+      <binding>
+        <command>property-swap</command>
+        <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
+        <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>instrumentation/nav[0]/frq-swap-btn</property>
+          <value type="int">0</value>
+        </binding>
+      </mod-up>
+    </action>
+
+<!-- Nav1 Toggle Tooltip -->
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Toggle</tooltip-id>
+        <label>Swap Nav1 USE &lt;-&gt; STBY</label>
+        <condition>
+          <property>systems/electrical/on</property>
+        </condition>
+      </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>Nav1-Toggle</tooltip-id>
+        <label>No Power - Inactive</label>
+        <condition>
+          <not>
+            <property>systems/electrical/on</property>
+          </not>
+        </condition>
+      </binding>
+    </hovered>
+
+
+  </animation>
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">COM1     NAV1</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.3</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.02 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>
+

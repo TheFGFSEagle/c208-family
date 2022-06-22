@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+ <path>asi.ac</path>
+
+  <animation>
+    <object-name>ASI.fond</object-name>
+    <object-name>ASI.face</object-name>
+    <object-name>ASI.ring</object-name>
+    <object-name>ASI.needle</object-name>
+    <object-name>ASI.knob</object-name>
+  </animation>
+
+<!-- Cold and Dark Unlighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>ASI.fond</object-name>
+    <object-name>ASI.knob</object-name>
+    <emission>
+      <red>   .025 </red>
+      <green> .025 </green>
+      <blue>  .025 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+    </condition>
+  </animation>
+
+<!-- Cold and Dark Lighted -->
+
+  <animation>
+  <type>material</type>
+    <object-name>ASI.face</object-name>
+    <object-name>ASI.ring</object-name>
+    <object-name>ASI.needle</object-name>
+    <emission>
+      <red>   .015 </red>
+      <green> .015 </green>
+      <blue>  .015 </blue>
+      <factor-prop>/sim/time/sun-angle-rad</factor-prop>
+    </emission>
+    <condition>
+      <and>
+      <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.55</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/on</property>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Instrument Lights On -->
+
+  <animation>
+    <type>material</type>
+    <object-name>ASI.face</object-name>
+    <object-name>ASI.ring</object-name>
+    <object-name>ASI.needle</object-name>
+    <emission>
+      <red>   0.028 </red>
+      <green> 0.014 </green>
+      <blue>  0.007 </blue>
+      <factor-prop>controls/lighting/inst-lights-bright</factor-prop>
+    </emission>
+  </animation>
+
+<!-- End of Emission Animations -->
+
+
+  <!-- ASI Pressure Altitude adjust -->
+  <animation>
+    <type>pick</type>
+    <object-name>ASI.knob</object-name>
+    <visible>true</visible>
+    <action>
+      <name>Increase PA</name>
+      <button>0</button>
+      <button>3</button>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/airspeed-indicator/pressure-alt-offset-deg</property>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>Decrease PA</name>
+      <button>1</button>
+      <button>4</button>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/airspeed-indicator/pressure-alt-offset-deg</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>pressure-alt</tooltip-id>
+          <label>Press Alt - 0C: %s</label>
+          <property>instrumentation/airspeed-indicator/pressure-alt-offset-deg</property>
+        <mapping>nasal</mapping>
+        <script>
+            return sprintf("%5.0f", (arg[0] * 0.235) * 1000);
+        </script>
+       </binding>
+     </hovered>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>ASI.ring</object-name>
+    <property>/instrumentation/airspeed-indicator/pressure-alt-offset-deg</property>
+    <factor>1</factor>
+    <axis>
+      <x>  1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>ASI.needle</object-name>
+    <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <interpolation>
+      <entry><ind>  10 </ind><dep>    3 </dep></entry>
+      <entry><ind>  40 </ind><dep>   35 </dep></entry>
+      <entry><ind>  60 </ind><dep>   70 </dep></entry>
+      <entry><ind>  80 </ind><dep>  105 </dep></entry>
+      <entry><ind> 100 </ind><dep>  155 </dep></entry>
+      <entry><ind> 120 </ind><dep>  190 </dep></entry>
+      <entry><ind> 140 </ind><dep>  225 </dep></entry>
+      <entry><ind> 160 </ind><dep>  260 </dep></entry>
+      <entry><ind> 180 </ind><dep>  295 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m> 0.001 </y-m>
+      <z-m> 0.001 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<!-- Airspeed Guage Tooltip -->
+  <animation>
+    <type>pick</type>
+    <object-name>ASI.face</object-name>
+    <action></action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>airspeed</tooltip-id>
+        <label>Airspeed: %3.0f kts</label>
+        <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+      </binding>
+    </hovered>
+  </animation>
+
+
+<!-- Label Text -->
+
+ <text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">AirSpeed</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.020</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.2</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.02</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.0 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>0.7</red>
+    <green>0.7</green>
+    <blue>0.7</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>
+
+

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+
+<!--
+  File:     PT6A-114A.xml
+  Author:   AeromatiC++ v 3.3.11
+
+  See: http://wiki.flightgear.org/JSBSim_Engines#FGTurboprop
+
+  Inputs:
+    name:                   PT6A-114A
+    type:                   Turboprop Engine
+    power:                  675.0 hp
+    inlet temperature:      657.5 degrees C
+    overall pressure ratio: 13.0:1
+
+  Outputs:
+    psfc:                   0.590 lbs/hr/hp
+    engine weight:          366.1 lbs
+    engine length:          5.0 ft
+    engine diameter:        1.9 ft
+-->
+
+<turboprop_engine name="PT6A-114A">
+  <milthrust unit="LBS">       1512.0   </milthrust>
+  <idlen1>                       60.0   </idlen1>
+  <maxn1>                       100.0   </maxn1>
+  <maxpower unit="HP">          675.0   </maxpower>
+  <psfc unit="LBS/HR/HP">         0.590 </psfc>
+  <n1idle_max_delay>              0.6   </n1idle_max_delay>
+  <maxstartingtime>              20     </maxstartingtime>
+  <startern1>                    20     </startern1>
+  <ielumaxtorque unit="FT*LB"> 1785.8   </ielumaxtorque>
+  <itt_delay>                     0.05  </itt_delay>
+  <betarangeend>                 64     </betarangeend>
+  <reversemaxpower>              60     </reversemaxpower>
+
+  <function name="EnginePowerVC">
+    <table>
+      <description> Engine power, function of airspeed and pressure </description>
+      <independentVar lookup="row">atmosphere/P-psf</independentVar>
+      <independentVar lookup="column">velocities/ve-kts</independentVar>
+      <tableData>
+              0      50     100    150    200    250    300    350
+        503   0.357  0.380  0.400  0.425  0.457  0.486  0.517  0.550
+       1048   0.586  0.589  0.600  0.621  0.650  0.686  0.724  0.764
+       1328   0.707  0.721  0.731  0.757  0.786  0.821  0.858  0.896
+       1496   0.779  0.786  0.808  0.821  0.857  0.900  0.945  0.993
+       1684   0.850  0.857  0.874  0.900  0.943  0.979  1.016  1.055
+       1896   0.914  0.929  0.946  0.971  1      1.057  1.117  1.181
+       2135   1      1.011  1.029  1.043  1.083  1.150  1.221  1.297
+       2213   1.029  1.043  1.057  1.079  1.114  1.171  1.231  1.294
+     </tableData>
+   </table>
+  </function>
+
+  <table name="EnginePowerRPM_N1" type="internal">
+    <description> Engine Power, function of RPM and N1 </description>
+    <tableData>
+              0       5       60      86      94      95      96      97      98      99     100     101
+      0.0     0.0     0.5     0.5     0.5     0.5     0.5     0.5     0.5     0.5     0.5     0.5     0.5
+    773.2     0.0     0.5    31.8   181.7   318.0   345.2   381.6   417.9   454.2   481.5   526.9   563.3
+   1157.6     0.0     0.5    27.3   209.0   363.4   390.6   427.0   458.8   499.6   536.0   581.4   617.8
+   1544.2     0.0     0.5     4.5   218.0   399.7   431.5   463.3   499.6   540.5   572.3   617.8   654.1
+   1930.8     0.0     0.1     0.1   204.4   408.8   449.7   477.0   513.3   554.2   590.5   635.9   676.8
+   2124.1     0.0     0.1     0.1   186.2   399.7   436.1   467.8   508.7   549.7   586.0   631.4   675.0
+    </tableData>
+  </table>
+
+  <table name="ITT_N1" type="internal">
+    <description> Inter-Turbine Temperature ITT [deg C] depending on N1 and engine run (0=off / 1=running) </description>
+    <tableData>
+              0     1
+        0     0     0
+       15    95.3    95.3
+       60   170.9   495.8
+       96   257.1   648.3
+      100   266.9   716.7
+    </tableData>
+  </table>
+
+<!--
+
+AeromatiC++ really screwed up this table
+
+<table name="CombustionEfficiency_N1" type="internal">
+    <description>Dependency of fuel efficiency coefficient on N1 (and RPM)</description>
+    <tableData>
+      90    0.1221
+      91.2  0.2834
+      92.2  0.5336
+      93.4  0.7188
+      94.1  0.7741
+      95.2  0.8471
+      96.5  0.9001
+     100    1
+      </tableData>
+  </table> -->
+</turboprop_engine>

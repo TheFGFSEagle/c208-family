@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      Cessna-208B-checklist-Landing.xml - ePilot          ####
+      ####                                                          ####
+      ####    Landing Checklist Dialog                              ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <name>Checklist_Landing</name>
+  <layout>vbox</layout>
+
+  <x>20</x>
+  <y>20</y>
+
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <text>
+      <label>Landing</label>
+    </text>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>x</legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,0,0,0,0,-8.6,359)</script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          setprop("/sim/model/marker/arrow-enabled", 0);
+        </script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.checklist_landing.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+  <hrule>
+    <color>
+      <red>1</red>
+      <green>0.45</green>
+      <blue>0.12</blue>
+    </color>
+    <pref-height>1</pref-height>
+    <pref-width>200</pref-width>
+  </hrule>
+
+  <group>
+    <layout>table</layout>
+
+    <!-- Flaps -->
+    <!-- Red Text -->
+    <text>
+      <label>Reduce Speed - Full Flaps</label>
+      <halign>left</halign>
+      <row>1</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <equals>
+            <property>/controls/flight/flaps</property>
+            <value>1.0</value>
+          </equals>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Reduce Speed - Full Flaps</label>
+      <halign>left</halign>
+      <row>1</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/controls/flight/flaps</property>
+          <value>1.0</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>1</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.03,0.06,0.09,2.6,-25.03,338.98)</script>
+      </binding>
+    </button>
+
+    <!-- A/P Auto Disengage -->
+    <!-- Red Text -->
+    <text>
+      <label>AP Off or Auto-Off at 300 AGL</label>
+      <halign>left</halign>
+      <row>2</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <equals>
+            <property>/autopilot/internal/CMD</property>
+            <value>false</value>
+          </equals>
+        </not>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>A/P Off or Auto-Off at 300 AGL</label>
+      <halign>left</halign>
+      <row>2</row>
+      <col>0</col>
+      <visible>
+        <equals>
+          <property>/autopilot/internal/CMD</property>
+          <value>false</value>
+        </equals>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>2</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.97,-0.01,0.26,6.2,-3.71,333)</script>
+      </binding>
+    </button>
+
+    <!-- Touchdown Speed -->
+    <!-- Red Text -->
+    <text>
+      <label>Touchdown Speed 75-90 kts</label>
+      <halign>left</halign>
+      <row>3</row>
+      <col>0</col>
+      <visible>
+        <or>
+          <less-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>70</value>
+          </less-than>
+          <greater-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>90</value>
+          </greater-than>
+        </or>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>A/P Off or Auto-Off at 300 AGL</label>
+      <halign>left</halign>
+      <row>3</row>
+      <col>0</col>
+      <visible>
+        <and>
+          <greater-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>70</value>
+          </greater-than>
+          <less-than>
+            <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+            <value>95</value>
+          </less-than>
+        </and>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>3</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.95,-0.49,0.39,4.0,-6,359)</script>
+      </binding>
+    </button>
+
+    <!-- Throttle -->
+    <!-- Red Text -->
+    <text>
+      <label>Throttle Idle</label>
+      <halign>left</halign>
+      <row>4</row>
+      <col>0</col>
+      <visible>
+        <property>/controls/engines/engine/throttle</property>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Throttle Idle</label>
+      <halign>left</halign>
+      <row>4</row>
+      <col>0</col>
+      <visible>
+        <not>
+          <property>/controls/engines/engine/throttle</property>
+        </not>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+
+    <!-- Button -->
+    <button>
+      <row>4</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,3.18,-0.03,0.11,3.0,-25,339)</script>
+      </binding>
+    </button>
+
+    <!-- Touchdown -->
+    <!-- White Text -->
+    <text>
+      <label>Touchdown on Mains
+        not &gt; 11 deg Nose Up
+      </label>
+      <halign>left</halign>
+      <row>5</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+
+    <!-- Spacer -->
+    <text>
+      <label></label>
+      <halign>left</halign>
+      <row>6</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>6</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.95,-0.39,0.39,4.8,-6,359)</script>
+      </binding>
+    </button>
+
+
+    <!-- Reverse Thrust -->
+    <!-- White Text -->
+    <text>
+      <label>Reverse Thrust as Required
+        only above 25 kts
+      </label>
+      <halign>left</halign>
+      <row>7</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+
+    <text>
+      <label></label>
+      <halign>left</halign>
+      <row>8</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>8</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.95,-0.49,0.39,4.0,-6,359)</script>
+      </binding>
+    </button>
+
+    <!-- Brakes -->
+    <!-- White Text -->
+    <text>
+      <label>Brakes as Required</label>
+      <halign>left</halign>
+      <row>9</row>
+      <col>0</col>
+      <color>
+        <red>0.8</red>
+        <green>0.8</green>
+        <blue>0.8</blue>
+      </color>
+    </text>
+
+    <!-- Runway Exit High Speed -->
+    <!-- Red Text -->
+    <text>
+      <label>High Speed Rwy Exit - Max 20 kts</label>
+      <halign>left</halign>
+      <row>10</row>
+      <col>0</col>
+      <visible>
+        <greater-than>
+          <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+          <value>26</value>
+        </greater-than>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>High Speed Rwy Exit - Max 20 kts</label>
+      <halign>left</halign>
+      <row>10</row>
+      <col>0</col>
+      <visible>
+        <less-than>
+          <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+          <value>27</value>
+        </less-than>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>10</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.95,-0.49,0.39,4.0,-6,359)</script>
+      </binding>
+    </button>
+
+
+    <!-- Runway Exit High Speed -->
+    <!-- Red Text -->
+    <text>
+      <label>Normal Rwy Exit - Max 11 kts</label>
+      <halign>left</halign>
+      <row>11</row>
+      <col>0</col>
+      <visible>
+        <greater-than>
+          <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+          <value>15</value>
+        </greater-than>
+      </visible>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+    </text>
+    <!-- Green Text -->
+    <text>
+      <label>Normal Rwy Exit - Max 11 kts</label>
+      <halign>left</halign>
+      <row>11</row>
+      <col>0</col>
+      <visible>
+        <less-than>
+          <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+          <value>16</value>
+        </less-than>
+      </visible>
+      <color>
+        <red>0.0</red>
+        <green>1.0</green>
+        <blue>0.0</blue>
+      </color>
+    </text>
+    <!-- Button -->
+    <button>
+      <row>11</row>
+      <col>1</col>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>></legend>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,2.95,-0.49,0.39,4.0,-6,359)</script>
+      </binding>
+    </button>
+
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <hrule>
+      <color>
+        <red>1</red>
+        <green>0.45</green>
+        <blue>0.12</blue>
+      </color>
+      <pref-height>1</pref-height>
+      <pref-width>200</pref-width>
+    </hrule>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <pref-width>50</pref-width>
+      <pref-height>25</pref-height>
+      <legend>Close</legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>nasal</command>
+        <script>Cessna208.viewset(0,0,0,0,0,-8.6,359)</script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          setprop("/sim/model/marker/arrow-enabled", 0);
+        </script>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>dialogs.checklist_landing.toggle()</script>
+      </binding>
+    </button>
+  </group>
+
+  <empty>
+    <stretch>1</stretch>
+  </empty>
+
+
+</PropertyList>

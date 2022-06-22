@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ##################################################################
+      ####      landing-light-rembrandt-right.xml - ePilot          ####
+      ####                                                          ####
+      ####    Landing light (right) under Rembrandt                 ####
+      ################################################################## -->
+
+<PropertyList>
+
+  <path>landing-light-cone.ac</path>
+
+  <animation>
+    <type>select</type>
+    <object-name>Light.cone</object-name>
+    <condition>
+      <and>
+<!--      <property>/systems/electrical/on</property> -->
+        <property>sim/multiplay/generic/int[0]</property>
+<!--        <property>controls/electric/rightldg-switch</property> -->
+        <property>sim/multiplay/generic/int[7]</property>
+<!--        <greater-than>
+          <property>/sim/time/sun-angle-rad</property>
+          <value>1.45</value>
+        </greater-than> -->
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>light</type>
+    <light-type>spot</light-type>
+    <name>RightLandingCone</name>
+    <object-name>Light.cone</object-name>
+    <nopreview />
+    <position>
+      <x>0</x>
+      <y>0</y>
+      <z>0</z>
+    </position>
+    <direction>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </direction>
+    <ambient>
+      <r>0.5</r>
+      <g>0.5</g>
+      <b>0.5</b>
+      <a>1.0</a>
+    </ambient>
+    <diffuse>
+      <r>0.7</r>
+      <g>0.7</g>
+      <b>0.6</b>
+      <a>1.0</a>
+    </diffuse>
+    <specular>
+      <r>0.7</r>
+      <g>0.7</g>
+      <b>0.7</b>
+      <a>1.0</a>
+    </specular>
+    <dim-factor>
+      <property>sim/time/sun-angle-rad</property>
+      <interpolation>
+        <entry><ind>1.6</ind><dep> 1</dep></entry>
+        <entry><ind>1.3</ind><dep> 0.3</dep></entry>
+        <entry><ind>0.8</ind><dep> 0</dep></entry>
+      </interpolation>
+   </dim-factor>
+   <attenuation>
+      <c>1.0</c>
+      <l>0.002</l>
+      <q>0.00005</q>
+    </attenuation>
+    <exponent>10.0</exponent>
+    <cutoff>500</cutoff>
+    <near-m>0</near-m>
+    <far-m>500</far-m>
+  </animation>
+
+</PropertyList>
