@@ -729,6 +729,15 @@ Enjoy your flight!
       <day-night type="bool">false</day-night>
     </switches>
   </controls>
+  
+	<gear>
+		<gear n="3">
+			<castor-angle-deg alias="/fdm/jsbsim/gear/unit[3]/steering-angle-deg"/>
+		</gear>
+		<gear n="4">
+			<castor-angle-deg alias="/fdm/jsbsim/gear/unit[4]/steering-angle-deg"/>
+		</gear>
+	</gear>
 
   <fdm>
     <jsbsim>

@@ -239,7 +239,7 @@
   <type>rotate</type>
     <object-name>nosewheel-fork-left</object-name>
     <object-name>nosewheel-left</object-name>
-    <property>gear/gear[3]/castor-angle</property>
+    <property>gear/gear[3]/castor-angle-deg</property>
     <factor>-1</factor>
   <center>
     <x-m>0.76667</x-m>
@@ -300,7 +300,7 @@
   <type>rotate</type>
     <object-name>nosewheel-fork-right</object-name>
     <object-name>nosewheel-right</object-name>
-    <property>gear/gear[4]/castor-angle</property>
+    <property>gear/gear[4]/castor-angle-deg</property>
     <factor>-1</factor>
   <center>
     <x-m>0.76667</x-m>
