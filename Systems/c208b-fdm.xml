@@ -898,7 +898,6 @@
         <output>gear/gear-pos-norm</output>
       </kinematic>
     </channel>
-    </channel>
   </flight_control>
 
   <aerodynamics>
