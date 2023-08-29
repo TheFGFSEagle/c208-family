@@ -12,12 +12,12 @@
 
   <!-- Prop -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Prop/prop.xml</path>
+    <path>Models/Prop/prop.xml</path>
   </model>
 
   <!-- Flightdeck -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/flightdeck.xml</path>
+    <path>Models/FlightDeck/flightdeck.xml</path>
     <offsets>
       <x-m> 2.90534 </x-m>
       <y-m>  0.000 </y-m>
@@ -27,12 +27,12 @@
 
   <!-- Interior -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/interior.xml</path>
+    <path>Models/Interior/interior.xml</path>
   </model>
 
   <!-- Wheels -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Gear/gear.xml</path>
+    <path>Models/Gear/gear.xml</path>
     <condition>
       <not>
         <property>sim/multiplay/generic/int[9]</property>
@@ -43,7 +43,7 @@
 
   <!-- Floats -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Floats/floats.xml</path>
+    <path>Models/Floats/floats.xml</path>
     <condition>
       <property>sim/multiplay/generic/int[9]</property>
 <!--        <property>sim/model/floats</property> -->
@@ -52,7 +52,7 @@
 
   <!-- Cargo Pod -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Cargo/pod.xml</path>
+    <path>Models/Cargo/pod.xml</path>
     <condition>
       <property>sim/multiplay/generic/int[11]</property>
     </condition>
@@ -61,42 +61,17 @@
   <!-- Effects (Wake)-->
   <model>
     <name>Wake</name>
-    <path>Aircraft/Cessna-208B/Models/Effects/wakes.xml</path>
+    <path>Models/Effects/wakes.xml</path>
   </model>
 
   <!-- Windows -->
   <model>
-    <path>/Aircraft/Cessna-208B/Models/Windows/Windows.xml</path>
-  </model>
-
-  <!-- Flat Shadow -->
-  <model>
-    <path>/Aircraft/Cessna-208B/Models/Shadow/Cessna-208B-generic-shadow.xml</path>
-    <condition>
-      <and>
-        <property>sim/model/shadow</property>
-        <not>
-          <or>
-            <property>sim/rendering/shaders/skydome</property>
-            <property>sim/rendering/rembrandt/enabled</property>
-          </or>
-        </not>
-      </and>
-    </condition>
-  </model>
-
-  <!-- ALS 3d Shadow -->
-  <model>
-    <path>/Aircraft/Cessna-208B/Models/Shadow/Cessna-208B-3d-shadow.xml</path>
-    <condition>
-      <property>sim/model/shadow</property>
-      <property>sim/rendering/shaders/skydome</property>
-    </condition>
+    <path>Models/Windows/Windows.xml</path>
   </model>
 
   <!-- Jumpship Cargo Net -->
   <model>
-    <path>/Aircraft/Cessna-208B/Models/Cargo-Net/cargo-net.ac</path>
+    <path>Models/Cargo-Net/cargo-net.ac</path>
   </model>
 
 
@@ -150,7 +125,7 @@
       ##############################################################################
       -->
       <![CDATA[
-        var livery_update = aircraft.livery_update.new("Aircraft/Cessna-208B/Models/Liveries");
+        var livery_update = aircraft.livery_update.new("Aircraft/c208-family/Models/Liveries");
       ]]>
     </load>
 
@@ -230,7 +205,7 @@
 
 
   <effect>
-    <inherits-from>Aircraft/Cessna-208B/Models/Effects/model-transparent</inherits-from>
+    <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>glass-landing-lights</object-name>
     <object-name>lights-nav-green</object-name>
     <object-name>lights-nav-red</object-name>
@@ -299,7 +274,7 @@
   <!-- Cranking effects -->
   <!-- Left -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Effects/cranking/cranking.xml</path>
+    <path>Models/Effects/cranking/cranking.xml</path>
     <offsets>
       <x-m> 1.99834 </x-m>
       <y-m>  0.677 </y-m>
@@ -870,7 +845,7 @@
 
 <!-- Generic Shader Fake Bright Spot -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/Landing/landing-light-generic.xml</path>
+    <path>Models/Lights/Landing/landing-light-generic.xml</path>
     <offsets>
       <x-m> 7.27734 </x-m>
       <y-m> 0.000 </y-m>
@@ -893,7 +868,7 @@
 
 <!-- Rembrandt Landing Lights -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/Landing/landing-light-rembrandt-left.xml</path>
+    <path>Models/Lights/Landing/landing-light-rembrandt-left.xml</path>
     <offsets>
       <x-m>  4.68734  </x-m>
       <y-m> -4.69685  </y-m>
@@ -905,7 +880,7 @@
     </condition>
   </model>
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/Landing/landing-light-rembrandt-right.xml</path>
+    <path>Models/Lights/Landing/landing-light-rembrandt-right.xml</path>
     <offsets>
       <x-m>  4.68734  </x-m>
       <y-m>  4.69685  </y-m>
@@ -919,7 +894,7 @@
 
 <!-- Rembrandt Taxi Lights -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/Landing/taxi-lights-rembrandt.xml</path>
+    <path>Models/Lights/Landing/taxi-lights-rembrandt.xml</path>
     <offsets>
       <x-m>  4.68734  </x-m>
       <y-m>  -4.59825  </y-m>
@@ -931,7 +906,7 @@
     </condition>
   </model>
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/Landing/taxi-lights-rembrandt.xml</path>
+    <path>Models/Lights/Landing/taxi-lights-rembrandt.xml</path>
     <offsets>
       <x-m>  4.68734  </x-m>
       <y-m>  4.59825  </y-m>
@@ -979,7 +954,7 @@
     </animation>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/beacon.xml</path>
+    <path>Models/Lights/beacon.xml</path>
     <offsets>
       <x-m> 12.2769 </x-m>
       <y-m> 0.000 </y-m>
@@ -1004,7 +979,7 @@
   </animation>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/nav-red.xml</path>
+    <path>Models/Lights/nav-red.xml</path>
     <offsets>
       <x-m> 5.08468 </x-m>
       <y-m> -7.84895 </y-m>
@@ -1013,7 +988,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/nav-green.xml</path>
+    <path>Models/Lights/nav-green.xml</path>
     <offsets>
       <x-m> 5.08468 </x-m>
       <y-m>  7.84895 </y-m>
@@ -1022,7 +997,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/strobe-white.xml</path>
+    <path>Models/Lights/strobe-white.xml</path>
     <offsets>
       <x-m> 5.16061 </x-m>
       <y-m> 7.87741 </y-m>
@@ -1031,7 +1006,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Lights/strobe-white.xml</path>
+    <path>Models/Lights/strobe-white.xml</path>
     <offsets>
       <x-m> 5.16061 </x-m>
       <y-m> -7.87741 </y-m>
@@ -1041,7 +1016,7 @@
 
   <model>
     <name>marker</name>
-    <path>Aircraft/Cessna-208B/Models/Marker/marker.xml</path>
+    <path>Models/Marker/marker.xml</path>
   </model>
 
 </PropertyList>

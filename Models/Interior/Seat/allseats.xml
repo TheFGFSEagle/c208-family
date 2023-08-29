@@ -10,7 +10,7 @@
 
   <!-- Pilot -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat-pilots.xml</path>
+    <path>Models/Interior/Seat/seat-pilots.xml</path>
     <offsets>
       <x-m> -2.928 </x-m>
       <y-m> -0.438 </y-m>
@@ -26,7 +26,7 @@
         <property>sim/model/jumpship</property>
       </not>
     </condition>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat-pilots.xml</path>
+    <path>Models/Interior/Seat/seat-pilots.xml</path>
     <offsets>
       <x-m> -2.928 </x-m>
       <y-m>  0.434 </y-m>
@@ -37,7 +37,7 @@
 
   <!-- Row 1 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <path>Models/Interior/Seat/seat.xml</path>
     <offsets>
       <x-m> -1.878 </x-m>
       <y-m> -0.436 </y-m>
@@ -47,7 +47,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <path>Models/Interior/Seat/seat.xml</path>
     <offsets>
       <x-m> -1.878 </x-m>
       <y-m>  0.432 </y-m>
@@ -58,7 +58,7 @@
 
   <!-- Row 2 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <path>Models/Interior/Seat/seat.xml</path>
     <offsets>
       <x-m> -0.808 </x-m>
       <y-m> -0.436 </y-m>
@@ -68,7 +68,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <path>Models/Interior/Seat/seat.xml</path>
     <offsets>
       <x-m> -0.808 </x-m>
       <y-m>  0.432 </y-m>
@@ -79,7 +79,7 @@
 
   <!-- Row 3 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <path>Models/Interior/Seat/seat.xml</path>
     <offsets>
       <x-m> 0.312 </x-m>
       <y-m> 0.432 </y-m>
@@ -90,7 +90,7 @@
 
   <!-- Row 4 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <path>Models/Interior/Seat/seat.xml</path>
     <offsets>
       <x-m>  1.412 </x-m>
       <y-m> -0.436 </y-m>
@@ -100,7 +100,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/seat.xml</path>
+    <path>Models/Interior/Seat/seat.xml</path>
     <offsets>
       <x-m> 1.412 </x-m>
       <y-m> 0.432 </y-m>

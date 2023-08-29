@@ -77,7 +77,7 @@
   </animation>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Interior/Seat/allseats.xml</path>
+    <path>Models/Interior/Seat/allseats.xml</path>
     <offsets>
       <x-m> 6.68134 </x-m>
       <y-m> 0 </y-m>

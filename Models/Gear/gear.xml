@@ -76,7 +76,7 @@
 
   <!-- Nosewheel effects -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Effects/ground/ground0.xml</path>
+    <path>Models/Effects/ground/ground0.xml</path>
     <offsets>
       <x-m> 1.44734 </x-m>
       <y-m>  0.000 </y-m>
@@ -86,7 +86,7 @@
 
   <!-- Left Main effects -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Effects/ground/ground1.xml</path>
+    <path>Models/Effects/ground/ground1.xml</path>
     <offsets>
       <x-m> 5.43334 </x-m>
       <y-m> -1.784  </y-m>
@@ -96,7 +96,7 @@
 
   <!-- Right Main effects -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/Effects/ground/ground2.xml</path>
+    <path>Models/Effects/ground/ground2.xml</path>
     <offsets>
       <x-m> 5.46145 </x-m>
       <y-m> 1.784  </y-m>
@@ -289,7 +289,7 @@
   </animation>
 
 <effect>
-  <inherits-from>Aircraft/Cessna-208B/Models/Effects/chrome</inherits-from>
+  <inherits-from>Models/Effects/chrome</inherits-from>
     <object-name>nose-strut-piston</object-name>
 </effect>
 

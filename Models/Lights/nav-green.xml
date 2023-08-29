@@ -10,7 +10,7 @@
   </animation>
 
   <effect>
-    <inherits-from>Aircraft/Cessna-208B/Models/Effects/model-transparent</inherits-from>
+    <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>Light</object-name>
   </effect>
 

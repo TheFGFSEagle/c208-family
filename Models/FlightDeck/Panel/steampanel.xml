@@ -131,7 +131,7 @@
 
   <!-- Annunciator Panel -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/annun/annun.xml</path>
+    <path>Models/FlightDeck/Instruments/annun/annun.xml</path>
     <offsets>
       <x-m>  0.0605 </x-m>
       <y-m> -0.450 </y-m>
@@ -141,7 +141,7 @@
 
   <!-- Pilot ASI -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/asi/asi.xml</path>
+    <path>Models/FlightDeck/Instruments/asi/asi.xml</path>
     <offsets>
       <x-m>  0.061 </x-m>
       <y-m> -0.490 </y-m>
@@ -151,7 +151,7 @@
 
   <!-- Co-Pilot ASI -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/asi/asi.xml</path>
+    <path>Models/FlightDeck/Instruments/asi/asi.xml</path>
     <offsets>
       <x-m>  0.061 </x-m>
       <y-m>  0.330 </y-m>
@@ -161,7 +161,7 @@
 
   <!-- Pilot AI -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki256.xml</path>
+    <path>Models/FlightDeck/Instruments/kfc200/ki256.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.390 </y-m>
@@ -171,7 +171,7 @@
 
   <!-- Co-Pilot AI -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki256.xml</path>
+    <path>Models/FlightDeck/Instruments/kfc200/ki256.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.440 </y-m>
@@ -181,7 +181,7 @@
 
   <!-- Pilot ADF -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/adf/ki227.xml</path>
+    <path>Models/FlightDeck/Instruments/adf/ki227.xml</path>
     <offsets>
       <x-m>  0.061 </x-m>
       <y-m> -0.490 </y-m>
@@ -191,7 +191,7 @@
 
   <!-- Co-Pilot ADF -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/adf/ki227.xml</path>
+    <path>Models/FlightDeck/Instruments/adf/ki227.xml</path>
     <offsets>
       <x-m>  0.061 </x-m>
       <y-m>  0.330 </y-m>
@@ -201,7 +201,7 @@
 
   <!-- Pilot ALT -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/alt/alt.xml</path>
+    <path>Models/FlightDeck/Instruments/alt/alt.xml</path>
     <offsets>
       <x-m>  0.061 </x-m>
       <y-m> -0.290 </y-m>
@@ -211,7 +211,7 @@
 
   <!-- Co-Pilot ALT -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/alt/alt.xml</path>
+    <path>Models/FlightDeck/Instruments/alt/alt.xml</path>
     <offsets>
       <x-m>  0.061 </x-m>
       <y-m>  0.540 </y-m>
@@ -221,7 +221,7 @@
 
   <!-- Pilot RadALT -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/radar-alt/kra10a.xml</path>
+    <path>Models/FlightDeck/Instruments/radar-alt/kra10a.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.290 </y-m>
@@ -231,7 +231,7 @@
 
   <!--Pilot HSI-->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki252a.xml</path>
+    <path>Models/FlightDeck/Instruments/kfc200/ki252a.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.390 </y-m>
@@ -241,7 +241,7 @@
 
   <!--Co-Pilot HSI-->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/ki252a.xml</path>
+    <path>Models/FlightDeck/Instruments/kfc200/ki252a.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.440 </y-m>
@@ -251,7 +251,7 @@
 
   <!--Pilot FD ANNUN-->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/fd-annun.xml</path>
+    <path>Models/FlightDeck/Instruments/kfc200/fd-annun.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.190 </y-m>
@@ -261,7 +261,7 @@
 
   <!--Pilot AP Control-->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/fd-control.xml</path>
+    <path>Models/FlightDeck/Instruments/kfc200/fd-control.xml</path>
     <offsets>
       <x-m>  0.064 </x-m>
       <y-m> -0.020 </y-m>
@@ -271,7 +271,7 @@
 
   <!-- Pilot DME -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/ki266/ki266.xml</path>
+    <path>Models/FlightDeck/Instruments/ki266/ki266.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.190 </y-m>
@@ -281,7 +281,7 @@
 
   <!--kas297 Altitude Select-->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kfc200/kas297.xml</path>
+    <path>Models/FlightDeck/Instruments/kfc200/kas297.xml</path>
     <offsets>
       <x-m>  0.066 </x-m>
       <y-m> -0.185 </y-m>
@@ -291,7 +291,7 @@
 
   <!-- Pilot CLOCK -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/chrono/chronometer.xml</path>
+    <path>Models/FlightDeck/Instruments/chrono/chronometer.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.610 </y-m>
@@ -301,7 +301,7 @@
 
   <!-- Pilot SUCTION -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/suction/suction.xml</path>
+    <path>Models/FlightDeck/Instruments/suction/suction.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.610 </y-m>
@@ -311,7 +311,7 @@
 
   <!-- Pilot VOLTMETER -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/voltmeter/voltmeter.xml</path>
+    <path>Models/FlightDeck/Instruments/voltmeter/voltmeter.xml</path>
     <offsets>
       <x-m>  0.067 </x-m>
       <y-m> -0.650 </y-m>
@@ -321,7 +321,7 @@
 
   <!-- Pilot TURN -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/turn/turn.xml</path>
+    <path>Models/FlightDeck/Instruments/turn/turn.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.490 </y-m>
@@ -331,7 +331,7 @@
 
   <!-- Co-Pilot TURN -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/turn/turn.xml</path>
+    <path>Models/FlightDeck/Instruments/turn/turn.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.330 </y-m>
@@ -341,7 +341,7 @@
 
   <!-- KMA20 Audio Panel -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kma20/kma20.xml</path>
+    <path>Models/FlightDeck/Instruments/kma20/kma20.xml</path>
     <offsets>
       <x-m>  0.056 </x-m>
       <y-m> -0.000 </y-m>
@@ -351,7 +351,7 @@
 
   <!-- KLN90B GPS -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kln90b/kln90b.xml</path>
+    <path>Models/FlightDeck/Instruments/kln90b/kln90b.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.170 </y-m>
@@ -361,7 +361,7 @@
 
   <!-- COMPASS -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/compass/compass.xml</path>
+    <path>Models/FlightDeck/Instruments/compass/compass.xml</path>
     <offsets>
       <x-m>  0.070 </x-m>
       <y-m>  0.000 </y-m>
@@ -371,7 +371,7 @@
 
   <!-- KX165 Comm/Nav-->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kx165/kx165-1.xml</path>
+    <path>Models/FlightDeck/Instruments/kx165/kx165-1.xml</path>
     <offsets>
       <x-m>  0.057 </x-m>
       <y-m>  0.000 </y-m>
@@ -380,7 +380,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kx165/kx165-2.xml</path>
+    <path>Models/FlightDeck/Instruments/kx165/kx165-2.xml</path>
     <offsets>
       <x-m>  0.057 </x-m>
       <y-m>  0.000 </y-m>
@@ -390,7 +390,7 @@
 
   <!-- Pilot VSI -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vsi/vsi.xml</path>
+    <path>Models/FlightDeck/Instruments/vsi/vsi.xml</path>
     <offsets>
       <x-m>  0.059 </x-m>
       <y-m> -0.290 </y-m>
@@ -400,7 +400,7 @@
 
   <!-- Co-Pilot VSI -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vsi/vsi.xml</path>
+    <path>Models/FlightDeck/Instruments/vsi/vsi.xml</path>
     <offsets>
       <x-m>  0.059 </x-m>
       <y-m>  0.540 </y-m>
@@ -410,7 +410,7 @@
 
   <!-- Pilot VOR 2 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vor/vor.xml</path>
+    <path>Models/FlightDeck/Instruments/vor/vor.xml</path>
     <offsets>
       <x-m>  0.062 </x-m>
       <y-m> -0.190 </y-m>
@@ -420,7 +420,7 @@
 
   <!-- Co-Pilot VOR 2 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/vor/vor.xml</path>
+    <path>Models/FlightDeck/Instruments/vor/vor.xml</path>
     <offsets>
       <x-m>  0.062 </x-m>
       <y-m>  0.640 </y-m>
@@ -430,7 +430,7 @@
 
   <!-- Pilot Trim -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/trim/trim.xml</path>
+    <path>Models/FlightDeck/Instruments/trim/trim.xml</path>
     <offsets>
       <x-m>  0.068 </x-m>
       <y-m> -0.690 </y-m>
@@ -440,7 +440,7 @@
 
   <!-- Co-Pilot Trim -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/trim/trim.xml</path>
+    <path>Models/FlightDeck/Instruments/trim/trim.xml</path>
     <offsets>
       <x-m>  0.068 </x-m>
       <y-m>  0.630 </y-m>
@@ -450,7 +450,7 @@
 
   <!-- KT70 Transponder -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kt70/kt70.xml</path>
+    <path>Models/FlightDeck/Instruments/kt70/kt70.xml</path>
     <offsets>
       <x-m>  0.064 </x-m>
       <y-m>  0.174 </y-m>
@@ -460,7 +460,7 @@
 
   <!-- KR87 ADF -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/kr87/kr87.xml</path>
+    <path>Models/FlightDeck/Instruments/kr87/kr87.xml</path>
     <offsets>
       <x-m>  0.056 </x-m>
       <y-m>  0.174 </y-m>
@@ -470,7 +470,7 @@
 
   <!-- RDR-160 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/rdr-160/rdr-160.xml</path>
+    <path>Models/FlightDeck/Instruments/rdr-160/rdr-160.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.174 </y-m>
@@ -505,7 +505,7 @@
 
   <!-- TORQUE -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/torq1.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/torq1.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.238 </y-m>
@@ -515,7 +515,7 @@
 
   <!-- RPM -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/rpm1.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/rpm1.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.170 </y-m>
@@ -525,7 +525,7 @@
 
   <!-- ITT GAUGE -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/itt1.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/itt1.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.102 </y-m>
@@ -535,7 +535,7 @@
 
   <!-- TURBINE -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/n21.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/n21.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m> -0.034 </y-m>
@@ -545,7 +545,7 @@
 
   <!-- OIL -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/oilp1.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/oilp1.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.034 </y-m>
@@ -555,7 +555,7 @@
 
   <!-- FUEL FLOW -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/fflow1.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/fflow1.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.102 </y-m>
@@ -565,7 +565,7 @@
 
   <!-- FUEL 1 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/fuel-qty0.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/fuel-qty0.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.170 </y-m>
@@ -575,7 +575,7 @@
 
   <!-- FUEL 2 -->
   <model>
-    <path>Aircraft/Cessna-208B/Models/FlightDeck/Instruments/engine/fuel-qty1.xml</path>
+    <path>Models/FlightDeck/Instruments/engine/fuel-qty1.xml</path>
     <offsets>
       <x-m>  0.065 </x-m>
       <y-m>  0.238 </y-m>
@@ -641,7 +641,7 @@
 
 
   <effect>
-    <inherits-from>Aircraft/Cessna-208B/Models/Effects/chrome</inherits-from>
+    <inherits-from>Models/Effects/chrome</inherits-from>
     <object-name>Inert-Sep-Rod</object-name>
   </effect>
 

@@ -11,7 +11,7 @@
   <path>windows.ac</path>
 
   <effect>
-    <inherits-from>Aircraft/Cessna-208B/Models/Effects/model-transparent</inherits-from>
+    <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>windows-cabin</object-name>
     <object-name>windows-cabin-door-upper</object-name>
     <object-name>windows-cockpit</object-name>

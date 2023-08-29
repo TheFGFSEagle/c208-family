@@ -11,11 +11,11 @@
   <path>prop.ac</path>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Prop/propblur.ac</path>
+    <path>Models/Prop/propblur.ac</path>
   </model>
 
   <model>
-    <path>Aircraft/Cessna-208B/Models/Prop/propdisc.ac</path>
+    <path>Models/Prop/propdisc.ac</path>
   </model>
 
   <!-- Prop -->
